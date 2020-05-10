@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/Main/StateMachine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/Main/StateMachine/StateMachine.gd"
+} ]
+_global_script_class_icons={
+"State": "res://assets/icons/state.svg",
+"StateMachine": "res://assets/icons/state_machine.svg"
+}
+
+[application]
+
+config/name="Godot-2D-Platformer-Template"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
