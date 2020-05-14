@@ -30,6 +30,10 @@ config/name="Godot-2D-Platformer-Template"
 run/main_scene="res://src/Main/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Events="*res://src/Autoload/Events.gd"
+
 [display]
 
 window/size/width=480
