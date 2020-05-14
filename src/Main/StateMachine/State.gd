@@ -3,23 +3,23 @@
 extends Node
 class_name State, "res://assets/icons/state.svg"
 
-onready var _state_machine := _get_state_machine(self)
+onready var _state_machine: = _get_state_machine(self)
 
 
 func unhandled_input(event: InputEvent) -> void:
-	return
+	pass
 
 
 func physics_process(delta: float) -> void:
-	return
+	pass
 
 
 func enter(msg: Dictionary = {}) -> void:
-	return
+	pass
 
 
 func exit() -> void:
-	return
+	pass
 
 
 func _get_state_machine(node: Node) -> Node:
