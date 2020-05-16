@@ -20,10 +20,10 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	move.enter(msg)
-	
+
 	move.acceleration.x = acceleration_x
 	if "velocity" in msg:
-		move.velocity = msg.velocity 
+		move.velocity = msg.velocity
 		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
 	if "impulse" in msg:
 		move.velocity += calculate_jump_velocity(msg.impulse)
@@ -40,6 +40,7 @@ func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
 		move.velocity,
 		move.max_speed,
 		Vector2(0.0, impulse),
+		Vector2.ZERO,
 		1.0, # replace delta
 		Vector2.UP
 	)
