@@ -1,44 +1,57 @@
 extends State
 
 
-export var acceleration_x: = 5000.0
-onready var move := get_parent()
+export var acceleration_x := 5000.0
+export var jump_impulse := 900.0
+export var max_jump_count := 1
+
+var _jump_count := 0
 
 
 func unhandled_input(event: InputEvent) -> void:
-	move.unhandled_input(event)
+	if event.is_action_pressed("jump") and _jump_count <= max_jump_count:
+		jump()
+
+	_parent.unhandled_input(event)
 
 
 func physics_process(delta: float) -> void:
-	move.physics_process(delta)
+	_parent.physics_process(delta)
 
 	# Landing
 	if owner.is_on_floor():
-		var target_state: = "Move/Idle" if move.get_move_direction().x == 0 else "Move/Run"
+		var target_state: = "Move/Idle" if _parent.get_move_direction().x == 0 else "Move/Run"
 		_state_machine.transition_to(target_state)
 
 
 func enter(msg: Dictionary = {}) -> void:
-	move.enter(msg)
+	_parent.enter(msg)
 
-	move.acceleration.x = acceleration_x
+	_parent.acceleration.x = acceleration_x
 	if "velocity" in msg:
-		move.velocity = msg.velocity
-		move.max_speed.x = max(abs(msg.velocity.x), move.max_speed.x)
+		_parent.velocity = msg.velocity
+		_parent.max_speed.x = max(abs(msg.velocity.x), _parent.max_speed.x)
 	if "impulse" in msg:
-		move.velocity += calculate_jump_velocity(msg.impulse)
+		jump()
 
 
 func exit() -> void:
-	move.acceleration = move.acceleration_default
-	move.exit()
+	_jump_count = 0
+	_parent.acceleration = _parent.acceleration_default
+	_parent.exit()
+
+
+func jump() -> void:
+	_parent.velocity.y = 0
+	_parent.velocity += calculate_jump_velocity(jump_impulse)
+	_jump_count += 1
 
 
 # Returns a new velocity with a vertical impulse applied to it
 func calculate_jump_velocity(impulse: float = 0.0) -> Vector2:
-	return move.calculate_velocity(
-		move.velocity,
-		move.max_speed,
+	return _parent.calculate_velocity(
+		_parent.velocity,
+		_parent.max_speed,
 		Vector2(0.0, impulse),
 		Vector2.ZERO,
 		1.0, # replace delta
