@@ -13,7 +13,7 @@ func physics_process(delta: float) -> void:
 		if _parent.velocity.length() < 1.0:
 			_state_machine.transition_to("Move/Idle")
 	else:
-		_state_machine.transition_to("Move/Air")
+		_state_machine.transition_to("Move/Air", { coyote_time = true })
 	_parent.physics_process(delta)
 
 
