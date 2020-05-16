@@ -5,18 +5,23 @@ export var acceleration_x := 5000.0
 export var jump_impulse := 900.0
 export var max_jump_count := 1
 
+const MAX_COYOTE_TIME_FRAME := 4
+
 var _jump_count := 0
+var _coyote_time_buffer := 0
 
 
 func unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump") and _jump_count <= max_jump_count:
-		jump()
+	if event.is_action_pressed("jump"):
+		if _jump_count <= max_jump_count or _coyote_time_buffer > 0:
+			jump()
 
 	_parent.unhandled_input(event)
 
 
 func physics_process(delta: float) -> void:
 	_parent.physics_process(delta)
+	_coyote_time_buffer -= 1
 
 	# Landing
 	if owner.is_on_floor():
@@ -28,15 +33,16 @@ func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
 
 	_parent.acceleration.x = acceleration_x
-	if "velocity" in msg:
-		_parent.velocity = msg.velocity
-		_parent.max_speed.x = max(abs(msg.velocity.x), _parent.max_speed.x)
+	if "coyote_time" in msg:
+		_coyote_time_buffer = MAX_COYOTE_TIME_FRAME
 	if "impulse" in msg:
+		print("impulse")
 		jump()
 
 
 func exit() -> void:
 	_jump_count = 0
+	_coyote_time_buffer = 0
 	_parent.acceleration = _parent.acceleration_default
 	_parent.exit()
 
