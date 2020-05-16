@@ -4,6 +4,12 @@ extends Node
 class_name State, "res://assets/icons/state.svg"
 
 onready var _state_machine: = _get_state_machine(self)
+var _parent: State = null
+
+
+func _ready() -> void:
+	yield(owner, "ready")
+	_parent = get_parent() as State
 
 
 func unhandled_input(event: InputEvent) -> void:
