@@ -13,7 +13,10 @@ var _coyote_time_buffer := 0
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
-		if _jump_count <= max_jump_count or _coyote_time_buffer > 0:
+		if _jump_count < max_jump_count:
+			print("jump")
+			jump()
+		elif  _coyote_time_buffer > 0:
 			jump()
 
 	_parent.unhandled_input(event)

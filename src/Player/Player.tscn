@@ -26,7 +26,7 @@ shape = SubResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 2 )
-initial_state = NodePath("../CameraRig/StateMachine/Move/Idle")
+initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
@@ -39,3 +39,4 @@ script = ExtResource( 6 )
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
+max_jump_count = 0
