@@ -36,7 +36,6 @@ func enter(msg: Dictionary = {}) -> void:
 	if "coyote_time" in msg:
 		_coyote_time_buffer = MAX_COYOTE_TIME_FRAME
 	if "impulse" in msg:
-		print("impulse")
 		jump()
 
 
