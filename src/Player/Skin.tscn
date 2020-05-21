@@ -67,7 +67,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "die"
 length = 0.3
 tracks/0/type = "value"
@@ -107,8 +107,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "spawn"
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -130,7 +129,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.297302, 1 ),
+"transitions": PoolRealArray( 2.82843, 1 ),
 "update": 0,
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
 }
@@ -142,7 +141,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.34151, 1 ),
+"transitions": PoolRealArray( 2.07053, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -151,9 +150,10 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "DEFAULT"
 anims/DEFAULT = SubResource( 1 )
-anims/die = SubResource( 3 )
-anims/spawn = SubResource( 2 )
+anims/die = SubResource( 2 )
+anims/spawn = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
