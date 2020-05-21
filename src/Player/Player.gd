@@ -2,6 +2,9 @@ extends KinematicBody2D
 class_name Player
 
 onready var state_machine: StateMachine = $StateMachine
+onready var skin: Node2D = $Skin
+onready var camera_rig: Position2D = $CameraRig
+onready var shaking_camera: Camera2D = $CameraRig/ShakingCamera
 onready var collider: CollisionShape2D = $CollisionShape2D
 
 const FLOOR_NORMAL := Vector2.UP
