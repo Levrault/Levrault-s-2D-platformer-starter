@@ -6,7 +6,7 @@ You can directly change the `properties` property to display multiple values fro
 E.g. properties = PoolStringArray(['speed', 'position', 'modulate'])
 """
 
-onready var _container: VBoxContainer = $VBoxContainer/MarginContainer/VBoxContainer
+onready var _container: VBoxContainer = $VBoxContainer/VBoxContainer
 onready var _title: Label = $VBoxContainer/ReferenceName
 
 onready var reference: Node = get_node(reference_path) setget set_reference
