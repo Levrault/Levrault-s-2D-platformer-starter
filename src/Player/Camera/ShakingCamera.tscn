@@ -5,9 +5,16 @@
 [node name="ShakingCamera" type="Camera2D"]
 current = true
 smoothing_enabled = true
+smoothing_speed = 3.0
 script = ExtResource( 1 )
 amplitude = 8.0
 duration = 0.8
+DAMP_EASING = 1.0
+is_shaking = false
+default_smoothing_speed = {
+"gamepad": 1,
+"mouse": 3
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8

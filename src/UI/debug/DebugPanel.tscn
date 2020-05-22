@@ -3,6 +3,7 @@
 [ext_resource path="res://src/UI/debug/DebugPanel.gd" type="Script" id=2]
 
 [node name="DebugPanel" type="PanelContainer"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 margin_right = 90.0
 margin_bottom = 112.0
 script = ExtResource( 2 )
@@ -15,30 +16,32 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 83.0
 margin_bottom = 105.0
+size_flags_horizontal = 9
 custom_constants/separation = 0
 
 [node name="ReferenceName" type="Label" parent="VBoxContainer"]
 margin_right = 76.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 0, 54 )
+margin_bottom = 14.0
 text = "DebugPanel"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 54.0
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 14.0
+margin_right = 76.0
+margin_bottom = 18.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
 margin_right = 76.0
 margin_bottom = 98.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 56.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

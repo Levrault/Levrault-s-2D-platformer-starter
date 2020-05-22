@@ -26,9 +26,16 @@ margin_bottom = 162.0
 
 [node name="DebugPanel" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
 margin_right = 200.0
-margin_bottom = 122.0
+margin_bottom = 32.0
 reference_path = NodePath("../../../../Player/StateMachine")
 properties = PoolStringArray( "_state_name" )
+
+[node name="DebugPanel2" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
+margin_top = 36.0
+margin_right = 200.0
+margin_bottom = 68.0
+reference_path = NodePath("../../../../Player/StateMachine/Move")
+properties = PoolStringArray( "velocity", "max_speed", "acceleration" )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
