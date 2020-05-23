@@ -17,7 +17,7 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.is_active = false
 	if owner.camera_rig:
 		owner.camera_rig.is_active = false
-		
+
 	owner.skin.play("spawn")
 	owner.skin.connect("animation_finished", self, "_on_Skin_animation_finished")
 

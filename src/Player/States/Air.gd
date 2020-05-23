@@ -14,7 +14,6 @@ var _coyote_time_buffer := 0
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		if _jump_count < max_jump_count:
-			print("jump")
 			jump()
 		elif  _coyote_time_buffer > 0:
 			jump()
@@ -29,7 +28,7 @@ func physics_process(delta: float) -> void:
 	# Landing
 	if owner.is_on_floor():
 		var target_state: = "Move/Idle" if _parent.get_move_direction().x == 0 else "Move/Run"
-		_state_machine.transition_to(target_state)
+		_state_machine.transition_to(target_state, { contact = true })
 
 
 func enter(msg: Dictionary = {}) -> void:
@@ -50,6 +49,7 @@ func exit() -> void:
 
 
 func jump() -> void:
+	owner.skin.play("jump")
 	_parent.velocity.y = 0
 	_parent.velocity += calculate_jump_velocity(jump_impulse)
 	_jump_count += 1
