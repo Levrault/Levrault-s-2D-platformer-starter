@@ -17,10 +17,20 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func physics_process(delta: float) -> void:
-	velocity = calculate_velocity(velocity, max_speed, acceleration, decceleration, delta, get_move_direction())
+	var direction := get_move_direction()
+	velocity = calculate_velocity(velocity, max_speed, acceleration, decceleration, delta, direction)
 	# @TODO: should be replace by move_and_slide_with_snap
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+
+	if direction.x != 0:
+		owner.skin.scale.x = direction.x
+
 	Events.emit_signal("player_moved", owner)
+
+
+func enter(msg: Dictionary = {}) -> void:
+	if "contact" in msg:
+		owner.skin.play("contact")
 
 
 static func calculate_velocity(
