@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Button",
+"class": "NavigationButton",
+"language": "GDScript",
+"path": "res://src/UI/Navigation/NavigationButton.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://src/Libraries/StateMachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"NavigationButton": "",
 "Player": "",
 "State": "res://assets/icons/state.svg",
 "StateMachine": "res://assets/icons/state_machine.svg"
@@ -39,10 +45,12 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://src/Autoload/Events.gd"
+Menu="*res://src/Autoload/Menu.gd"
 
 [debug]
 
 gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
