@@ -13,12 +13,14 @@ var velocity := Vector2.ZERO
 
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Air", { impulse = true })
+		_state_machine.transition_to("Move/Air", {impulse = true})
 
 
 func physics_process(delta: float) -> void:
 	var direction := get_move_direction()
-	velocity = calculate_velocity(velocity, max_speed, acceleration, decceleration, delta, direction)
+	velocity = calculate_velocity(
+		velocity, max_speed, acceleration, decceleration, delta, direction
+	)
 	# @TODO: should be replace by move_and_slide_with_snap
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 
@@ -31,6 +33,11 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	if "contact" in msg:
 		owner.skin.play("contact")
+	$Air.connect("jumped", $Idle.jump_input_buffering, "start")
+
+
+func exit() -> void:
+	$Air.disconnect("jumped", $Idle.jump_input_buffering, "start")
 
 
 static func calculate_velocity(
@@ -42,7 +49,6 @@ static func calculate_velocity(
 	move_direction: Vector2,
 	max_speed_fall := 1500.00
 ) -> Vector2:
-
 	var new_velocity := old_velocity
 	new_velocity.y += move_direction.y * acceleration.y * delta
 
@@ -56,7 +62,6 @@ static func calculate_velocity(
 	new_velocity.y = clamp(new_velocity.y, -max_speed.y, max_speed_fall)
 
 	return new_velocity
-
 
 static func get_move_direction() -> Vector2:
 	return Vector2(
