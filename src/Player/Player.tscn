@@ -46,5 +46,9 @@ script = ExtResource( 6 )
 script = ExtResource( 5 )
 max_jump_count = 0
 
+[node name="CoyoteTime" type="Timer" parent="StateMachine/Move/Air"]
+wait_time = 0.15
+one_shot = true
+
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )

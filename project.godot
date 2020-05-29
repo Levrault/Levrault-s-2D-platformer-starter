@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-2D-Platformer-Template"
-run/main_scene="res://src/UI/MainMenu.tscn"
+run/main_scene="res://src/Main/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
