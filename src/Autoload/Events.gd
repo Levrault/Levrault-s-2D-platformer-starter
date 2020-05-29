@@ -5,8 +5,10 @@ signal player_moved(player)
 
 
 # menu
-signal menu_changed(route)
+signal menu_route_changed(route)
 
 
 # transitions
-signal transition_fade_played()
+signal transition_started(anim_name)
+signal transition_mid_animated()
+signal transition_finished()
