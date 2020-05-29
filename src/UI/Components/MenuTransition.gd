@@ -7,6 +7,7 @@ func _ready() -> void:
 	$AnimationPlayer.connect("animation_finished", self, "_on_Animation_finished")
 	Events.connect("transition_started", self, "_on_Transition_started")
 
+
 func _on_Transition_started(anim_name: String) -> void:
 	$AnimationPlayer.play(anim_name)
 
