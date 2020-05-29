@@ -39,6 +39,10 @@ script = ExtResource( 4 )
 [node name="Idle" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 3 )
 
+[node name="JumpInputBuffering" type="Timer" parent="StateMachine/Move/Idle"]
+wait_time = 0.15
+one_shot = true
+
 [node name="Run" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
 

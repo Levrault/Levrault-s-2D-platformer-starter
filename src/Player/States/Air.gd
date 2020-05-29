@@ -1,16 +1,19 @@
 extends State
 
+signal jumped
+
+onready var _coyote_time: Timer = $CoyoteTime
+
 export var acceleration_x := 5000.0
 export var jump_impulse := 900.0
 export var max_jump_count := 1
 
 var _jump_count := 0
 
-onready var _coyote_time: Timer = $CoyoteTime
-
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
+		emit_signal("jumped")
 		if _jump_count < max_jump_count:
 			jump()
 		elif _coyote_time.time_left > 0.0:
