@@ -1,7 +1,19 @@
+# Manage menu transition
+# transition_fade_mid_transition and transition_fade_finished are emitted from AnimationPlayer
 extends Control
 
 
 func _ready() -> void:
-    Events.connect("transition_fade_played", $AnimationPlayer, "play", ["fade"])
+	$AnimationPlayer.connect("animation_finished", self, "_on_Animation_finished")
+	Events.connect("transition_started", self, "_on_Transition_started")
+
+func _on_Transition_started(anim_name: String) -> void:
+	$AnimationPlayer.play(anim_name)
 
 
+func _on_Mid_animation() -> void:
+	Events.emit_signal("transition_mid_animated")
+
+
+func _on_Animation_finished(anim_name: String) -> void:
+	Events.emit_signal("transition_finished")

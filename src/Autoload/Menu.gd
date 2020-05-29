@@ -2,7 +2,6 @@ extends Node
 
 var history := []
 
-
-func navigate_to(to: String) -> void:
-	Events.emit_signal("transition_fade_played")
-	Events.emit_signal("menu_changed", to)
+func navigate_to(to: String, transition: String = "fade") -> void:
+	Events.emit_signal("menu_route_changed", to)
+	Events.emit_signal("transition_started", transition)
