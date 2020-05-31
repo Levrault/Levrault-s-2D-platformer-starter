@@ -12,5 +12,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("debug_die"):
-		player.state_machine.transition_to("Die")
+		player.state_machine.transition_to("die")
+		return
+
+	if event.is_action_pressed("debug_slow_time"):
+		Engine.time_scale = .1
+		return
+
+	if event.is_action_pressed("debug_accelerate_time"):
+		Engine.time_scale = Engine.time_scale + .1
+		return
+
+	if event.is_action_pressed("debug_reset_time"):
+		Engine.time_scale = 1.0
 		return
