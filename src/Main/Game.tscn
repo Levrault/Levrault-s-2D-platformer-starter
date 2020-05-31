@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilesets/tileset_placeholder_16x16.tres" type="TileSet" id=2]
 [ext_resource path="res://src/UI/debug/DebugPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/debug/DebugDock.gd" type="Script" id=4]
 [ext_resource path="res://src/Main/Game.gd" type="Script" id=5]
+[ext_resource path="res://src/UI/debug/DebugEnginePanel.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -33,9 +34,21 @@ properties = PoolStringArray( "_state_name" )
 [node name="DebugPanel2" parent="UI/DebugDock/Column" instance=ExtResource( 3 )]
 margin_top = 50.0
 margin_right = 200.0
-margin_bottom = 132.0
+margin_bottom = 96.0
 reference_path = NodePath("../../../../Player/StateMachine/Move")
-properties = PoolStringArray( "velocity", "max_speed", "acceleration" )
+properties = PoolStringArray( "velocity" )
+
+[node name="EngineDock" type="MarginContainer" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_bottom = 162.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugEnginePanel" parent="UI/EngineDock" instance=ExtResource( 6 )]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
