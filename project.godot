@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Button",
+"class": "MenuSaveButton",
+"language": "GDScript",
+"path": "res://src/UI/Components/MenuSaveButton.gd"
+}, {
+"base": "Button",
 "class": "NavigationButton",
 "language": "GDScript",
 "path": "res://src/UI/Navigation/NavigationButton.gd"
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://src/Libraries/StateMachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"MenuSaveButton": "",
 "NavigationButton": "",
 "Player": "",
 "State": "res://assets/icons/state.svg",
@@ -46,6 +52,7 @@ config/icon="res://icon.png"
 
 Events="*res://src/Autoload/Events.gd"
 Menu="*res://src/Autoload/Menu.gd"
+Config="*res://src/Autoload/Config.gd"
 
 [debug]
 

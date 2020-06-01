@@ -6,13 +6,11 @@ extends HBoxContainer
 export var has_back_action := true
 
 func _ready() -> void:
-    $Back.visible = has_back_action
+	$MenuBackInput.visible = has_back_action
 
 
 func _process(delta: float) -> void:
-    if not Engine.editor_hint:
-        return
-    
-    $Back.visible = has_back_action
-    
-    
+	if not Engine.editor_hint:
+		return
+
+	$MenuBackInput.visible = has_back_action
