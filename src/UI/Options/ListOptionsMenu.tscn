@@ -5,11 +5,11 @@
 
 [node name="ListOptionsMenu" instance=ExtResource( 1 )]
 
-[node name="Contents" parent="VBoxContainer" index="1"]
+[node name="Contents" parent="Page" index="1"]
 margin_right = 75.0
 size_flags_horizontal = 0
 
-[node name="Game" type="ToolButton" parent="VBoxContainer/Contents" index="0"]
+[node name="Game" type="ToolButton" parent="Page/Contents" index="0"]
 margin_top = 43.0
 margin_right = 75.0
 margin_bottom = 65.0
@@ -18,7 +18,7 @@ script = ExtResource( 2 )
 navigate_to = "GameOptionsMenu"
 is_default_focused = true
 
-[node name="Video" type="ToolButton" parent="VBoxContainer/Contents" index="1"]
+[node name="Video" type="ToolButton" parent="Page/Contents" index="1"]
 margin_top = 75.0
 margin_right = 75.0
 margin_bottom = 97.0
@@ -26,7 +26,7 @@ text = "ui_video"
 script = ExtResource( 2 )
 navigate_to = "VideoOptionsMenu"
 
-[node name="Audio" type="ToolButton" parent="VBoxContainer/Contents" index="2"]
+[node name="Audio" type="ToolButton" parent="Page/Contents" index="2"]
 margin_top = 107.0
 margin_right = 75.0
 margin_bottom = 129.0
@@ -34,7 +34,7 @@ text = "ui_audio"
 script = ExtResource( 2 )
 navigate_to = "AudioOptionsMenu"
 
-[node name="Control" type="ToolButton" parent="VBoxContainer/Contents" index="3"]
+[node name="Control" type="ToolButton" parent="Page/Contents" index="3"]
 margin_top = 139.0
 margin_right = 75.0
 margin_bottom = 161.0

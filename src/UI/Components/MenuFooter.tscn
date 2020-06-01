@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/Components/MenuFooter.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/Components/MenuBackInput.tscn" type="PackedScene" id=2]
 
 [node name="MenuFooter" type="HBoxContainer"]
-margin_top = 226.0
-margin_right = 440.0
-margin_bottom = 240.0
+margin_right = 179.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 custom_constants/separation = 30
 alignment = 2
@@ -13,11 +13,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-has_back_action = true
 
 [node name="Accept" type="HBoxContainer" parent="."]
-margin_left = 261.0
-margin_right = 342.0
+margin_right = 81.0
 margin_bottom = 14.0
 
 [node name="Icon" type="Label" parent="Accept"]
@@ -31,18 +29,4 @@ margin_right = 81.0
 margin_bottom = 14.0
 text = "ui_accept"
 
-[node name="Back" type="HBoxContainer" parent="."]
-margin_left = 372.0
-margin_right = 440.0
-margin_bottom = 14.0
-
-[node name="IconBack" type="Label" parent="Back"]
-margin_right = 17.0
-margin_bottom = 14.0
-text = "(B)"
-
-[node name="Back" type="Label" parent="Back"]
-margin_left = 21.0
-margin_right = 68.0
-margin_bottom = 14.0
-text = "ui_back"
+[node name="MenuBackInput" parent="." instance=ExtResource( 2 )]

@@ -1,18 +1,24 @@
 tool
 extends HBoxContainer
 
-export var items: PoolStringArray = ["placeholder1", "placeholder2"]
+export var key := ""
+export var items := ["placeholder1", "placeholder2"]
 
 var _carousel_index: int = 0
-var selected_value := "" setget set_selected_value
+var selected_value := "" setget _set_selected_value
 
 
 func _ready() -> void:
 	$Previous.connect("pressed", self, "_on_Previous_value")
 	$Next.connect("pressed", self, "_on_Next_value")
 
-	selected_value = items[0]
-	$Value.text = items[0]
+	# load from config file
+	if not Engine.editor_hint:
+		assert(key != "")
+		self.selected_value = Config.config_to_field(key)
+		_carousel_index = items.find(self.selected_value)
+	else:
+		self.selected_value = items[0]
 
 
 func _process(delta: float) -> void:
@@ -39,6 +45,6 @@ func _on_Next_value() -> void:
 	self.selected_value = items[_carousel_index]
 
 
-func set_selected_value(text: String) -> void:
+func _set_selected_value(text: String) -> void:
 	selected_value = text
 	$Value.text = text

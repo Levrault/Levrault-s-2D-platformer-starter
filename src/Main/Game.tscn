@@ -49,6 +49,7 @@ __meta__ = {
 }
 
 [node name="DebugEnginePanel" parent="UI/EngineDock" instance=ExtResource( 6 )]
+margin_bottom = 162.0
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
