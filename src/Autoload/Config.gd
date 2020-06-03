@@ -20,8 +20,9 @@ const DEFAULT_VALUES := {
 	},
 	"audio":
 	{
-		"master": 100,
-		"music": 100,
+		"master_volume": 100,
+		"music_volume": 100,
+		"sfx_volume": 100,
 	}
 }
 
@@ -62,6 +63,7 @@ func load() -> void:
 
 
 func config_to_field(key: String) -> String:
+	# todo: check section
 	if key == "use_vsync":
 		# TODO: manage translation?
 		return "yes" if values["display"]["use_vsync"] else "no"
@@ -76,5 +78,14 @@ func config_to_field(key: String) -> String:
 			return "borderless"
 		if not values["display"]["fullscreen"] and not values["display"]["borderless"]:
 			return "windowed"
+
+	if key == "music_volume":
+		return values["audio"]["music_volume"]
+
+	if key == "master_volume":
+		return values["audio"]["master_volume"]
+
+	if key == "sfx_volume":
+		return values["audio"]["sfx_volume"]
 
 	return ''
