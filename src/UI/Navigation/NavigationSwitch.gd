@@ -1,7 +1,6 @@
 # Switch when a NavigationButton is click
 extends Control
 
-
 var last_clicked_button: Button = null
 var buttons := []
 var _is_current_route := false
@@ -10,7 +9,6 @@ var _is_current_route := false
 func _ready() -> void:
 	Events.connect("menu_route_changed", self, "_on_Menu_route_changed")
 	Events.connect("transition_mid_animated", self, "_on_Transiton_mid_animated")
-	connect("menu_displayed", $Page/Contents, "_on_Menu_displayed")
 
 
 func _on_Menu_route_changed(id: String) -> void:
@@ -20,7 +18,6 @@ func _on_Menu_route_changed(id: String) -> void:
 		return
 
 	_is_current_route = true
-	print(_is_current_route)
 	print("%s route has been set" % [id])
 
 
