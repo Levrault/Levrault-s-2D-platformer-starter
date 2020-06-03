@@ -1,6 +1,7 @@
 # Switch when a NavigationButton is click
 extends Control
 
+
 var last_clicked_button: Button = null
 var buttons := []
 var _is_current_route := false
@@ -9,6 +10,7 @@ var _is_current_route := false
 func _ready() -> void:
 	Events.connect("menu_route_changed", self, "_on_Menu_route_changed")
 	Events.connect("transition_mid_animated", self, "_on_Transiton_mid_animated")
+	connect("menu_displayed", $Page/Contents, "_on_Menu_displayed")
 
 
 func _on_Menu_route_changed(id: String) -> void:
@@ -29,5 +31,11 @@ func _on_Transiton_mid_animated() -> void:
 	visible = true
 	if last_clicked_button:
 		last_clicked_button.grab_focus()
+	else:
+		for container in $Page/Contents.get_children():
+			for field in container.get_children():
+				if field.is_in_group("GameSettings"):
+					field.grab_focus()
+					return
 
 	print("%s is now visible" % [get_name()])
