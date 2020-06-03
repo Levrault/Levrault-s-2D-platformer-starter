@@ -3,6 +3,8 @@ extends HBoxContainer
 
 export var key := ""
 export var items := ["placeholder1", "placeholder2"]
+export var start_index := 0
+export var is_reverse_item := false
 export var focus := false
 
 var selected_value := "" setget _set_selected_value
@@ -19,8 +21,15 @@ func _ready() -> void:
 	# load from config file
 	if not Engine.editor_hint:
 		assert(key != "")
+		if is_reverse_item:
+			items.invert()
 		self.selected_value = Config.config_to_field(key)
-		_carousel_index = items.find(self.selected_value)
+		var index := items.find(self.selected_value)
+		if index != -1:
+			_carousel_index = index
+		else:
+			_carousel_index = start_index
+			self.selected_value = items[start_index]
 	else:
 		self.selected_value = items[0]
 
