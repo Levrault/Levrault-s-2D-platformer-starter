@@ -5,6 +5,10 @@
 [ext_resource path="res://src/UI/Options/MenuVideoSaveButton.gd" type="Script" id=3]
 
 [node name="VideoOptionsMenu" instance=ExtResource( 1 )]
+default_field_to_focus = NodePath("Page/Contents/HBoxContainer/Vsync")
+
+[node name="Title" parent="Page" index="0"]
+text = "ui_options_video"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Page/Contents" index="0"]
 margin_top = 56.0
@@ -22,6 +26,8 @@ margin_left = 58.0
 margin_right = 440.0
 key = "use_vsync"
 items = [ "yes", "no" ]
+start_index = 0
+is_reverse_item = false
 focus = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Page/Contents" index="1"]
@@ -40,6 +46,9 @@ margin_left = 113.0
 margin_right = 440.0
 key = "window_mode"
 items = [ "fullscreen", "borderless", "windowed" ]
+start_index = 0
+is_reverse_item = false
+focus = false
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Page/Contents" index="2"]
 margin_top = 120.0
@@ -57,6 +66,9 @@ margin_left = 67.0
 margin_right = 440.0
 key = "resolution"
 items = [ "1920x1080", "1366x768", "800x600", "960x540", "640x480", "480x270" ]
+start_index = 0
+is_reverse_item = false
+focus = false
 
 [node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
 script = ExtResource( 3 )

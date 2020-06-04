@@ -12,21 +12,18 @@ export var amplitude = 4.0
 export var duration = 0.3 setget set_duration
 export var DAMP_EASING = 1.0
 export var is_shaking = false setget set_is_shaking
-export var default_smoothing_speed: = {
-	mouse=3,
-	gamepad=1
-}
+export var default_smoothing_speed := {mouse = 3, gamepad = 1}
 
-enum States {IDLE, SHAKING}
+enum States { IDLE, SHAKING }
 var state = States.IDLE
 
 
 func reset_smoothing_speed() -> void:
-	    smoothing_speed = default_smoothing_speed.mouse
+	smoothing_speed = default_smoothing_speed.mouse
 
 
 func _ready() -> void:
-	timer.connect('timeout', self, '_on_ShakeTimer_timeout')
+	timer.connect("timeout", self, "_on_ShakeTimer_timeout")
 
 	self.duration = duration
 	reset_smoothing_speed()
@@ -36,8 +33,8 @@ func _ready() -> void:
 func _process(delta) -> void:
 	var damping = ease(timer.time_left / timer.wait_time, DAMP_EASING)
 	offset = Vector2(
-		rand_range(amplitude, -amplitude) * damping,
-		rand_range(amplitude, -amplitude) * damping)
+		rand_range(amplitude, -amplitude) * damping, rand_range(amplitude, -amplitude) * damping
+	)
 
 
 func _get_configuration_warning() -> String:

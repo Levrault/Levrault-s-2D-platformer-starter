@@ -4,7 +4,6 @@
 [ext_resource path="res://src/UI/Navigation/NavigationSwitch.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/Options/MenuSaveButton.gd" type="Script" id=3]
 
-
 [node name="OptionsLayout" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,13 +49,13 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="MenuBackInput" parent="Page/OptionsFooter" instance=ExtResource( 1 )]
-margin_left = 327.0
-margin_right = 395.0
+margin_left = 309.0
+margin_right = 377.0
 margin_bottom = 20.0
 
 [node name="MenuSaveButton" type="Button" parent="Page/OptionsFooter"]
-margin_left = 399.0
+margin_left = 381.0
 margin_right = 440.0
 margin_bottom = 20.0
-text = "Save"
+text = "ui_save"
 script = ExtResource( 3 )

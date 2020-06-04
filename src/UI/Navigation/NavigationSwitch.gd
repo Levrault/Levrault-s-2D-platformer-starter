@@ -1,6 +1,10 @@
 # Switch when a NavigationButton is click
 extends Control
+class_name NavigationSwitch
 
+signal navigation_finished
+
+export var default_field_to_focus: NodePath
 var last_clicked_button: Button = null
 var buttons := []
 var _is_current_route := false
@@ -28,6 +32,8 @@ func _on_Transiton_mid_animated() -> void:
 	visible = true
 	if last_clicked_button:
 		last_clicked_button.grab_focus()
+	elif default_field_to_focus:
+		get_node(default_field_to_focus).grab_focus()
 	else:
 		for container in $Page/Contents.get_children():
 			for field in container.get_children():
@@ -35,4 +41,5 @@ func _on_Transiton_mid_animated() -> void:
 					field.grab_focus()
 					return
 
+	emit_signal("navigation_finished")
 	print("%s is now visible" % [get_name()])

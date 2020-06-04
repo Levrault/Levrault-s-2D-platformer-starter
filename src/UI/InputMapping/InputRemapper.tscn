@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/UI/InputMapping/InputRemapper.gd" type="Script" id=1]
+
+[node name="InputRemapper" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.133333, 0.12549, 0.203922, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 185.0
+margin_top = 128.0
+margin_right = 294.0
+margin_bottom = 142.0
+text = "ui_press_any_key"
+
+[node name="Error" type="Label" parent="CenterContainer"]
+visible = false
+margin_left = 165.0
+margin_top = 128.0
+margin_right = 315.0
+margin_bottom = 142.0
+text = "ui_key_already_mapped"

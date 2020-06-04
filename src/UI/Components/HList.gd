@@ -40,7 +40,7 @@ func _ready() -> void:
 		self.selected_value = items[0]
 
 
-# Update on tool mode to first item 
+# Update on tool mode to first item
 func _process(delta: float) -> void:
 	if not Engine.editor_hint:
 		return

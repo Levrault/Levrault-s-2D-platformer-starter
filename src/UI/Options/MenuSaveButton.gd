@@ -2,7 +2,7 @@
 extends Button
 class_name MenuSaveButton
 
-export var section := ''
+export var section := ""
 onready var _fields_container := owner.find_node("Contents").get_children()
 
 
