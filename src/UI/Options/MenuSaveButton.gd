@@ -6,11 +6,14 @@ export var section := ''
 onready var _fields_container := owner.find_node("Contents").get_children()
 
 
+# Connect pressed event
 func _ready() -> void:
 	connect("pressed", self, "_on_Pressed")
 	assert(section != "")
 
 
+# Get all field
+# @returns {Dictionary}
 func _get_fields() -> Dictionary:
 	var data := {}
 	for container in _fields_container:
@@ -20,6 +23,7 @@ func _get_fields() -> Dictionary:
 	return data
 
 
+# Match field to config value
 func _on_Pressed() -> void:
 	Config.values[section] = _get_fields()
 	Config.save(Config.values)

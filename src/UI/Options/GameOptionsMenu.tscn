@@ -22,9 +22,6 @@ margin_left = 109.0
 margin_right = 440.0
 key = "locale"
 items = [ "en", "fr" ]
-start_index = 0
-is_reverse_item = false
-focus = false
 
 [node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
 script = ExtResource( 3 )
