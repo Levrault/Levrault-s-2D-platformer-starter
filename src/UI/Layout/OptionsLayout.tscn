@@ -2,7 +2,8 @@
 
 [ext_resource path="res://src/UI/Components/MenuBackInput.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Navigation/NavigationSwitch.gd" type="Script" id=2]
-[ext_resource path="res://src/UI/Components/MenuSaveButton.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/Options/MenuSaveButton.gd" type="Script" id=3]
+
 
 [node name="OptionsLayout" type="MarginContainer"]
 anchor_right = 1.0

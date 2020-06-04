@@ -1,5 +1,8 @@
 extends Node
 
+# trad
+signal locale_changed(locale)
+
 # player
 signal player_moved(player)
 

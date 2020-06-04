@@ -2,7 +2,8 @@
 
 [ext_resource path="res://src/UI/Layout/OptionsLayout.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Components/HList.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/UI/Components/MenuAudioSaveButton.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/Options/MenuAudioSaveButton.gd" type="Script" id=3]
+
 
 [node name="AudioOptionsMenu" instance=ExtResource( 1 )]
 

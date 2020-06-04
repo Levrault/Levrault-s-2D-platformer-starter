@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/UI/Layout/OptionsLayout.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Components/HList.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Options/MenuGameSaveButton.gd" type="Script" id=3]
 
 [node name="GameOptionsMenu" instance=ExtResource( 1 )]
 
@@ -20,10 +21,11 @@ text = "ui_text_language"
 margin_left = 109.0
 margin_right = 440.0
 key = "locale"
-items = [ "English", "Français" ]
+items = [ "en", "fr" ]
 start_index = 0
 is_reverse_item = false
 focus = false
 
 [node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
+script = ExtResource( 3 )
 section = "game"
