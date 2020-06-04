@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Button",
 "class": "MenuSaveButton",
 "language": "GDScript",
-"path": "res://src/UI/Components/MenuSaveButton.gd"
+"path": "res://src/UI/Options/MenuSaveButton.gd"
 }, {
 "base": "Button",
 "class": "NavigationButton",

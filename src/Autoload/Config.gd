@@ -3,7 +3,7 @@ extends Node
 
 const CONFIG_FILE_PATH := "res://config.cfg"
 const DEFAULT_VALUES := {
-	"game": {"locale": "en", "difficulty": "normal"},
+	"game": {"locale": "en"},
 	"display":
 	{
 		"use_vsync": true,
@@ -87,5 +87,8 @@ func config_to_field(key: String) -> String:
 
 	if key == "sfx_volume":
 		return values["audio"]["sfx_volume"]
+
+	if key == "locale":
+		return values["game"]["locale"]
 
 	return ''
