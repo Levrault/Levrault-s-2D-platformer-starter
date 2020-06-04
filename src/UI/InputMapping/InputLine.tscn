@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/UI/InputMapping/InputLine.gd" type="Script" id=2]
+
+[node name="InputLine" type="HBoxContainer"]
+margin_right = 428.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 212.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "placeholder"
+
+[node name="Button" type="Button" parent="." groups=[
+"GameSettings",
+]]
+margin_left = 216.0
+margin_right = 428.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "placeholder"

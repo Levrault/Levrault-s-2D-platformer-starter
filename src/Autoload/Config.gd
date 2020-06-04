@@ -30,16 +30,27 @@ const DEFAULT_VALUES := {
 		"master_volume": 100,
 		"music_volume": 100,
 		"sfx_volume": 100,
+	},
+	"keybinding":
+	{
+		"move_up": 87,
+		"move_down": 83,
+		"move_left": 65,
+		"move_right": 68,
+		"jump": 32,
+		"attack": 69,
+		"dash": 70,
 	}
 }
 
 var _config_file := ConfigFile.new()
-var values := DEFAULT_VALUES
+var values := DEFAULT_VALUES.duplicate(true)
 
 
 # Find and load config.cfg file
 # If not, create a new config file with default value
 func _init() -> void:
+	print_debug(DEFAULT_VALUES["keybinding"])
 	var err = _config_file.load(CONFIG_FILE_PATH)
 	if err == ERR_FILE_NOT_FOUND:
 		print_debug("%s was not found, create a new file with default values" % [CONFIG_FILE_PATH])
@@ -71,11 +82,53 @@ func load() -> void:
 			)
 
 	print_debug("%s has been loaded" % [CONFIG_FILE_PATH])
-	print(values)
+	self.applied_config()
+
+
+func applied_config() -> void:
+	# display
+	OS.vsync_enabled = values["display"]["use_vsync"]
+	OS.window_size = Vector2(values["display"]["width"], values["display"]["height"])
+	OS.window_fullscreen = values["display"]["fullscreen"]
+	OS.window_borderless = values["display"]["borderless"]
+
+	# audio
+
+	# game
+
+	# keybinding
+	for action in values["keybinding"]:
+		if not values["keybinding"].has(action):
+			var keycode: InputEventKey = null
+			for input in InputMap.get_action_list(action):
+				if not keycode and input is InputEventKey:
+					values["keybinding"][action] = input.scancode
+		else:
+			change_action_key(action, values["keybinding"][action])
+
+
+# Update an action InputMap
+# @param {String} action_name
+# @param {int} scancode
+func change_action_key(action_name: String, scancode: int) -> void:
+	erase_action_events(action_name)
+
+	var new_event = InputEventKey.new()
+	new_event.set_scancode(scancode)
+	InputMap.action_add_event(action_name, new_event)
+
+
+# Delete an action from InputMap
+# @param {String} action_name
+func erase_action_events(action_name: String) -> void:
+	var input_events = InputMap.get_action_list(action_name)
+	for event in input_events:
+		if event is InputEventKey:
+			InputMap.action_erase_event(action_name, event)
 
 
 # Convert config's data to readable string for the interface
-# e.g. 
+# e.g.
 #  Resolution is a concatenation of config.display.width + x + config.display.height
 # @param {String} key - key used in interface
 # @return {String} config data
@@ -108,4 +161,4 @@ func config_to_field(key: String) -> String:
 	if key == "locale":
 		return values["game"]["locale"]
 
-	return ''
+	return ""

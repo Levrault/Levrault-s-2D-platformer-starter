@@ -5,6 +5,10 @@
 [ext_resource path="res://src/UI/Options/MenuGameSaveButton.gd" type="Script" id=3]
 
 [node name="GameOptionsMenu" instance=ExtResource( 1 )]
+default_field_to_focus = NodePath("Page/Contents/HBoxContainer/HList")
+
+[node name="Title" parent="Page" index="0"]
+text = "ui_options_game"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Page/Contents" index="0"]
 margin_top = 88.0
@@ -22,6 +26,9 @@ margin_left = 109.0
 margin_right = 440.0
 key = "locale"
 items = [ "en", "fr" ]
+start_index = 0
+is_reverse_item = false
+focus = false
 
 [node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
 script = ExtResource( 3 )
