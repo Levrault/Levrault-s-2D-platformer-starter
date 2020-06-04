@@ -4,7 +4,6 @@
 [ext_resource path="res://src/UI/Components/HList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Options/MenuAudioSaveButton.gd" type="Script" id=3]
 
-
 [node name="AudioOptionsMenu" instance=ExtResource( 1 )]
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Page/Contents" index="0"]
@@ -25,7 +24,6 @@ key = "master_volume"
 items = [ "100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "0" ]
 start_index = 10
 is_reverse_item = true
-focus = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Page/Contents" index="1"]
 margin_top = 88.0
@@ -45,7 +43,6 @@ key = "music_volume"
 items = [ "100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "0" ]
 start_index = 10
 is_reverse_item = true
-focus = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Page/Contents" index="2"]
 margin_top = 120.0
@@ -65,7 +62,6 @@ key = "sfx_volume"
 items = [ "100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "0" ]
 start_index = 10
 is_reverse_item = true
-focus = false
 
 [node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
 script = ExtResource( 3 )

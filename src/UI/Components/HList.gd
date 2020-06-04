@@ -1,3 +1,5 @@
+# Data carousel that use to be save inside config.cfg (@see Autoload/Config.gd)
+# is_reverse_item and start_index (if no data has been saved) is used to easely change data order and default value
 tool
 extends HBoxContainer
 
@@ -12,6 +14,10 @@ var _carousel_index: int = 0
 var _is_focused := false
 
 
+# Init mouse/keyboard/controller navigation
+# Set items display order
+# Set default value if value weren't save inside config.cfg
+# Set data if config.cfg's corresponding value exist
 func _ready() -> void:
 	connect("focus_entered", self, "_on_Focus_toggle", [true])
 	connect("focus_exited", self, "_on_Focus_toggle", [false])
@@ -34,12 +40,16 @@ func _ready() -> void:
 		self.selected_value = items[0]
 
 
+# Update on tool mode to first item 
 func _process(delta: float) -> void:
 	if not Engine.editor_hint:
 		return
+
 	$Value.text = items[0]
 
 
+# Catch keyboard/controller event when focused
+# @param {InputEvent} event
 func _gui_input(event: InputEvent) -> void:
 	if not _is_focused:
 		return
@@ -53,6 +63,7 @@ func _gui_input(event: InputEvent) -> void:
 		return
 
 
+# Display previous item
 func _on_Previous_value() -> void:
 	_carousel_index -= 1
 
@@ -62,6 +73,7 @@ func _on_Previous_value() -> void:
 	self.selected_value = items[_carousel_index]
 
 
+# Display next item
 func _on_Next_value() -> void:
 	_carousel_index += 1
 
@@ -71,11 +83,15 @@ func _on_Next_value() -> void:
 	self.selected_value = items[_carousel_index]
 
 
+# Set new selected value and update display item at the same time
+# @param {String} text
 func _set_selected_value(text: String) -> void:
 	selected_value = text
 	$Value.text = text
 
 
+# Change focus
+# @param {bool} is_focused
 func _on_Focus_toggle(is_focused: bool) -> void:
 	print("%s has focus" % [get_name()])
 	_is_focused = is_focused
