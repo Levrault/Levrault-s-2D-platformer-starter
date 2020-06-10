@@ -9,16 +9,11 @@ func _on_Pressed() -> void:
 		# TODO: translate yes
 		data["use_vsync"] = (data["use_vsync"] == "yes")
 
-		OS.vsync_enabled = data["use_vsync"]
-
 	if data.has("resolution"):
 		var resolution = data["resolution"].split("x", false)
 		data["width"] = resolution[0]
 		data["height"] = resolution[1]
 		data.erase("resolution")
-
-		OS.window_size = Vector2(data["width"], data["height"])
-		OS.center_window()
 
 	if data.has("window_mode"):
 		match data["window_mode"]:
@@ -34,9 +29,6 @@ func _on_Pressed() -> void:
 
 		data.erase("window_mode")
 
-		OS.window_fullscreen = data["fullscreen"]
-		OS.window_borderless = data["borderless"]
-		OS.center_window()
-
 	Config.values[section] = data
+	Config.applied_config(section)
 	Config.save(Config.values)
