@@ -6,9 +6,9 @@
 [ext_resource path="res://src/UI/Play.gd" type="Script" id=4]
 
 [node name="TitleScreen" instance=ExtResource( 1 )]
-default_field_to_focus = NodePath("Page/Contents/Play")
+default_field_to_focus = NodePath("Wrapper/Page/Contents/Play")
 
-[node name="Label" type="Label" parent="Page" index="1"]
+[node name="Label" type="Label" parent="Wrapper/Page" index="1"]
 margin_top = 18.0
 margin_right = 440.0
 margin_bottom = 118.0
@@ -19,13 +19,13 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Contents" parent="Page" index="2"]
+[node name="Contents" parent="Wrapper/Page" index="2"]
 margin_top = 122.0
 margin_right = 78.0
 size_flags_horizontal = 2
 alignment = 2
 
-[node name="Play" type="Button" parent="Page/Contents" index="0"]
+[node name="Play" type="Button" parent="Wrapper/Page/Contents" index="0"]
 margin_top = 20.0
 margin_right = 78.0
 margin_bottom = 40.0
@@ -36,7 +36,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Options" type="Button" parent="Page/Contents" index="1"]
+[node name="Options" type="Button" parent="Wrapper/Page/Contents" index="1"]
 margin_top = 50.0
 margin_right = 78.0
 margin_bottom = 70.0
@@ -49,7 +49,7 @@ __meta__ = {
 navigate_to = "ListOptionsMenu"
 is_default_focused = true
 
-[node name="Quit" type="Button" parent="Page/Contents" index="2"]
+[node name="Quit" type="Button" parent="Wrapper/Page/Contents" index="2"]
 margin_top = 80.0
 margin_right = 78.0
 margin_bottom = 100.0
@@ -60,5 +60,5 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="MenuFooter" parent="Page" index="3"]
+[node name="MenuFooter" parent="Wrapper/Page" index="3"]
 has_back_action = false
