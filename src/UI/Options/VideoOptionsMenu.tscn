@@ -5,23 +5,23 @@
 [ext_resource path="res://src/UI/Options/MenuVideoSaveButton.gd" type="Script" id=3]
 
 [node name="VideoOptionsMenu" instance=ExtResource( 1 )]
-default_field_to_focus = NodePath("Page/Contents/HBoxContainer/Vsync")
+default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer/Vsync")
 
-[node name="Title" parent="Page" index="0"]
+[node name="Title" parent="Wrapper/Page" index="0"]
 text = "ui_options_video"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Page/Contents" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Wrapper/Page/Contents" index="0"]
 margin_top = 56.0
 margin_right = 440.0
 margin_bottom = 78.0
 
-[node name="Label" type="Label" parent="Page/Contents/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer" index="0"]
 margin_top = 4.0
 margin_right = 54.0
 margin_bottom = 18.0
 text = "ui_vsync"
 
-[node name="Vsync" parent="Page/Contents/HBoxContainer" index="1" instance=ExtResource( 2 )]
+[node name="Vsync" parent="Wrapper/Page/Contents/HBoxContainer" index="1" instance=ExtResource( 2 )]
 margin_left = 58.0
 margin_right = 440.0
 key = "use_vsync"
@@ -30,18 +30,18 @@ start_index = 0
 is_reverse_item = false
 focus = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Page/Contents" index="1"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Wrapper/Page/Contents" index="1"]
 margin_top = 88.0
 margin_right = 440.0
 margin_bottom = 110.0
 
-[node name="Label" type="Label" parent="Page/Contents/HBoxContainer2" index="0"]
+[node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer2" index="0"]
 margin_top = 4.0
 margin_right = 109.0
 margin_bottom = 18.0
 text = "ui_window_mode"
 
-[node name="WindowMode" parent="Page/Contents/HBoxContainer2" index="1" instance=ExtResource( 2 )]
+[node name="WindowMode" parent="Wrapper/Page/Contents/HBoxContainer2" index="1" instance=ExtResource( 2 )]
 margin_left = 113.0
 margin_right = 440.0
 key = "window_mode"
@@ -50,18 +50,18 @@ start_index = 0
 is_reverse_item = false
 focus = false
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Page/Contents" index="2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Wrapper/Page/Contents" index="2"]
 margin_top = 120.0
 margin_right = 440.0
 margin_bottom = 142.0
 
-[node name="Label" type="Label" parent="Page/Contents/HBoxContainer3" index="0"]
+[node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer3" index="0"]
 margin_top = 4.0
 margin_right = 63.0
 margin_bottom = 18.0
 text = "ui_display"
 
-[node name="Display" parent="Page/Contents/HBoxContainer3" index="1" instance=ExtResource( 2 )]
+[node name="Display" parent="Wrapper/Page/Contents/HBoxContainer3" index="1" instance=ExtResource( 2 )]
 margin_left = 67.0
 margin_right = 440.0
 key = "resolution"
@@ -70,6 +70,6 @@ start_index = 0
 is_reverse_item = false
 focus = false
 
-[node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
+[node name="MenuSaveButton" parent="Wrapper/Page/OptionsFooter" index="1"]
 script = ExtResource( 3 )
 section = "display"

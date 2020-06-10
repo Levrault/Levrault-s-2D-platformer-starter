@@ -5,23 +5,23 @@
 [ext_resource path="res://src/UI/Options/MenuAudioSaveButton.gd" type="Script" id=3]
 
 [node name="AudioOptionsMenu" instance=ExtResource( 1 )]
-default_field_to_focus = NodePath("Page/Contents/HBoxContainer3/HList")
+default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer3/HList")
 
-[node name="Title" parent="Page" index="0"]
+[node name="Title" parent="Wrapper/Page" index="0"]
 text = "ui_options_audio"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Page/Contents" index="0"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Wrapper/Page/Contents" index="0"]
 margin_top = 56.0
 margin_right = 440.0
 margin_bottom = 78.0
 
-[node name="Label" type="Label" parent="Page/Contents/HBoxContainer3" index="0"]
+[node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer3" index="0"]
 margin_top = 4.0
 margin_right = 119.0
 margin_bottom = 18.0
 text = "ui_general_volume"
 
-[node name="HList" parent="Page/Contents/HBoxContainer3" index="1" instance=ExtResource( 2 )]
+[node name="HList" parent="Wrapper/Page/Contents/HBoxContainer3" index="1" instance=ExtResource( 2 )]
 margin_left = 123.0
 margin_right = 440.0
 key = "master_volume"
@@ -30,18 +30,18 @@ start_index = 10
 is_reverse_item = true
 focus = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Page/Contents" index="1"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Wrapper/Page/Contents" index="1"]
 margin_top = 88.0
 margin_right = 440.0
 margin_bottom = 110.0
 
-[node name="Label" type="Label" parent="Page/Contents/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer" index="0"]
 margin_top = 4.0
 margin_right = 111.0
 margin_bottom = 18.0
 text = "ui_music_volume"
 
-[node name="HList" parent="Page/Contents/HBoxContainer" index="1" instance=ExtResource( 2 )]
+[node name="HList" parent="Wrapper/Page/Contents/HBoxContainer" index="1" instance=ExtResource( 2 )]
 margin_left = 115.0
 margin_right = 440.0
 key = "music_volume"
@@ -50,18 +50,18 @@ start_index = 10
 is_reverse_item = true
 focus = false
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Page/Contents" index="2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Wrapper/Page/Contents" index="2"]
 margin_top = 120.0
 margin_right = 440.0
 margin_bottom = 142.0
 
-[node name="Label" type="Label" parent="Page/Contents/HBoxContainer2" index="0"]
+[node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer2" index="0"]
 margin_top = 4.0
 margin_right = 90.0
 margin_bottom = 18.0
 text = "ui_sfx_volume"
 
-[node name="HList" parent="Page/Contents/HBoxContainer2" index="1" instance=ExtResource( 2 )]
+[node name="HList" parent="Wrapper/Page/Contents/HBoxContainer2" index="1" instance=ExtResource( 2 )]
 margin_left = 94.0
 margin_right = 440.0
 key = "sfx_volume"
@@ -70,6 +70,6 @@ start_index = 10
 is_reverse_item = true
 focus = false
 
-[node name="MenuSaveButton" parent="Page/OptionsFooter" index="1"]
+[node name="MenuSaveButton" parent="Wrapper/Page/OptionsFooter" index="1"]
 script = ExtResource( 3 )
 section = "audio"
