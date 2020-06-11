@@ -6,8 +6,8 @@ func _on_Pressed() -> void:
 	var data = ._get_fields()
 
 	if data.has("use_vsync"):
-		# TODO: translate yes
-		data["use_vsync"] = (data["use_vsync"] == "yes")
+		print(data["use_vsync"])
+		data["use_vsync"] = (data["use_vsync"] == "cfg_yes")
 
 	if data.has("resolution"):
 		var resolution = data["resolution"].split("x", false)
@@ -15,20 +15,20 @@ func _on_Pressed() -> void:
 		data["height"] = resolution[1]
 		data.erase("resolution")
 
-	if data.has("window_mode"):
-		match data["window_mode"]:
-			"fullscreen":
+	if data.has("display_mode"):
+		match data["display_mode"]:
+			"cfg_fullscreen":
 				data["fullscreen"] = true
 				data["borderless"] = false
-			"borderless":
+			"cfg_borderless":
 				data["fullscreen"] = false
 				data["borderless"] = true
-			"windowed":
+			"cfg_windowed":
 				data["fullscreen"] = false
 				data["borderless"] = false
 
 		data.erase("window_mode")
 
-	Config.values[section] = data
+	Config.values[section] = Utils.merge(Config.values[section], data)
 	Config.applied_config(section)
 	Config.save(Config.values)

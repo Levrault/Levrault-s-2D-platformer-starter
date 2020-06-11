@@ -9,7 +9,7 @@
 default_field_to_focus = NodePath("Wrapper/Page/Contents/Play")
 
 [node name="Title" parent="Wrapper/Page" index="0"]
-text = "TITLE_PLACEHOLDER"
+text = "ui_game_title"
 
 [node name="Label" type="Label" parent="Wrapper/Page" index="1"]
 margin_top = 18.0

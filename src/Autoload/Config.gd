@@ -180,21 +180,19 @@ func erase_action_events(action_name: String) -> void:
 # @param {String} key - key used in interface
 # @return {String} config data
 func config_to_field(key: String) -> String:
-	# todo: check section
 	if key == "use_vsync":
-		# TODO: manage translation?
-		return "yes" if values["display"]["use_vsync"] else "no"
+		return "cfg_yes" if values["display"]["use_vsync"] else "cfg_no"
 
 	if key == "resolution":
 		return String(values["display"]["width"]) + "x" + String(values["display"]["height"])
 
-	if key == "window_mode":
+	if key == "display_mode":
 		if values["display"]["fullscreen"] and not values["display"]["borderless"]:
-			return "fullscreen"
+			return "cfg_fullscreen"
 		if not values["display"]["fullscreen"] and values["display"]["borderless"]:
-			return "borderless"
+			return "cfg_borderless"
 		if not values["display"]["fullscreen"] and not values["display"]["borderless"]:
-			return "windowed"
+			return "cfg_windowed"
 
 	if key == "music_volume":
 		return values["audio"]["music_volume"]
