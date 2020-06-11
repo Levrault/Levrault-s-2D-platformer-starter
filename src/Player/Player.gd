@@ -10,6 +10,13 @@ onready var collider: CollisionShape2D = $CollisionShape2D
 const FLOOR_NORMAL := Vector2.UP
 
 var is_active := true setget set_is_active
+var is_handling_input := true setget set_is_handling_input
+
+
+func set_is_handling_input(value: bool) -> void:
+	$StateMachine.set_process_unhandled_input(value)
+	$StateMachine.set_physics_process(value)
+	is_handling_input = value
 
 
 func set_is_active(value: bool) -> void:

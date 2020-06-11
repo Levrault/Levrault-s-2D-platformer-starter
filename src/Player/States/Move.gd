@@ -18,6 +18,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 func physics_process(delta: float) -> void:
 	var direction := get_move_direction()
+
 	velocity = calculate_velocity(
 		velocity, max_speed, acceleration, decceleration, delta, direction
 	)
