@@ -8,7 +8,7 @@
 #	- Add new field inside config_to_field func
 extends Node
 
-const CONFIG_FILE_PATH := "res://config.cfg"
+const CONFIG_FILE_PATH := "user://config.cfg"
 const DEFAULT_VALUES := {
 	"game": {"locale": "en"},
 	"display":
@@ -27,9 +27,9 @@ const DEFAULT_VALUES := {
 	},
 	"audio":
 	{
-		"master_volume": 100,
-		"music_volume": 100,
-		"sfx_volume": 100,
+		"master_volume": "100",
+		"music_volume": "100",
+		"sfx_volume": "100",
 	},
 	"keybinding":
 	{
@@ -153,6 +153,7 @@ func applied_config(section: String) -> void:
 	if section == "all" or section == "controller":
 		print_debug("should set controller things right here")
 
+
 # Update an action InputMap
 # @param {String} action_name
 # @param {int} scancode
@@ -185,7 +186,7 @@ func config_to_field(key: String) -> String:
 		return "yes" if values["display"]["use_vsync"] else "no"
 
 	if key == "resolution":
-		return values["display"]["width"] + "x" + values["display"]["height"]
+		return String(values["display"]["width"]) + "x" + String(values["display"]["height"])
 
 	if key == "window_mode":
 		if values["display"]["fullscreen"] and not values["display"]["borderless"]:

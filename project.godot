@@ -223,6 +223,10 @@ debug_reset_time={
 2d_physics/layer_2="Worlds"
 2d_physics/layer_3="PassThrough"
 
+[locale]
+
+locale_filter=[ 0, [ "fr" ] ]
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
