@@ -37,12 +37,12 @@ margin_bottom = 110.0
 
 [node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer2" index="0"]
 margin_top = 4.0
-margin_right = 109.0
+margin_right = 106.0
 margin_bottom = 18.0
-text = "ui_window_mode"
+text = "ui_display_mode"
 
 [node name="WindowMode" parent="Wrapper/Page/Contents/HBoxContainer2" index="1" instance=ExtResource( 2 )]
-margin_left = 113.0
+margin_left = 110.0
 margin_right = 440.0
 key = "window_mode"
 items = [ "fullscreen", "borderless", "windowed" ]
@@ -57,12 +57,12 @@ margin_bottom = 142.0
 
 [node name="Label" type="Label" parent="Wrapper/Page/Contents/HBoxContainer3" index="0"]
 margin_top = 4.0
-margin_right = 63.0
+margin_right = 134.0
 margin_bottom = 18.0
-text = "ui_display"
+text = "ui_display_resolution"
 
 [node name="Display" parent="Wrapper/Page/Contents/HBoxContainer3" index="1" instance=ExtResource( 2 )]
-margin_left = 67.0
+margin_left = 138.0
 margin_right = 440.0
 key = "resolution"
 items = [ "1920x1080", "1366x768", "800x600", "960x540", "640x480", "480x270" ]
