@@ -63,6 +63,35 @@ func _init() -> void:
 	self.load()
 
 
+# Dumb way to convert db value to int
+# @param {String} value
+# @returns {float}
+func _get_new_volume(value: String) -> float:
+	match value:
+		"100":
+			return 0.0
+		"90":
+			return -1.5
+		"80":
+			return -3.0
+		"70":
+			return -4.5
+		"60":
+			return -8.0
+		"50":
+			return -10.0
+		"40":
+			return -12.0
+		"30":
+			return -14.0
+		"20":
+			return -18.0
+		"10":
+			return -24.0
+
+	return -60.0
+
+
 # Save data
 # @param {Dictionary} new data - see DEFAULT_VALUES from struc
 func save(new_settings: Dictionary) -> void:
@@ -82,30 +111,47 @@ func load() -> void:
 			)
 
 	print_debug("%s has been loaded" % [CONFIG_FILE_PATH])
-	self.applied_config()
+	self.applied_config("all")
 
 
-func applied_config() -> void:
-	# display
-	OS.vsync_enabled = values["display"]["use_vsync"]
-	OS.window_size = Vector2(values["display"]["width"], values["display"]["height"])
-	OS.window_fullscreen = values["display"]["fullscreen"]
-	OS.window_borderless = values["display"]["borderless"]
+func applied_config(section: String) -> void:
+	if section == "all" or section == "display":
+		# display
+		OS.vsync_enabled = values["display"]["use_vsync"]
+		OS.window_size = Vector2(values["display"]["width"], values["display"]["height"])
+		OS.window_fullscreen = values["display"]["fullscreen"]
+		OS.window_borderless = values["display"]["borderless"]
+		OS.center_window()
 
 	# audio
+	if section == "all" or section == "audio":
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"), _get_new_volume(values["audio"]["master_volume"])
+		)
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Sfx"), _get_new_volume(values["audio"]["sfx_volume"])
+		)
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Music"), _get_new_volume(values["audio"]["music_volume"])
+		)
 
 	# game
+	if section == "all" or section == "game":
+		Events.emit_signal("locale_changed", values["game"]["locale"])
 
 	# keybinding
-	for action in values["keybinding"]:
-		if not values["keybinding"].has(action):
-			var keycode: InputEventKey = null
-			for input in InputMap.get_action_list(action):
-				if not keycode and input is InputEventKey:
-					values["keybinding"][action] = input.scancode
-		else:
-			change_action_key(action, values["keybinding"][action])
+	if section == "all" or section == "keybinding":
+		for action in values["keybinding"]:
+			if not values["keybinding"].has(action):
+				var keycode: InputEventKey = null
+				for input in InputMap.get_action_list(action):
+					if not keycode and input is InputEventKey:
+						values["keybinding"][action] = input.scancode
+			else:
+				change_action_key(action, values["keybinding"][action])
 
+	if section == "all" or section == "controller":
+		print_debug("should set controller things right here")
 
 # Update an action InputMap
 # @param {String} action_name
