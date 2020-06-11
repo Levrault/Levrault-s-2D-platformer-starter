@@ -62,6 +62,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Utils="*res://src/Autoload/Utils.gd"
 Events="*res://src/Autoload/Events.gd"
 Menu="*res://src/Autoload/Menu.gd"
 Config="*res://src/Autoload/Config.gd"

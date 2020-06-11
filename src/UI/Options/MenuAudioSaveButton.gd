@@ -9,6 +9,4 @@ func _on_Pressed() -> void:
 		Config.values[section][field] = data[field]
 
 	Config.applied_config(section)
-
-	# Config.values[section] = data
 	Config.save(Config.values)

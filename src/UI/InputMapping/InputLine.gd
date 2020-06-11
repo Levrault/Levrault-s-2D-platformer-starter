@@ -33,5 +33,5 @@ func _on_Keybinding_canceled() -> void:
 func initialize(new_action_name: String, new_scancode: int) -> void:
 	action_name = new_action_name
 	scancode = new_scancode
-	$Action.text = action_name
+	$Action.text = tr("cfg_" + action_name)
 	$Button.text = OS.get_scancode_string(scancode)
