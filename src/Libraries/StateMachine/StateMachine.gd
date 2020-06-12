@@ -1,5 +1,5 @@
 # Generic State Machine. Initilizes states and delegates engine callbacks
-extends Node
+extends Node2D
 class_name StateMachine, "res://assets/icons/state_machine.svg"
 
 export var initial_state := NodePath()

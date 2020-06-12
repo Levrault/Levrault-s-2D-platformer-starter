@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Actor
 class_name Player
 
 onready var state_machine: StateMachine = $StateMachine
@@ -24,3 +24,8 @@ func set_is_active(value: bool) -> void:
 	if not collider:
 		return
 	collider.disabled = not value
+
+
+func horizontal_mirror(direction: int) -> void:
+	skin.scale.x = direction
+	state_machine.scale.x = direction

@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/Actors/Actor.gd"
+}, {
+"base": "Area2D",
+"class": "DamageSource",
+"language": "GDScript",
+"path": "res://src/Combat/DamageSource.gd"
+}, {
+"base": "Reference",
+"class": "Hit",
+"language": "GDScript",
+"path": "res://src/Combat/Hit.gd"
+}, {
 "base": "HBoxContainer",
 "class": "InputLine",
 "language": "GDScript",
@@ -29,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Navigation/NavigationSwitch.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Actor",
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Player/Player.gd"
@@ -39,19 +54,28 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Libraries/StateMachine/State.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/Libraries/StateMachine/StateMachine.gd"
+}, {
+"base": "Node2D",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://src/Actors/Stats.gd"
 } ]
 _global_script_class_icons={
+"Actor": "",
+"DamageSource": "",
+"Hit": "",
 "InputLine": "",
 "MenuSaveButton": "",
 "NavigationButton": "",
 "NavigationSwitch": "",
 "Player": "",
 "State": "res://assets/icons/state.svg",
-"StateMachine": "res://assets/icons/state_machine.svg"
+"StateMachine": "res://assets/icons/state_machine.svg",
+"Stats": ""
 }
 
 [application]
@@ -238,6 +262,7 @@ debug_free_camera_zoom_out={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Worlds"
 2d_physics/layer_3="PassThrough"
+2d_physics/layer_4="Enemies"
 
 [locale]
 
