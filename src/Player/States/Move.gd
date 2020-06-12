@@ -13,7 +13,7 @@ var velocity := Vector2.ZERO
 
 func unhandled_input(event: InputEvent) -> void:
 	if owner.is_on_floor() and event.is_action_pressed("jump"):
-		_state_machine.transition_to("Move/Air", {impulse = true})
+		_state_machine.transition_to("move/air", {impulse = true})
 
 
 func physics_process(delta: float) -> void:
@@ -26,7 +26,7 @@ func physics_process(delta: float) -> void:
 	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 
 	if direction.x != 0:
-		owner.skin.scale.x = direction.x
+		owner.horizontal_mirror(direction.x)
 
 	Events.emit_signal("player_moved", owner)
 
@@ -41,6 +41,13 @@ func exit() -> void:
 	$Air.disconnect("jumped", $Idle.jump_input_buffering, "start")
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
 static func calculate_velocity(
 	old_velocity: Vector2,
 	max_speed: Vector2,
