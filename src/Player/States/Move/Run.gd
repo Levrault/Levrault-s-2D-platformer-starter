@@ -4,6 +4,8 @@ export var max_speed_sprint := 900.0
 
 
 func unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack"):
+		owner.attack_factory.create("attack_run")
 	_parent.unhandled_input(event)
 
 

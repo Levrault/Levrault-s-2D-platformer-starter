@@ -13,7 +13,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("debug_die"):
-		player.state_machine.transition_to("die")
+		player.state_machine.transition_to("Die")
 		return
 
 	if event.is_action_pressed("debug_slow_time"):
