@@ -23,6 +23,7 @@ shape = SubResource( 1 )
 [node name="Skin" parent="." instance=ExtResource( 1 )]
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )

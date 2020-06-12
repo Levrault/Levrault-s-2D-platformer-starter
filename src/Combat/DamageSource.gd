@@ -8,3 +8,7 @@ class_name DamageSource
 
 export var damage := 1
 export var is_instakill := false
+
+
+func set_active(value: bool) -> void:
+    $CollisionShape2D.disabled = not value

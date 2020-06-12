@@ -63,4 +63,10 @@ tile_data = PoolIntArray( 393217, 47, 196608, 393218, 47, 196609, 393219, 47, 19
 [node name="Dummy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 233.341, 192.447 )
 
+[node name="Dummy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 233.341, 32.7969 )
+
+[node name="Dummy3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 385.579, 299.563 )
+
 [editable path="Player"]

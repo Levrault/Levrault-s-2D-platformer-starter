@@ -6,10 +6,11 @@ var is_active := true setget set_is_active
 
 
 func _ready() -> void:
-	connect("area_entered", self, "_on_area_entered")
+	connect("area_entered", self, "_on_Area_entered")
 
 
-func _on_area_entered(damage_source: Area2D) -> void:
+func _on_Area_entered(damage_source: Area2D) -> void:
+	print("in")
 	owner.take_damage(Hit.new(damage_source))
 
 
