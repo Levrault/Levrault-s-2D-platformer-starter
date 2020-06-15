@@ -6,6 +6,7 @@ onready var skin: Node2D = $Skin
 onready var camera_rig: Position2D = $CameraRig
 onready var shaking_camera: Camera2D = $CameraRig/ShakingCamera
 onready var collider: CollisionShape2D = $CollisionShape2D
+onready var attack_factory: AttackFactory = $AttackFactory as AttackFactory
 
 const FLOOR_NORMAL := Vector2.UP
 
@@ -28,4 +29,4 @@ func set_is_active(value: bool) -> void:
 
 func horizontal_mirror(direction: int) -> void:
 	skin.scale.x = direction
-	state_machine.scale.x = direction
+	attack_factory.scale.x = direction

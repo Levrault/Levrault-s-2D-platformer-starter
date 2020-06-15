@@ -20,6 +20,9 @@ func unhandled_input(event: InputEvent) -> void:
 			_coyote_time.stop()
 			jump()
 
+	if event.is_action_pressed("attack"):
+		owner.attack_factory.create("attack_air")
+
 	_parent.unhandled_input(event)
 
 
@@ -34,8 +37,9 @@ func physics_process(delta: float) -> void:
 
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
-
 	_parent.acceleration.x = acceleration_x
+	print(msg)
+
 	if "coyote_time" in msg:
 		_coyote_time.start()
 	if "impulse" in msg:
@@ -49,6 +53,7 @@ func exit() -> void:
 
 
 func jump() -> void:
+	print("jump")
 	owner.skin.play("jump")
 	_parent.velocity.y = 0
 	_parent.velocity += calculate_jump_velocity(jump_impulse)
