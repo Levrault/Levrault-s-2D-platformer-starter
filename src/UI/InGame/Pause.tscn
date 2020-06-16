@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/UI/InGame/Pause.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/Components/MenuFooter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Navigation/NavigationButton.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/InGame/Resume.gd" type="Script" id=4]
+[ext_resource path="res://src/UI/InGame/ReturnMainMenu.gd" type="Script" id=5]
+[ext_resource path="res://src/UI/Components/QuitButton.gd" type="Script" id=6]
+
+[node name="Pause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+default_field_to_focus = NodePath("Wrapper/Page/CenterContainer/Contents/Resume")
+
+[node name="Wrapper" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 20
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page" type="VBoxContainer" parent="Wrapper"]
+margin_left = 10.0
+margin_top = 20.0
+margin_right = 470.0
+margin_bottom = 260.0
+alignment = 1
+
+[node name="Title" type="Label" parent="Wrapper/Page"]
+margin_right = 460.0
+margin_bottom = 14.0
+text = "ui_pause"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Wrapper/Page"]
+margin_top = 18.0
+margin_right = 460.0
+margin_bottom = 222.0
+size_flags_vertical = 3
+
+[node name="Contents" type="VBoxContainer" parent="Wrapper/Page/CenterContainer"]
+margin_left = 177.0
+margin_top = 56.0
+margin_right = 282.0
+margin_bottom = 148.0
+size_flags_vertical = 3
+
+[node name="Resume" type="Button" parent="Wrapper/Page/CenterContainer/Contents"]
+margin_right = 105.0
+margin_bottom = 20.0
+text = "ui_resume"
+script = ExtResource( 4 )
+
+[node name="Options" type="Button" parent="Wrapper/Page/CenterContainer/Contents"]
+margin_top = 24.0
+margin_right = 105.0
+margin_bottom = 44.0
+text = "ui_options"
+script = ExtResource( 3 )
+navigate_to = "ListOptionsMenu"
+is_default_focused = true
+
+[node name="ReturnMainMenu" type="Button" parent="Wrapper/Page/CenterContainer/Contents"]
+margin_top = 48.0
+margin_right = 105.0
+margin_bottom = 68.0
+text = "ui_main_menu"
+script = ExtResource( 5 )
+
+[node name="Quit" type="Button" parent="Wrapper/Page/CenterContainer/Contents"]
+margin_top = 72.0
+margin_right = 105.0
+margin_bottom = 92.0
+text = "ui_quit"
+script = ExtResource( 6 )
+
+[node name="MenuFooter" parent="Wrapper/Page" instance=ExtResource( 2 )]
+margin_top = 226.0
+margin_right = 460.0
+margin_bottom = 240.0
+has_back_action = true

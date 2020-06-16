@@ -38,7 +38,6 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
 	_parent.acceleration.x = acceleration_x
-	print(msg)
 
 	if "coyote_time" in msg:
 		_coyote_time.start()
@@ -53,7 +52,6 @@ func exit() -> void:
 
 
 func jump() -> void:
-	print("jump")
 	owner.skin.play("jump")
 	_parent.velocity.y = 0
 	_parent.velocity += calculate_jump_velocity(jump_impulse)
