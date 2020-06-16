@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/UI/Options/ListOptionsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/TitleScreen.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/UI/Options/VideoOptionsMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/UI/Components/MenuTransition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/Options/ControllerOptionsMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/UI/Notification.tscn" type="PackedScene" id=10]
 
 [node name="MainMenu" type="Control"]
 pause_mode = 2
@@ -40,3 +41,5 @@ visible = false
 visible = false
 
 [node name="MenuTransition" parent="." instance=ExtResource( 8 )]
+
+[node name="Notification" parent="." instance=ExtResource( 10 )]

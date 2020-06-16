@@ -101,6 +101,8 @@ func save(new_settings: Dictionary) -> void:
 
 	_config_file.save(CONFIG_FILE_PATH)
 
+	Events.emit_signal("notification_started", "ui_data_saved", Vector2(460, 40))
+
 
 # Load data from config.cfg
 func load() -> void:
