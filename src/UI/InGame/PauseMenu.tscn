@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/UI/InGame/Pause.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/InGame/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/Components/MenuFooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Navigation/NavigationButton.gd" type="Script" id=3]
-[ext_resource path="res://src/UI/InGame/Resume.gd" type="Script" id=4]
-[ext_resource path="res://src/UI/InGame/ReturnMainMenu.gd" type="Script" id=5]
-[ext_resource path="res://src/UI/Components/QuitButton.gd" type="Script" id=6]
+[ext_resource path="res://src/UI/Components/Button/ResumeButton.gd" type="Script" id=4]
+[ext_resource path="res://src/UI/Components/Button/ReturnMainMenu.gd" type="Script" id=5]
+[ext_resource path="res://src/UI/Components/Button/QuitButton.gd" type="Script" id=6]
 
-[node name="Pause" type="Control"]
+[node name="PauseMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-default_field_to_focus = NodePath("Wrapper/Page/CenterContainer/Contents/Resume")
+default_field_to_focus = NodePath("../PauseMenu/Wrapper/Page/CenterContainer/Contents/Resume")
 
 [node name="Wrapper" type="MarginContainer" parent="."]
 anchor_right = 1.0

@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/UI/debug/DebugPanel.gd" type="Script" id=2]
+[ext_resource path="res://src/UI/Debug/DebugPanel.gd" type="Script" id=2]
+
 
 [node name="DebugPanel" type="PanelContainer"]
 self_modulate = Color( 1, 1, 1, 0.490196 )
