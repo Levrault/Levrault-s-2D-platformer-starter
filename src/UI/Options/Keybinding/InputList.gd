@@ -1,7 +1,7 @@
 # Create input list by getting data from InputMap
 extends ScrollContainer
 
-const INPUT_LINE_SCENE: PackedScene = preload("res://src/UI/InputMapping/InputLine.tscn")
+const INPUT_LINE_SCENE: PackedScene = preload("res://src/UI/Options/Keybinding/InputLine.tscn")
 
 onready var _inputLineContainer := $InputLineContainer
 
