@@ -1,49 +1,52 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/UI/Notification.gd" type="Script" id=1]
 
 [sub_resource type="Animation" id=1]
 resource_name = "DEFAULT"
+length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer:rect_position")
+tracks/0/path = NodePath("Wrapper:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 2 ),
 "update": 0,
 "values": [ Vector2( 10, -40 ) ]
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "Push"
+resource_name = "push"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer:rect_position")
+tracks/0/path = NodePath("Wrapper:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 1.7, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"transitions": PoolRealArray( 2, 1, 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 10, -40 ), Vector2( 10, 10 ), Vector2( 10, 10 ), Vector2( 10, -40 ) ]
+"values": [ Vector2( 10, -40 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 10, -40 ) ]
 }
 
 [node name="Notification" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "DEFAULT"
 anims/DEFAULT = SubResource( 1 )
-anims/Push = SubResource( 2 )
+anims/push = SubResource( 2 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Wrapper" type="MarginContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -230.0
@@ -54,11 +57,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Message" type="Label" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="Wrapper"]
 margin_right = 460.0
 margin_bottom = 40.0
+color = Color( 0.00784314, 0.309804, 0.372549, 1 )
+
+[node name="MessageWrapper" type="MarginContainer" parent="Wrapper"]
+margin_right = 460.0
+margin_bottom = 40.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="RichTextLabel" parent="Wrapper/MessageWrapper"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 455.0
+margin_bottom = 35.0
 size_flags_horizontal = 3
-size_flags_vertical = 7
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Placeholder"
 text = "Placeholder"
-align = 1
-valign = 1
