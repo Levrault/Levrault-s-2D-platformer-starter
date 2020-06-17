@@ -139,7 +139,7 @@ func applied_config(section: String) -> void:
 
 	# game
 	if section == "all" or section == "game":
-		Events.emit_signal("locale_changed", values["game"]["locale"])
+		TranslationServer.set_locale(values["game"]["locale"])
 
 	# keybinding
 	if section == "all" or section == "keybinding":
