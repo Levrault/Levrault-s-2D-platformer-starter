@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "push"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Wrapper:rect_position")
 tracks/0/interp = 1
@@ -28,10 +28,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1.7, 2 ),
+"times": PoolRealArray( 0, 0.3, 2.7, 3 ),
 "transitions": PoolRealArray( 2, 1, 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( 10, -40 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 10, -40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wrapper/MessageWrapper/Message:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
 }
 
 [node name="Notification" type="Control"]
@@ -78,8 +90,11 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 455.0
 margin_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 bbcode_text = "Placeholder"
+meta_underlined = false
 text = "Placeholder"
