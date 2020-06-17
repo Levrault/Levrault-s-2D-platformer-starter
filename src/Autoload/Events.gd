@@ -9,6 +9,12 @@ signal notification_started(text, size)
 # player
 signal player_moved(player)
 
+# camera
+signal camera_limits_restored
+signal camera_zoom_restored
+signal camera_limits_changed(limits)
+signal camera_zoom_changed(zoom, duration)
+
 # in-game interfaces
 signal game_paused
 signal game_unpaused

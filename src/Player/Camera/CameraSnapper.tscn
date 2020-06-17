@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Player/Camera/CameraSnapper.gd" type="Script" id=1]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 497, 282 )
+
+[node name="CameraSnapper" type="Area2D"]
+position = Vector2( 1031, -38 )
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="Snapper" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Top" type="Position2D" parent="."]
+position = Vector2( 0, -288 )
+
+[node name="Right" type="Position2D" parent="."]
+position = Vector2( 517, 0 )
+
+[node name="Bottom" type="Position2D" parent="."]
+position = Vector2( 0, 293 )
+
+[node name="Left" type="Position2D" parent="."]
+position = Vector2( -483, 0 )

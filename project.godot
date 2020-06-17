@@ -280,6 +280,7 @@ debug_free_camera_zoom_out={
 2d_physics/layer_2="Worlds"
 2d_physics/layer_3="PassThrough"
 2d_physics/layer_4="Enemies"
+2d_physics/layer_5="CameraSnapper"
 
 [locale]
 
