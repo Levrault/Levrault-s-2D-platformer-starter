@@ -8,6 +8,19 @@ signal notification_started(text, size)
 
 # player
 signal player_moved(player)
+signal player_room_entered(position)
+
+# level
+signal level_preload_finished
+
+# room
+signal room_limit_changed(
+	left,
+	top,
+	right,
+	bottom,
+)
+signal gate_entered(room_id)
 
 # in-game interfaces
 signal game_paused
