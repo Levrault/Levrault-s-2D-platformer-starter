@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Room/Gate.gd" type="Script" id=1]
+
+[sub_resource type="RayShape2D" id=1]
+length = 127.0
+
+[node name="Gate" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 55.0558, 63.9962 )
+__meta__ = {
+"_gizmo_extents_": 40.0
+}
