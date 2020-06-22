@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Main/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Room/RoomTransition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Main/Game.gd" type="Script" id=5]
 [ext_resource path="res://src/UI/InGame/PauseMenu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/Navigation/InGameRouter.gd" type="Script" id=9]
@@ -61,6 +62,8 @@ visible = false
 default_field_to_focus = NodePath("../Control/ListOptionsMenu/Wrapper/Page/Contents/Game")
 
 [node name="Notification" parent="UI/Router" instance=ExtResource( 18 )]
+
+[node name="RoomTransition" parent="UI" instance=ExtResource( 2 )]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
 to_load = "test"

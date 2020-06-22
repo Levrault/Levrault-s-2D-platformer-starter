@@ -3,6 +3,10 @@ extends Node2D
 onready var player: Player = find_node("Player")
 
 
+func _exit_tree() -> void:
+	Events.emit_signal("room_transition_started")
+
+
 func _ready():
 	RoomManager.bounds = {
 		'limit_left': $BoundsNW.global_position.x,
@@ -17,6 +21,8 @@ func _ready():
 			"player_room_entered",
 			$Gates.get_node(RoomManager.gate_to_spawn).get_node("Spawn").global_position
 		)
+
+	Events.emit_signal("room_transition_ended")
 
 
 func _unhandled_input(event: InputEvent) -> void:

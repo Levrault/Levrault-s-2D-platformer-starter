@@ -12,8 +12,8 @@ func _ready():
 
 
 func _on_Load_new_room(id: String) -> void:
-	print_debug(id)
 	if current_room:
 		current_room.queue_free()
+		yield(current_room, "tree_exited")
 	current_room = LevelLoader.rooms[id].instance()
-	add_child(current_room)
+	call_deferred("add_child", current_room)

@@ -20,6 +20,10 @@ signal room_limit_changed(
 	right,
 	bottom,
 )
+signal room_transition_started
+signal room_transition_ended
+
+# gate
 signal gate_entered(room_id)
 
 # in-game interfaces
