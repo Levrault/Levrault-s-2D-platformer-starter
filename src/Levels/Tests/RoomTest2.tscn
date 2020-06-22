@@ -13,6 +13,7 @@ position = Vector2( 1104.16, 291.43 )
 
 [node name="GateToRoomTest1" parent="Gates" index="0" instance=ExtResource( 1 )]
 position = Vector2( -20, 93 )
+facing = 1
 go_to_room = "RoomTest1"
 linked_to = "GateToRoomTest2"
 

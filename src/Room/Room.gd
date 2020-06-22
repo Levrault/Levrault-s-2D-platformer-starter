@@ -2,19 +2,20 @@ extends Node2D
 
 onready var player: Player = find_node("Player")
 
-func _ready():
-	Events.emit_signal(
-		"room_limit_changed",
-		$BoundsNW.global_position.x,
-		$BoundsNW.global_position.y,
-		$BoundsSE.global_position.x,
-		$BoundsSE.global_position.y
-	)
 
-	if Room.gate_to_spawn != "":
+func _ready():
+	RoomManager.bounds = {
+		'limit_left': $BoundsNW.global_position.x,
+		'limit_top': $BoundsNW.global_position.y,
+		'limit_right': $BoundsSE.global_position.x,
+		'limit_bottom': $BoundsSE.global_position.y,
+	}
+	Events.emit_signal("room_limit_changed", RoomManager.bounds)
+
+	if RoomManager.gate_to_spawn != "":
 		Events.emit_signal(
 			"player_room_entered",
-			$Gates.get_node(Room.gate_to_spawn).get_node("Spawn").global_position
+			$Gates.get_node(RoomManager.gate_to_spawn).get_node("Spawn").global_position
 		)
 
 
@@ -51,4 +52,3 @@ func _unhandled_input(event: InputEvent) -> void:
 			add_child(free_camera)
 		else:
 			get_node("FreeCamera").queue_free()
-

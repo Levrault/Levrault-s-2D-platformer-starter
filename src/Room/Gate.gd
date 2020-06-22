@@ -12,7 +12,7 @@ func _ready():
 
 
 func _on_Body_entered(body: Player) -> void:
-	Room.gate_to_spawn = linked_to
+	RoomManager.gate_to_spawn = linked_to
 	Events.call_deferred("emit_signal", "gate_entered", go_to_room)
 
 

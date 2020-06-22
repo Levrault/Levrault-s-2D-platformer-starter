@@ -38,11 +38,9 @@ func _process(delta) -> void:
 	)
 
 
-func _on_Limit_changed(left: int, top: int, right: int, bottom: int) -> void:
-	self.limit_left = left
-	self.limit_top = top
-	self.limit_right = right
-	self.limit_bottom = bottom
+func _on_Limit_changed(bounds: Dictionary) -> void:
+	for key in bounds:
+		self[key] = bounds[key]
 
 
 func _get_configuration_warning() -> String:
