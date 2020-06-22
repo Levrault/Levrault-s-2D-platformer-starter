@@ -24,7 +24,6 @@ func _on_Player_Room_entered(global_position: Vector2) -> void:
 
 func set_is_handling_input(value: bool) -> void:
 	$StateMachine.set_process_unhandled_input(value)
-	$StateMachine.set_physics_process(value)
 	is_handling_input = value
 
 

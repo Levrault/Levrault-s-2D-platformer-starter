@@ -54,6 +54,7 @@ func exit() -> void:
 func jump() -> void:
 	owner.skin.play("jump")
 	_parent.velocity.y = 0
+	print_debug(jump_impulse)
 	_parent.velocity += calculate_jump_velocity(jump_impulse)
 	_jump_count += 1
 

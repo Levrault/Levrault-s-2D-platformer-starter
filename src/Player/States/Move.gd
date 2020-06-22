@@ -19,6 +19,9 @@ func unhandled_input(event: InputEvent) -> void:
 func physics_process(delta: float) -> void:
 	var direction := get_move_direction()
 
+	if not owner.is_handling_input:
+		direction.x = 0
+
 	velocity = calculate_velocity(
 		velocity, max_speed, acceleration, decceleration, delta, direction
 	)

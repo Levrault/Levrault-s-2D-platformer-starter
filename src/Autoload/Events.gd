@@ -23,6 +23,10 @@ signal room_limit_changed(
 signal room_transition_started
 signal room_transition_ended
 
+# cinematic
+signal cinematic_started
+signal cinematic_ended
+
 # gate
 signal gate_entered(room_id)
 
