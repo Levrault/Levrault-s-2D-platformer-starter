@@ -4,10 +4,10 @@
 [ext_resource path="res://src/Combat/Dummy/DummyEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Cinematics/CinematicTest.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RayShape2D" id=4]
+[sub_resource type="RayShape2D" id=1]
 length = 254.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -24,7 +24,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("../Player/StateMachine")
@@ -66,11 +66,11 @@ tile_data = PoolIntArray( 4, 47, 4, 5, 47, 196609, 6, 47, 196609, 7, 47, 196609,
 position = Vector2( 381, 17 )
 
 [node name="CollisionShape2D" parent="CinematicTest/Trigger" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="CinematicTest" index="2"]
-anims/end = SubResource( 5 )
-anims/start = SubResource( 6 )
+anims/end = SubResource( 2 )
+anims/start = SubResource( 3 )
 next/start = "end"
 
 [node name="Player" parent="." index="6"]
