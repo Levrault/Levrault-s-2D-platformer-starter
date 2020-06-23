@@ -153,7 +153,8 @@ func applied_config(section: String) -> void:
 				change_action_key(action, values["keybinding"][action])
 
 	if section == "all" or section == "controller":
-		print_debug("should set controller things right here")
+		#TODO: controller
+		pass
 
 
 # Update an action InputMap

@@ -73,14 +73,14 @@ anims/end = SubResource( 2 )
 anims/start = SubResource( 3 )
 next/start = "end"
 
-[node name="Player" parent="." index="6"]
+[node name="DummyEnemy" parent="." index="7" instance=ExtResource( 2 )]
+position = Vector2( 819, 240 )
+
+[node name="Player" parent="." index="8"]
 position = Vector2( 255, 66 )
 
 [node name="StateMachine" parent="Player" index="4"]
 initial_state = NodePath("../../../RoomCinematic/Player/StateMachine/Spawn")
-
-[node name="DummyEnemy" parent="." index="7" instance=ExtResource( 2 )]
-position = Vector2( 819, 240 )
 
 [editable path="CinematicTest"]
 

@@ -36,6 +36,8 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="NPCs" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [editable path="Player"]

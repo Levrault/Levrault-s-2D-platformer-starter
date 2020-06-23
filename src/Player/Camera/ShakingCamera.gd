@@ -24,6 +24,8 @@ func reset_smoothing_speed() -> void:
 
 func _ready() -> void:
 	Events.connect("room_limit_changed", self, "_on_Limit_changed")
+	Events.connect("camera_offset_resetted", self, "_on_Offset_changed", [self.offset])
+	Events.connect("camera_offset_changed", self, "_on_Offset_changed")
 	timer.connect("timeout", self, "_on_ShakeTimer_timeout")
 
 	self.duration = duration
@@ -36,6 +38,10 @@ func _process(delta) -> void:
 	offset = Vector2(
 		rand_range(amplitude, -amplitude) * damping, rand_range(amplitude, -amplitude) * damping
 	)
+
+
+func _on_Offset_changed(offset: Vector2) -> void:
+	self.offset = offset
 
 
 func _on_Limit_changed(bounds: Dictionary) -> void:

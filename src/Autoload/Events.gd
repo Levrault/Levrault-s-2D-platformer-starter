@@ -6,9 +6,14 @@ signal locale_changed(locale)
 # notification
 signal notification_started(text, size)
 
+# camera
+signal camera_offset_changed(offset)
+signal camera_offset_resetted
+
 # player
 signal player_moved(player)
 signal player_room_entered(position)
+signal player_choice_started
 
 # level
 signal level_preload_finished
@@ -22,6 +27,18 @@ signal room_limit_changed(
 )
 signal room_transition_started
 signal room_transition_ended
+
+# dialogue
+signal dialogue_started
+signal dialogue_changed(name, portrait, message)
+signal dialogue_text_displayed
+signal dialogue_last_text_displayed
+signal dialogue_finished
+signal dialogue_last_dialogue_displayed
+signal dialogue_animation_skipped
+signal dialogue_choices_changed(choices)
+signal dialogue_choices_displayed
+signal dialogue_choices_finished(choices)
 
 # cinematic
 signal cinematic_started

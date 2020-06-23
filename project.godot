@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Combat/DamageSource.gd"
 }, {
+"base": "Node2D",
+"class": "DialogueController",
+"language": "GDScript",
+"path": "res://src/NPCs/DialogueController.gd"
+}, {
 "base": "Reference",
 "class": "Hit",
 "language": "GDScript",
@@ -54,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Navigation/NavigationSwitch.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Npc",
+"language": "GDScript",
+"path": "res://src/NPCs/Npc.gd"
+}, {
 "base": "Actor",
 "class": "Player",
 "language": "GDScript",
@@ -78,12 +88,14 @@ _global_script_class_icons={
 "Actor": "",
 "AttackFactory": "res://assets/icons/attack_factory.svg",
 "DamageSource": "",
+"DialogueController": "",
 "Hit": "",
 "InputLine": "",
 "MenuSaveButton": "",
 "NavigationButton": "",
 "NavigationRouter": "",
 "NavigationSwitch": "",
+"Npc": "",
 "Player": "",
 "State": "res://assets/icons/state.svg",
 "StateMachine": "res://assets/icons/state_machine.svg",
@@ -198,6 +210,12 @@ move_down={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
+interaction={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
 jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
@@ -207,6 +225,7 @@ jump={
 attack={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 sprint={
@@ -282,6 +301,8 @@ debug_free_camera_zoom_out={
 2d_physics/layer_2="Worlds"
 2d_physics/layer_3="PassThrough"
 2d_physics/layer_4="Enemies"
+2d_physics/layer_5="Npcs"
+2d_physics/layer_6="Object"
 
 [locale]
 
