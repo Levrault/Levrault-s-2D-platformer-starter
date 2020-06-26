@@ -6,7 +6,7 @@
 [ext_resource path="res://src/Combat/Dummy/DummyEnemy.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 39.3783, 8.91777 )
+extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30.8856, 31.8068 )
@@ -17,15 +17,28 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.762101, 3.40627 )
+position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="Skin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -32 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -32 )
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )
 
 [node name="Stats" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -29.0
+margin_top = -81.0
+margin_right = 30.0
+margin_bottom = -67.0
+text = "dummy"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

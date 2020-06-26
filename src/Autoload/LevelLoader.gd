@@ -15,3 +15,11 @@ func load(world: String) -> void:
 		Events.emit_signal("level_preload_finished")
 		print_debug("preload is over")
 		return
+
+	if world == 'debug_dialogue':
+		rooms = {
+			"DebugDialogueRoom": load("res://src/Levels/Tests/DebugDialogueRoom.tscn"),
+		}
+		Events.emit_signal("level_preload_finished")
+		print_debug("preload is over")
+		return
