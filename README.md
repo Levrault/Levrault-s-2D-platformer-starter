@@ -250,7 +250,7 @@ The next dialogue to display. If the script does not find it, it consider that t
       "en": "Why some conditionals stuff, I was able to answer this",
       "fr": "Avec des conditions, j'ai pu te répondre ça"
     },
-    next:"002",
+    "next":"002",
   },
   "002": {
     "name": "NPCDummy",
