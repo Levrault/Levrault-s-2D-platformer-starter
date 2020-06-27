@@ -1,8 +1,7 @@
 # Stats for the player or the monsters, to manage health, etc.
 # Attach an instance of Stats to any object to give it health and stats.
-extends Node2D
-
 class_name Stats
+extends Node2D
 
 signal health_changed(old_value, new_value)
 signal health_depleted

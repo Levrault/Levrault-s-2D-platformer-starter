@@ -1,10 +1,10 @@
 extends RichTextLabel
 
+var _total_scroll_time := 0.0
+
 onready var _timer: Timer = $Timer
 onready var _scroll_timer: Timer = $Scroll
 onready var _delay: Timer = $Delay
-
-var _total_scroll_time := 0.0
 
 
 func _ready() -> void:
@@ -12,6 +12,21 @@ func _ready() -> void:
 	_timer.connect("timeout", self, "_on_Text_animation")
 	_scroll_timer.connect("timeout", self, "_on_Scroll_animation")
 	_delay.connect("timeout", _scroll_timer, "start")
+
+
+# stop/start animation
+# param {bool} value
+func toggle_animation(value: bool) -> void:
+	if not value:
+		_timer.stop()
+		_delay.stop()
+		_scroll_timer.stop()
+		return
+
+	get_v_scroll().value = 0
+	visible_characters = 0
+	_timer.start()
+	_delay.start()
 
 
 # Show a new letter at each call
@@ -34,18 +49,3 @@ func _on_Skip_animation() -> void:
 
 func _on_Scroll_animation() -> void:
 	get_v_scroll().value += 1
-
-
-# stop/start animation
-# param {bool} value
-func toggle_animation(value: bool) -> void:
-	if not value:
-		_timer.stop()
-		_delay.stop()
-		_scroll_timer.stop()
-		return
-
-	get_v_scroll().value = 0
-	visible_characters = 0
-	_timer.start()
-	_delay.start()

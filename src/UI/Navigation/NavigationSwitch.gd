@@ -1,10 +1,11 @@
 # Switch when a NavigationButton is click
-extends Control
 class_name NavigationSwitch
+extends Control
 
 signal navigation_finished
 
 export var default_field_to_focus: NodePath
+
 var last_clicked_button: Button = null
 var buttons := []
 var _is_current_route := false

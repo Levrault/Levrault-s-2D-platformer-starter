@@ -50,7 +50,6 @@ var values := DEFAULT_VALUES.duplicate(true)
 # Find and load config.cfg file
 # If not, create a new config file with default value
 func _init() -> void:
-	print_debug(DEFAULT_VALUES["keybinding"])
 	var err = _config_file.load(CONFIG_FILE_PATH)
 	if err == ERR_FILE_NOT_FOUND:
 		print_debug("%s was not found, create a new file with default values" % [CONFIG_FILE_PATH])
@@ -61,35 +60,6 @@ func _init() -> void:
 		print_debug("%s has encounter an error: %s" % [CONFIG_FILE_PATH, err])
 		return
 	self.load()
-
-
-# Dumb way to convert db value to int
-# @param {String} value
-# @returns {float}
-func _get_new_volume(value: String) -> float:
-	match value:
-		"100":
-			return 0.0
-		"90":
-			return -1.5
-		"80":
-			return -3.0
-		"70":
-			return -4.5
-		"60":
-			return -8.0
-		"50":
-			return -10.0
-		"40":
-			return -12.0
-		"30":
-			return -14.0
-		"20":
-			return -18.0
-		"10":
-			return -24.0
-
-	return -60.0
 
 
 # Save data
@@ -210,3 +180,32 @@ func config_to_field(key: String) -> String:
 		return values["game"]["locale"]
 
 	return ""
+
+
+# Dumb way to convert db value to int
+# @param {String} value
+# @returns {float}
+func _get_new_volume(value: String) -> float:
+	match value:
+		"100":
+			return 0.0
+		"90":
+			return -1.5
+		"80":
+			return -3.0
+		"70":
+			return -4.5
+		"60":
+			return -8.0
+		"50":
+			return -10.0
+		"40":
+			return -12.0
+		"30":
+			return -14.0
+		"20":
+			return -18.0
+		"10":
+			return -24.0
+
+	return -60.0

@@ -11,11 +11,6 @@ func _ready():
 	connect("body_entered", self, "_on_Player_entered")
 
 
-func _on_Player_entered(body: Player) -> void:
-	RoomManager.gate_to_spawn = linked_to
-	Events.call_deferred("emit_signal", "gate_entered", go_to_room)
-
-
 func set_facing(value) -> void:
 	facing = value
 	if value == Facing.LEFT:
@@ -40,3 +35,8 @@ func set_facing(value) -> void:
 	rotation_degrees = 90
 	scale.x = -1
 	scale.y = 1
+
+
+func _on_Player_entered(body: Player) -> void:
+	RoomManager.gate_to_spawn = linked_to
+	Events.call_deferred("emit_signal", "gate_entered", go_to_room)

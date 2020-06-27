@@ -1,6 +1,6 @@
 # Input line show/manage the current input
-extends HBoxContainer
 class_name InputLine
+extends HBoxContainer
 
 var action_name := ""
 var scancode := 0
@@ -8,6 +8,13 @@ var scancode := 0
 
 func _ready() -> void:
 	$Button.connect("pressed", self, "_on_Change_button_bressed")
+
+
+func initialize(new_action_name: String, new_scancode: int) -> void:
+	action_name = new_action_name
+	scancode = new_scancode
+	$Action.text = tr("cfg_" + action_name)
+	$Button.text = OS.get_scancode_string(scancode)
 
 
 func _on_Change_button_bressed() -> void:
@@ -28,10 +35,3 @@ func _on_Keybinding_key_selected(new_scancode: int) -> void:
 func _on_Keybinding_canceled() -> void:
 	Events.disconnect("keybinding_key_selected", self, "_on_Keybinding_key_selected")
 	Events.disconnect("keybinding_canceled", self, "_on_Keybinding_canceled")
-
-
-func initialize(new_action_name: String, new_scancode: int) -> void:
-	action_name = new_action_name
-	scancode = new_scancode
-	$Action.text = tr("cfg_" + action_name)
-	$Button.text = OS.get_scancode_string(scancode)

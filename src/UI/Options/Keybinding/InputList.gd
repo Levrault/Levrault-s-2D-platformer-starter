@@ -12,10 +12,6 @@ func _ready() -> void:
 	initialize()
 
 
-func _on_Navigation_finished() -> void:
-	_inputLineContainer.get_child(0).get_node("Button").grab_focus()
-
-
 func initialize() -> void:
 	# clean previous child
 	if _inputLineContainer.get_child_count() > 0:
@@ -27,3 +23,7 @@ func initialize() -> void:
 		var line = INPUT_LINE_SCENE.instance()
 		line.initialize(action, Config.values["keybinding"][action])
 		_inputLineContainer.add_child(line)
+
+
+func _on_Navigation_finished() -> void:
+	_inputLineContainer.get_child(0).get_node("Button").grab_focus()

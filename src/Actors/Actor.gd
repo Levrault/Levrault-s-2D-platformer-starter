@@ -1,7 +1,7 @@
 # Should be seen has an abstract class
 # Every character that can fight should inherit from it
-extends KinematicBody2D
 class_name Actor
+extends KinematicBody2D
 
 onready var stats: Stats = $Stats as Stats
 

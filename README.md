@@ -19,7 +19,7 @@ The project contains
 
 ## Guidelines
 
-See [GDQuest is best practices guide](https://www.gdquest.com/docs/guidelines/best-practices/)
+See [GDQuest's best practices guide](https://www.gdquest.com/docs/guidelines/best-practices/) and [official Gdscript Guidelines](https://docs.godotengine.org/en/3.2/getting_started/scripting/gdscript/gdscript_styleguide.html#code-order)
 
 
 

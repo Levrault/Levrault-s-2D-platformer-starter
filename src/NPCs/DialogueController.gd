@@ -2,8 +2,8 @@
 # Read associated dialogue json file to NPC 
 # Based on NPC name
 # Order and manage which dialogue is send to DialogueBox
-extends Node2D
 class_name DialogueController
+extends Node2D
 
 const JsonReader: Script = preload("res://src/Utils/JsonReader.gd")
 const PORTRAIT_PATH: String = "res://assets/portraits/%s.png"
@@ -25,6 +25,59 @@ func _ready() -> void:
 		if _portraits_res.has(values["portrait"]):
 			continue
 		_portraits_res[values["portrait"]] = load(PORTRAIT_PATH % [values["portrait"]])
+
+
+func start() -> void:
+	Events.emit_signal("dialogue_started")
+	owner.set_process_unhandled_input(false)
+	change()
+
+
+# Send dialogue based on locale to the dialogueBox
+func next() -> void:
+	_current_dialogue = _dialogues[_current_dialogue["next"]]
+	change()
+
+
+func change() -> void:
+	var text: String = _current_dialogue["text"][TranslationServer.get_locale()]
+	Events.emit_signal(
+		"dialogue_changed",
+		_current_dialogue["name"],
+		_portraits_res[_current_dialogue["portrait"]],
+		text
+	)
+
+	if _current_dialogue.has("signals"):
+		_emit_dialogue_signal(_current_dialogue["signals"])
+
+	# player can make some choice
+	if _current_dialogue.has("choices"):
+		Events.emit_signal("dialogue_choices_changed", _current_dialogue["choices"])
+		Events.connect("dialogue_choices_finished", self, "_on_Choices_finished")
+		return
+
+	# there is not linked dialogue 
+	if not _current_dialogue.get("next"):
+		Events.emit_signal("dialogue_last_dialogue_displayed")
+		clear()
+
+
+# Load dialogue
+func load() -> void:
+	_conditions = owner.conditions
+
+	if not owner.conditions.empty():
+		_get_conditional_dialogue()
+	else:
+		_get_non_conditional_dialogue()
+
+
+# clear controller
+func clear() -> void:
+	_dialogues = {}
+	_current_dialogue = {}
+	_conditions = {}
 
 
 # If the owner didn't have any condition set
@@ -81,6 +134,14 @@ func _get_conditional_dialogue():
 		_dialogues[dialogue_key] = values
 
 
+func _convert_value_to_type(type: String, value):
+	match type:
+		"Vector2":
+			return Vector2(value["x"], value["y"])
+
+	return value
+
+
 func _on_Choices_finished(key: String) -> void:
 	Events.disconnect("dialogue_choices_finished", self, "_on_Choices_finished")
 	_current_dialogue = _dialogues[key]
@@ -102,64 +163,3 @@ func _emit_dialogue_signal(signals: Dictionary) -> void:
 		for type in multi_values_signal:
 			var value = _convert_value_to_type(type, multi_values_signal[type])
 			Events.emit_signal(key, value)
-
-
-func _convert_value_to_type(type: String, value):
-	match type:
-		"Vector2":
-			return Vector2(value["x"], value["y"])
-
-	return value
-
-
-func start() -> void:
-	Events.emit_signal("dialogue_started")
-	owner.set_process_unhandled_input(false)
-	change()
-
-
-# Send dialogue based on locale to the dialogueBox
-func next() -> void:
-	_current_dialogue = _dialogues[_current_dialogue["next"]]
-	change()
-
-
-func change() -> void:
-	var text: String = _current_dialogue["text"][TranslationServer.get_locale()]
-	Events.emit_signal(
-		"dialogue_changed",
-		_current_dialogue["name"],
-		_portraits_res[_current_dialogue["portrait"]],
-		text
-	)
-
-	if _current_dialogue.has("signals"):
-		_emit_dialogue_signal(_current_dialogue["signals"])
-
-	# player can make some choice
-	if _current_dialogue.has("choices"):
-		Events.emit_signal("dialogue_choices_changed", _current_dialogue["choices"])
-		Events.connect("dialogue_choices_finished", self, "_on_Choices_finished")
-		return
-
-	# there is not linked dialogue 
-	if not _current_dialogue.get("next"):
-		Events.emit_signal("dialogue_last_dialogue_displayed")
-		clear()
-
-
-# Load dialogue
-func load() -> void:
-	_conditions = owner.conditions
-
-	if not owner.conditions.empty():
-		_get_conditional_dialogue()
-	else:
-		_get_non_conditional_dialogue()
-
-
-# clear controller
-func clear() -> void:
-	_dialogues = {}
-	_current_dialogue = {}
-	_conditions = {}

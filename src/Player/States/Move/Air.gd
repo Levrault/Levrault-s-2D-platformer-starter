@@ -2,13 +2,13 @@ extends State
 
 signal jumped
 
-onready var _coyote_time: Timer = $CoyoteTime
-
 export var acceleration_x := 5000.0
 export var jump_impulse := 900.0
 export var max_jump_count := 1
 
 var _jump_count := 0
+
+onready var _coyote_time: Timer = $CoyoteTime
 
 
 func unhandled_input(event: InputEvent) -> void:
@@ -54,7 +54,6 @@ func exit() -> void:
 func jump() -> void:
 	owner.skin.play("jump")
 	_parent.velocity.y = 0
-	print_debug(jump_impulse)
 	_parent.velocity += calculate_jump_velocity(jump_impulse)
 	_jump_count += 1
 

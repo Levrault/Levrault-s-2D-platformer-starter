@@ -1,18 +1,15 @@
+# Displays the values of properties of a given node
+# You can directly change the `properties` property to display multiple values from the `reference` node
+# E.g. properties = PoolStringArray(['speed', 'position', 'modulate'])
 tool
 extends Control
-"""
-Displays the values of properties of a given node
-You can directly change the `properties` property to display multiple values from the `reference` node
-E.g. properties = PoolStringArray(['speed', 'position', 'modulate'])
-"""
-
-onready var _container: VBoxContainer = $VBoxContainer/VBoxContainer
-onready var _title: Label = $VBoxContainer/ReferenceName
-
-onready var reference: Node = get_node(reference_path) setget set_reference
 
 export var reference_path: NodePath
 export var properties: PoolStringArray setget set_properties
+
+onready var _container: VBoxContainer = $VBoxContainer/VBoxContainer
+onready var _title: Label = $VBoxContainer/ReferenceName
+onready var reference: Node = get_node(reference_path) setget set_reference
 
 
 func _ready() -> void:
@@ -22,35 +19,6 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
-	_update()
-
-
-func _setup() -> void:
-	_clear()
-	_title.text = reference.name
-	for property in properties:
-		track(property)
-
-
-func _get_configuration_warning() -> String:
-	return "" if not reference_path.is_empty() else "Reference Path should not be empty."
-
-
-func track(property: String) -> void:
-	var label: = Label.new()
-	label.autowrap = true
-	label.name = property.capitalize()
-	_container.add_child(label)
-	if not property in properties:
-		properties.append(property)
-
-
-func _clear() -> void:
-	for property_label in _container.get_children():
-		property_label.queue_free()
-
-
-func _update() -> void:
 	if Engine.editor_hint:
 		return
 	var search_array: Array = properties
@@ -58,7 +26,7 @@ func _update() -> void:
 		var label: Label = _container.get_child(search_array.find(property))
 		var value = reference.get(property)
 
-		var text: = ""
+		var text := ""
 		if value is Vector2:
 			text = "(%01d %01d)" % [value.x, value.y]
 		else:
@@ -79,3 +47,28 @@ func set_reference(value: Node) -> void:
 		_setup()
 	else:
 		_title.text = get_class()
+
+
+func track(property: String) -> void:
+	var label := Label.new()
+	label.autowrap = true
+	label.name = property.capitalize()
+	_container.add_child(label)
+	if not property in properties:
+		properties.append(property)
+
+
+func _clear() -> void:
+	for property_label in _container.get_children():
+		property_label.queue_free()
+
+
+func _setup() -> void:
+	_clear()
+	_title.text = reference.name
+	for property in properties:
+		track(property)
+
+
+func _get_configuration_warning() -> String:
+	return "" if not reference_path.is_empty() else "Reference Path should not be empty."

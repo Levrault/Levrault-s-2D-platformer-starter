@@ -40,4 +40,6 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [editable path="Player"]

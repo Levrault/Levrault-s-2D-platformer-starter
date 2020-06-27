@@ -35,6 +35,9 @@ func _input(event: InputEvent) -> void:
 	existing_keys.append(event.scancode)
 	_close()
 
+func focus() -> void:
+	$Button.grab_focus()
+
 
 func _key_is_already_mapped(new_scancode: int) -> bool:
 	return existing_keys.find(new_scancode) != -1
@@ -58,6 +61,3 @@ func _close() -> void:
 	set_process_input(false)
 	hide()
 
-
-func focus() -> void:
-	$Button.grab_focus()

@@ -8,10 +8,6 @@ func _ready() -> void:
 	_start_position = owner.position
 
 
-func _on_Skin_animation_finished(anim_name: String) -> void:
-	_state_machine.transition_to("Move/Idle")
-
-
 func enter(msg: Dictionary = {}) -> void:
 	owner.position = _start_position
 	owner.is_active = false
@@ -25,3 +21,7 @@ func enter(msg: Dictionary = {}) -> void:
 func exit() -> void:
 	owner.is_active = true
 	owner.skin.disconnect("animation_finished", self, "_on_Skin_animation_finished")
+
+
+func _on_Skin_animation_finished(anim_name: String) -> void:
+	_state_machine.transition_to("Move/Idle")

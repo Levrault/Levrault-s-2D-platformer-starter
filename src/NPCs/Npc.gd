@@ -1,6 +1,6 @@
 # Non playable character
-extends KinematicBody2D
 class_name Npc
+extends KinematicBody2D
 
 export var conditions := {}
 

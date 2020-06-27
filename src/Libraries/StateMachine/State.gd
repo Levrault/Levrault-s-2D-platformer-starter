@@ -1,9 +1,10 @@
 # State interface to use in Hierarchical State machines
 # The lowest leaf tries to handle callbacks and if it can'it, it delegates the work to its parent.
-extends Node
 class_name State, "res://assets/icons/state.svg"
+extends Node
 
-onready var _state_machine: = _get_state_machine(self)
+onready var _state_machine := _get_state_machine(self)
+
 var _parent: State = null
 
 

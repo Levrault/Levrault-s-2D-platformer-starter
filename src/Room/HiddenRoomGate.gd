@@ -2,6 +2,7 @@ tool
 extends Area2D
 
 enum Display { HORIZONTAL, VERTICAL }
+
 export (Display) var facing = Display.VERTICAL setget set_facing
 
 var _player_is_entering := false
@@ -9,6 +10,15 @@ var _player_is_entering := false
 
 func _ready() -> void:
 	connect("body_entered", self, "_on_Player_entered")
+
+
+func set_facing(value) -> void:
+	facing = value
+	if value == Display.HORIZONTAL:
+		rotation_degrees = 0
+		return
+
+	rotation_degrees = 90
 
 
 func _on_Player_entered(body: Player) -> void:
@@ -27,12 +37,3 @@ func _on_Player_entered(body: Player) -> void:
 		return
 
 	Events.emit_signal("room_limit_changed", RoomManager.bounds)
-
-
-func set_facing(value) -> void:
-	facing = value
-	if value == Display.HORIZONTAL:
-		rotation_degrees = 0
-		return
-
-	rotation_degrees = 90

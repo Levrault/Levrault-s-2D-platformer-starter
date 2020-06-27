@@ -6,7 +6,7 @@ To make it react to events happening in the game world, use the Events signal ro
 Uses different smoothing values depending on the active controller
 """
 
-onready var timer = $Timer
+enum States { IDLE, SHAKING }
 
 export var amplitude = 4.0
 export var duration = 0.3 setget set_duration
@@ -14,8 +14,9 @@ export var DAMP_EASING = 1.0
 export var is_shaking = false setget set_is_shaking
 export var default_smoothing_speed := {mouse = 3, gamepad = 1}
 
-enum States { IDLE, SHAKING }
 var state = States.IDLE
+
+onready var timer = $Timer
 
 
 func reset_smoothing_speed() -> void:
@@ -38,19 +39,6 @@ func _process(delta) -> void:
 	offset = Vector2(
 		rand_range(amplitude, -amplitude) * damping, rand_range(amplitude, -amplitude) * damping
 	)
-
-
-func _on_Offset_changed(offset: Vector2) -> void:
-	self.offset = offset
-
-
-func _on_Limit_changed(bounds: Dictionary) -> void:
-	for key in bounds:
-		self[key] = bounds[key]
-
-
-func _get_configuration_warning() -> String:
-	return "" if $Timer else "%s requires a Timer child named Timer" % name
 
 
 func set_duration(value: float) -> void:
@@ -80,3 +68,16 @@ func _change_state(new_state: int) -> void:
 
 func _on_ShakeTimer_timeout() -> void:
 	self.is_shaking = false
+
+
+func _on_Offset_changed(offset: Vector2) -> void:
+	self.offset = offset
+
+
+func _on_Limit_changed(bounds: Dictionary) -> void:
+	for key in bounds:
+		self[key] = bounds[key]
+
+
+func _get_configuration_warning() -> String:
+	return "" if $Timer else "%s requires a Timer child named Timer" % name

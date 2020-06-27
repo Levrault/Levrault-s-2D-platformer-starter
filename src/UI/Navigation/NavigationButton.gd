@@ -1,8 +1,7 @@
 # Enable to navigate between all the differents menu ui
 # by setting up wich menu need to be show (based on node name)
-extends Button
 class_name NavigationButton
-
+extends Button
 
 export var navigate_to := ""
 export var is_default_focused := false
