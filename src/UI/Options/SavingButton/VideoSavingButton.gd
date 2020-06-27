@@ -1,6 +1,8 @@
 # Find data to save inside the current menu (should by child or Contents)
 extends MenuSaveButton
 
+const Utils: Script = preload("res://src/Utils/Utils.gd")
+
 
 func _on_Pressed() -> void:
 	var data = ._get_fields()

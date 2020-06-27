@@ -5,7 +5,7 @@
 extends Node2D
 class_name DialogueController
 
-const JSON_READER: Script = preload("res://src/Utils/JsonReader.gd")
+const JsonReader: Script = preload("res://src/Utils/JsonReader.gd")
 const PORTRAIT_PATH: String = "res://assets/portraits/%s.png"
 const _portraits_res := {}
 
@@ -13,7 +13,7 @@ var _dialogues := {}
 var _conditions := {}
 var _current_dialogue := {}
 
-onready var dialogue_json: Dictionary = JSON_READER.get_json(
+onready var dialogue_json: Dictionary = JsonReader.get_json(
 	"res://assets/dialogues/%s.json" % [owner.get_name()]
 )
 

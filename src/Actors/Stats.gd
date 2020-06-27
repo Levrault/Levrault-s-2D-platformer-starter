@@ -4,7 +4,6 @@ extends Node2D
 
 class_name Stats
 
-# TODO: should be in the Events singleton
 signal health_changed(old_value, new_value)
 signal health_depleted
 signal damage_taken
