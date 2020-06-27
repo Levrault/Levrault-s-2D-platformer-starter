@@ -17,6 +17,12 @@ The project contains
 
 
 
+## Guidelines
+
+See [GDQuest is best practices guide](https://www.gdquest.com/docs/guidelines/best-practices/)
+
+
+
 ## Folder's Structure
 
 I tried to make my project structure clear as possible. An `assets` folders for every resources (sprites, audio, json files) and a `src` folder to contains the code and game logics.
