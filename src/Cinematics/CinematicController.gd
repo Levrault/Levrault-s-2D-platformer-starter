@@ -1,3 +1,4 @@
+# Control and manage when a cinematic is played
 extends Node2D
 
 var player: Player = null

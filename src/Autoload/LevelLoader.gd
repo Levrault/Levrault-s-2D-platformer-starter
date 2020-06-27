@@ -1,10 +1,11 @@
+# Set all rooms in the memory
 extends Node
-
-signal world_loaded
 
 var rooms := {}
 
 
+# Load all room when called
+# @param {String} world
 func load(world: String) -> void:
 	if world == 'test':
 		rooms = {

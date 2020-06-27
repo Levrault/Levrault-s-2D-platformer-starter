@@ -1,17 +1,17 @@
 tool
 extends Area2D
 
-enum DISPLAY { HORIZONTAL, VERTICAL }
-export (DISPLAY) var facing = DISPLAY.VERTICAL setget set_facing
+enum Display { HORIZONTAL, VERTICAL }
+export (Display) var facing = Display.VERTICAL setget set_facing
 
 var _player_is_entering := false
 
 
 func _ready() -> void:
-	connect("body_entered", self, "_on_Body_entered")
+	connect("body_entered", self, "_on_Player_entered")
 
 
-func _on_Body_entered(body: Player) -> void:
+func _on_Player_entered(body: Player) -> void:
 	_player_is_entering = not _player_is_entering
 
 	var bounds := {}
@@ -31,7 +31,7 @@ func _on_Body_entered(body: Player) -> void:
 
 func set_facing(value) -> void:
 	facing = value
-	if value == DISPLAY.HORIZONTAL:
+	if value == Display.HORIZONTAL:
 		rotation_degrees = 0
 		return
 

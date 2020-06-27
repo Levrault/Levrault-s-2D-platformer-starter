@@ -1,7 +1,7 @@
 # Receive and display dialogue between player and Npc
 extends Control
 
-enum STATE { pending, questionning }
+enum States { pending, questionning }
 
 onready var _text = $Panel/Wrapper/Contents/Text/Message
 onready var _name = $Panel/Wrapper/Contents/Text/Name
@@ -13,7 +13,7 @@ onready var _end = $End
 
 var _message := ''
 var _is_last_dialogue := false
-var _state: int = STATE.pending
+var _state: int = States.pending
 
 
 func _ready() -> void:
@@ -49,7 +49,7 @@ func _on_Dialogue_changed(name: String, portrait: StreamTexture, message: String
 # Add and display player's choice
 # @param {Array} choices
 func _on_Choice_changed(choices: Array) -> void:
-	_state = STATE.questionning
+	_state = States.questionning
 	for choice in choices:
 		var button: Button = Button.new()
 		button.text = choice["text"][TranslationServer.get_locale()]
@@ -61,7 +61,7 @@ func _on_Choice_pressed(next: String) -> void:
 	Events.emit_signal("dialogue_choices_finished", next)
 	for choice in _choices_contents.get_children():
 		choice.queue_free()
-	_state = STATE.pending
+	_state = States.pending
 	_choices_panel.hide()
 
 
@@ -84,14 +84,14 @@ func _on_Last_dialogue() -> void:
 # Show/hide action button and manage when this is the last dialogue box
 # that need to be displayed
 func next_action() -> void:
-	if _state == STATE.questionning:
+	if _state == States.questionning:
 		_choices_panel.visible = true
 		_choices_contents.get_child(0).grab_focus()
 		Events.emit_signal("dialogue_choices_displayed")
 		_next.show()
 		return
 
-	if _is_last_dialogue and _state == STATE.pending:
+	if _is_last_dialogue and _state == States.pending:
 		Events.emit_signal("dialogue_last_text_displayed")
 		_end.show()
 		return

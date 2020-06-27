@@ -4,6 +4,7 @@ extends Node2D
 
 class_name Stats
 
+# TODO: should be in the Events singleton
 signal health_changed(old_value, new_value)
 signal health_depleted
 signal damage_taken
@@ -20,6 +21,8 @@ func _ready() -> void:
 	health = max_health
 
 
+# Has take a hit
+# @param {Hit} hit
 func take_damage(hit: Hit) -> void:
 	if invulnerable:
 		return
@@ -39,26 +42,37 @@ func take_damage(hit: Hit) -> void:
 		emit_signal("health_depleted")
 
 
+# Healing
+# @param {float} amount
 func heal(amount: float) -> void:
 	var old_health = health
 	health = min(health + amount, max_health)
 	emit_signal("health_changed", health, old_health)
 
 
+# setter for max_health
+# @param {float} value
 func set_max_health(value: float) -> void:
 	if value == null:
 		return
 	max_health = max(1, value)
 
 
+# SAdd status effect e.g. poison
+# @param {int} id
+# @param {any} modifier - class, object...
 func add_modifier(id: int, modifier) -> void:
 	modifiers[id] = modifier
 
 
+# Remove effect e.g. poison
+# @param {int} id
 func remove_modifier(id: int) -> void:
 	modifiers.erase(id)
 
 
+# Invulnerable frame
+# @param {float} time
 func set_invulnerable_for_seconds(time: float) -> void:
 	invulnerable = true
 

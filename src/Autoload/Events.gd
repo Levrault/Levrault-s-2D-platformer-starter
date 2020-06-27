@@ -1,7 +1,6 @@
+# Signal Autoload Pattern
+# @see https://www.youtube.com/watch?v=S6PbC4Vqim4
 extends Node
-
-# trad
-signal locale_changed(locale)
 
 # notification
 signal notification_started(text, size)

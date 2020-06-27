@@ -1,3 +1,4 @@
+# Show when a cinematic is active
 extends Control
 
 

@@ -2,17 +2,17 @@
 # have with them
 extends Node2D
 
-enum STATE { pending, continuing, choosing, ending }
+enum States { pending, continuing, choosing, ending }
 
 var _npc: Npc = null
-var _state = STATE.pending
+var _state = States.pending
 
 
 # Init detect zone and linh change state to the dialogueBox
 func _ready() -> void:
-	Events.connect("dialogue_last_text_displayed", self, "_on_State_changed", [STATE.ending])
-	Events.connect("dialogue_text_displayed", self, "_on_State_changed", [STATE.continuing])
-	Events.connect("dialogue_choices_displayed", self, "_on_State_changed", [STATE.choosing])
+	Events.connect("dialogue_last_text_displayed", self, "_on_State_changed", [States.ending])
+	Events.connect("dialogue_text_displayed", self, "_on_State_changed", [States.continuing])
+	Events.connect("dialogue_choices_displayed", self, "_on_State_changed", [States.choosing])
 	$DetectNpc.connect("body_entered", self, "_on_Npc_entered")
 	$DetectNpc.connect("body_exited", self, "_on_Npc_exited")
 	set_process_unhandled_input(false)
@@ -20,15 +20,15 @@ func _ready() -> void:
 
 # Start, skip, end dialogue
 func _unhandled_input(event: InputEvent) -> void:
-	if _state == STATE.choosing:
+	if _state == States.choosing:
 		return
 
 	if event.is_action_pressed("interaction"):
 		# last dialogue/interaction was displayed, end the interaction
-		if _state == STATE.ending:
+		if _state == States.ending:
 			owner.is_handling_input = true
 			_npc.is_in_interaction = false
-			_state = STATE.pending
+			_state = States.pending
 			Events.emit_signal("dialogue_finished")
 			return
 
@@ -38,9 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			_npc.is_in_interaction = true
 			return
 
-		if _state == STATE.continuing:
+		if _state == States.continuing:
 			_npc.next_interaction()
-			_state = STATE.pending
+			_state = States.pending
 			return
 
 		# call next interaction
