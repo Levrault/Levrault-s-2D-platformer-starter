@@ -27,6 +27,8 @@ __meta__ = {
 
 [node name="Gates" type="Node2D" parent="."]
 
+[node name="FallLimits" type="Node2D" parent="."]
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
