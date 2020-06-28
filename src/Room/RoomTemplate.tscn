@@ -38,8 +38,8 @@ __meta__ = {
 
 [node name="NPCs" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
 [editable path="Player"]

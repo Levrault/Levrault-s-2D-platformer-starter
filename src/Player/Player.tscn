@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/Player/PlayerSkin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Libraries/StateMachine/StateMachine.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/Actors/Stats.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Libraries/AttackFactory/AttackFactory.gd" type="Script" id=13]
 [ext_resource path="res://src/Player/NpcInteraction.gd" type="Script" id=14]
+[ext_resource path="res://src/Combat/Hitbox.gd" type="Script" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -409,5 +410,13 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NpcInteraction/DetectNpc"]
 shape = SubResource( 11 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
 
 [editable path="Skin"]

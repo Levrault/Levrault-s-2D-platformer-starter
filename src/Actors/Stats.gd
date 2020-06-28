@@ -22,6 +22,7 @@ func _ready() -> void:
 # Has take a hit
 # @param {Hit} hit
 func take_damage(hit: Hit) -> void:
+	print("take damage")
 	if invulnerable:
 		return
 

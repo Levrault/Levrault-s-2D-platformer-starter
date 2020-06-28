@@ -116,22 +116,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NpcDummy5" parent="NPCs" index="4" instance=ExtResource( 3 )]
-position = Vector2( 1561, 185 )
-conditions = {
-
-}
-
-[node name="Label2" type="Label" parent="NPCs/NpcDummy5" index="5"]
-margin_left = -32.0
-margin_top = -152.0
-margin_right = 38.0
-margin_bottom = -138.0
-text = "Cinematic"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Player" parent="." index="8"]
 position = Vector2( 194.75, 0 )
 
