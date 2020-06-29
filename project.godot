@@ -104,9 +104,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot-2D-Platformer-Template"
+config/name="Levrault-s-2D-platformer-starter"
 run/main_scene="res://src/Main/Game.tscn"
-config/icon="res://icon.png"
+config/icon="res://project.png"
 
 [autoload]
 
@@ -302,6 +302,8 @@ debug_free_camera_zoom_out={
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Npcs"
 2d_physics/layer_6="Object"
+2d_physics/layer_7="Hitbox"
+2d_physics/layer_8="DamageSource"
 
 [locale]
 
