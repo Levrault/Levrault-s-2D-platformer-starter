@@ -31,6 +31,7 @@ func physics_process(delta: float) -> void:
 
 	# Landing
 	if owner.is_on_floor():
+		owner.is_snapped_to_floor = true
 		var target_state := "Move/Idle" if _parent.get_move_direction().x == 0 else "Move/Run"
 		_state_machine.transition_to(target_state, {contact = true})
 
@@ -38,6 +39,7 @@ func physics_process(delta: float) -> void:
 func enter(msg: Dictionary = {}) -> void:
 	_parent.enter(msg)
 	_parent.acceleration.x = acceleration_x
+	owner.is_snapped_to_floor = false
 
 	if "coyote_time" in msg:
 		_coyote_time.start()
