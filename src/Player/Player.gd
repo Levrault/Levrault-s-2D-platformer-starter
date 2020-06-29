@@ -2,6 +2,7 @@ class_name Player
 extends Actor
 
 const FLOOR_NORMAL := Vector2.UP
+const SNAP := Vector2(0, 10)
 
 var is_active := true setget set_is_active
 var is_handling_input := true setget set_is_handling_input

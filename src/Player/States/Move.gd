@@ -25,8 +25,10 @@ func physics_process(delta: float) -> void:
 	velocity = calculate_velocity(
 		velocity, max_speed, acceleration, decceleration, delta, direction
 	)
-	# @TODO: should be replace by move_and_slide_with_snap
-	velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
+	if owner.is_snapped_to_floor:
+		velocity = owner.move_and_slide_with_snap(velocity, owner.SNAP, owner.FLOOR_NORMAL, true)
+	else:
+		velocity = owner.move_and_slide(velocity, owner.FLOOR_NORMAL)
 
 	if direction.x != 0:
 		owner.horizontal_mirror(direction.x)

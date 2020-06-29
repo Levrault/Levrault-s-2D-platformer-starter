@@ -3,6 +3,8 @@
 class_name Actor
 extends KinematicBody2D
 
+var is_snapped_to_floor := false
+
 onready var stats: Stats = $Stats as Stats
 
 
