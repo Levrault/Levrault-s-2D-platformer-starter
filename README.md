@@ -1,6 +1,6 @@
 # Levrault's 2D platformer starter
 
-[TOC]
+
 
 This is my custom starter project to quickly create a 2D platformer. Feel free to use it to start your own project. Just keep in mind it has been made to suit my way of developing but I think you can maybe find some useful tips.
 
@@ -84,11 +84,17 @@ I try to create a flexible dialogue system. Here how it working
 
 
 
+
+
+ <video src="/home/luc/Devs/godot-2D-platformer-template/docs/dialogues_demo.mp4"></video>
+
+
+
 ### JSON file
 
 JSON file should be places inside `res://assets/dialogues/` and should share the same name of the NPC's node name. 
 
-e.g. `Jack` will use `Jack.json` file. 
+e.g. `Jack` will use `Jack.json` file.
 
 
 

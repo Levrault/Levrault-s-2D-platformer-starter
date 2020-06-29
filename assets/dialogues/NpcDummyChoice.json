@@ -27,7 +27,7 @@
     "name": "NPCDummy",
     "portrait": "NPCDummy",
     "text": {
-      "en": "Awsome",
+      "en": "Awesome",
       "fr": "Magnifique"
     },
     "next": "004"
@@ -44,7 +44,7 @@
     "name": "Player",
     "portrait": "Player",
     "text": {
-      "en": "Why I'm doign this",
+      "en": "Why I'm doign this?",
       "fr": "Pourquoi je fais ça"
     },
     "next": "005"
