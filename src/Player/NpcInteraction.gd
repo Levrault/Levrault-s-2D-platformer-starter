@@ -58,7 +58,7 @@ func _on_Npc_entered(body: Npc) -> void:
 
 # Is no longer possible to interact with the npc
 # @param {Npc} body
-func _on_Npc_exited(body: Node) -> void:
+func _on_Npc_exited(body: Npc) -> void:
 	body.is_interactable = false
 	set_process_unhandled_input(false)
 	_npc = null

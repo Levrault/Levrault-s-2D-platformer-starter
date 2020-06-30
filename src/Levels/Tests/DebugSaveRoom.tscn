@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Room/RoomTemplate.tscn" type="PackedScene" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 46, 52 )
+[ext_resource path="res://src/Room/SavePoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Player/Ability/UnlockDoubleJumpAbility.tscn" type="PackedScene" id=3]
 
 [node name="SaveRoom" instance=ExtResource( 1 )]
 
@@ -22,12 +21,12 @@ position = Vector2( 2, 407 )
 [node name="StateMachine" parent="Player" index="4"]
 initial_state = NodePath("../../../SaveRoom/Player/StateMachine/Spawn")
 
-[node name="SavePoint" type="Node2D" parent="." index="9"]
+[node name="SavePoint" parent="." index="9" instance=ExtResource( 2 )]
+position = Vector2( 552, 444 )
 
-[node name="Trigger" type="Area2D" parent="SavePoint" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SavePoint/Trigger" index="0"]
-position = Vector2( 653, 444 )
-shape = SubResource( 1 )
+[node name="UnlockDoubleJumpAbility" parent="." index="10" groups=[
+"Persist",
+] instance=ExtResource( 3 )]
+position = Vector2( 257, 468 )
 
 [editable path="Player"]

@@ -3,7 +3,9 @@
 [ext_resource path="res://src/Cinematics/CinematicDialogueTest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Room/RoomTemplate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/NPCs/Npc.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Abilities/UnlockDoubleJumpAbility.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Player/Ability/UnlockDoubleJumpAbility.tscn" type="PackedScene" id=4]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "end"

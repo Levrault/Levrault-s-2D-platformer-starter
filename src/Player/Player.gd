@@ -4,6 +4,7 @@ extends Actor
 
 const FLOOR_NORMAL := Vector2.UP
 const SNAP := Vector2(0, 10)
+const Collection: Script = preload("res://src/Utils/Collection.gd")
 
 var is_active := true setget set_is_active
 var is_handling_input := true setget set_is_handling_input
@@ -20,6 +21,7 @@ onready var attack_factory: AttackFactory = $AttackFactory as AttackFactory
 func _ready() -> void:
 	Events.connect("player_room_entered", self, "_on_Player_Room_entered")
 	stats.connect("health_depleted", self, "_on_Stats_health_depleated")
+	abilities = Collection.merge(abilities, Game.unlocked_abilities)
 
 
 func set_is_handling_input(value: bool) -> void:

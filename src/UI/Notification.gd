@@ -1,3 +1,4 @@
+# System notification
 extends Control
 
 onready var message := $Wrapper/MessageWrapper/Message
@@ -12,4 +13,3 @@ func _on_Notification_started(text: String, size: Vector2 = Vector2(460, 40)) ->
 	anim.play("push")
 	message.parse_bbcode(tr(text))
 	rect_size = size
-

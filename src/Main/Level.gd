@@ -1,6 +1,6 @@
 extends Node2D
 
-export (String, "test", "debug_dialogue", "debug_cinematic", "debug_abilities") var to_load := "text"
+export (String, "test", "debug_dialogue", "debug_cinematic", "debug_abilities", "debug_save_room") var to_load := "text"
 export var room_to_spawn := ''
 
 var current_room
@@ -9,12 +9,17 @@ var current_room
 func _ready():
 	Events.connect("level_preload_finished", self, "_on_Load_new_room", [room_to_spawn])
 	Events.connect("gate_entered", self, "_on_Load_new_room")
-	LevelLoader.load(to_load)
+
+	if LevelManager.to_load == "":
+		LevelManager.to_load = to_load
+
+	LevelManager.load(LevelManager.to_load)
 
 
 func _on_Load_new_room(id: String) -> void:
 	if current_room:
 		current_room.queue_free()
 		yield(current_room, "tree_exited")
-	current_room = LevelLoader.rooms[id].instance()
+	current_room = LevelManager.rooms[id].instance()
+	RoomManager.room_name = id
 	call_deferred("add_child", current_room)

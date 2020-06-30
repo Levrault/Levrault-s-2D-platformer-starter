@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/sprites/AbilityDash.png" type="Texture" id=1]
-[ext_resource path="res://src/Abilities/UnlockAbility.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Player/Ability/UnlockAbility.tscn" type="PackedScene" id=2]
 
 [node name="UnlockDashAbility" instance=ExtResource( 2 )]
 ability_to_unlock = "dash"
 
-[node name="Ability" parent="." index="1"]
+[node name="Ability" parent="." index="2"]
 texture = ExtResource( 1 )
