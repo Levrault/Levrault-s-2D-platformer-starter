@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprites/AbilityPlaceholder.png" type="Texture" id=1]
+[ext_resource path="res://src/Abilities/UnlockAbility.gd" type="Script" id=2]
+[ext_resource path="res://src/NPCs/DialogueController.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="UnlockAbility" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+ability_to_unlock = "double_jump"
+
+[node name="DialogueController" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Ability" type="Sprite" parent="."]
+texture = ExtResource( 1 )
