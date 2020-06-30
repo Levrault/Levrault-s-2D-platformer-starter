@@ -72,3 +72,4 @@ default_field_to_focus = NodePath("../Control/ListOptionsMenu/Wrapper/Page/Conte
 [node name="Level" parent="." instance=ExtResource( 1 )]
 to_load = "debug_dialogue"
 room_to_spawn = "Room1"
+

@@ -15,3 +15,4 @@ func _on_Player_entered(body: Player) -> void:
 	dialogue_controller.start()
 	dialogue_controller.clear()
 	queue_free()
+

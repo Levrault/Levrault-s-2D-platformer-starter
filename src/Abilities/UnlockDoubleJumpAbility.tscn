@@ -6,4 +6,3 @@
 [node name="UnlockDoubleJumpAbility" instance=ExtResource( 1 )]
 
 [node name="Ability" parent="." index="2"]
-texture = ExtResource( 2 )
