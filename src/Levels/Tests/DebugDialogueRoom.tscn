@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Cinematics/CinematicDialogueTest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Room/RoomTemplate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/NPCs/Npc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Abilities/UnlockDoubleJumpAbility.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "end"
@@ -196,6 +197,24 @@ position = Vector2( 194.75, 0 )
 
 [node name="StateMachine" parent="Player" index="4"]
 initial_state = NodePath("../../../DebugDialogueRoom/Player/StateMachine/Spawn")
+
+[node name="UnlockDoubleJumpAbility" parent="." index="12" instance=ExtResource( 4 )]
+position = Vector2( 368, 158 )
+
+[node name="Label3" type="Label" parent="UnlockDoubleJumpAbility" index="3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -146.0
+margin_top = -47.0
+margin_right = 153.0
+margin_bottom = -33.0
+text = "Timed"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="CinematicDialogueTest"]
 

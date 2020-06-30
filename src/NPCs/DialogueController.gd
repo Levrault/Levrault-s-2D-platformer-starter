@@ -57,6 +57,10 @@ func change() -> void:
 		Events.connect("dialogue_choices_finished", self, "_on_Choices_finished")
 		return
 
+	# timed dialogue
+	if _current_dialogue.has("timer"):
+		Events.emit_signal("dialogue_timed", _current_dialogue["timer"])
+
 	# there is not linked dialogue 
 	if not _current_dialogue.get("next"):
 		Events.emit_signal("dialogue_last_dialogue_displayed")
@@ -65,9 +69,9 @@ func change() -> void:
 
 # Load dialogue
 func load() -> void:
-	_conditions = owner.conditions
+	_conditions = owner.conditions if owner.get("conditions") else {}
 
-	if not owner.conditions.empty():
+	if not _conditions.empty():
 		_get_conditional_dialogue()
 	else:
 		_get_non_conditional_dialogue()

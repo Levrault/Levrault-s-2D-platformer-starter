@@ -1,10 +1,6 @@
 # Levrault's 2D platformer starter
 
-
-
 This is my custom starter project to quickly create a 2D platformer. Feel free to use it to start your own project. Just keep in mind it has been made to suit my way of developing but I think you can maybe find some useful tips.
-
-
 
 The project contains
 
@@ -21,6 +17,8 @@ The project contains
 
 See [GDQuest's best practices guide](https://www.gdquest.com/docs/guidelines/best-practices/) and [official Gdscript Guidelines](https://docs.godotengine.org/en/3.2/getting_started/scripting/gdscript/gdscript_styleguide.html#code-order)
 
+The only main difference, is own I approach the return behavior. I prefer make earlier return (to reduce nesting) instead of keeping only one value to return at the end. This is based on my [goland experience](https://dave.cheney.net/practical-go/presentations/qcon-china.html#_return_early_rather_than_nesting_deeply)
+
 
 
 ## Folder's Structure
@@ -29,7 +27,7 @@ I tried to make my project structure clear as possible. An `assets` folders for 
 
 The only rules insides the `src` folders is that, every kinds of UI, GUI, go inside the `Interfaces` folders and every singletons goes on the `Autoload` folder.
 
-The rest is divided between roles and code design desicion.
+The rest is divided between roles and code design decision.
 
 
 
@@ -104,7 +102,7 @@ You can call it a key or an identifier.
 
 e.g. `001` is the key but you can call it `branch1` if you want. But it needs to be unique inside the file.
 
-```
+```json
 "001": {
 	"name": "NPCDummy",
 	"portrait": "NPCDummy",
@@ -315,7 +313,7 @@ If you are not used to json we are limited to the number of types. Type like Vec
 },
 ```
 
-Doing that way, I let me translate the key to real godot type.
+Doing that way, I let me translate the key to a real Godot supported type.
 
 ```python
 func _convert_value_to_type(type: String, value):
@@ -325,4 +323,25 @@ func _convert_value_to_type(type: String, value):
 
 	return value
 ```
+
+
+
+#### json:timer (optional)  
+
+Can display an non-player controlled dialogue that will terminated itself after timer's value, he used for one unique dialogue. Value is in second. 
+
+<Mark>Will not use the next value, can only show one dialogue at the time</Mark>
+
+```json
+  "001": {
+    "name": "Player",
+    "portrait": "Player",
+    "text": {
+      "en": "I can now double jump",
+      "fr": "Je peux maintenant sauter une deuxieme fois"
+    },
+    "timer": 5
+  }
+```
+
 

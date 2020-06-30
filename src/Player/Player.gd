@@ -1,3 +1,4 @@
+# Main controlled character
 class_name Player
 extends Actor
 
@@ -6,6 +7,7 @@ const SNAP := Vector2(0, 10)
 
 var is_active := true setget set_is_active
 var is_handling_input := true setget set_is_handling_input
+var abilities := {"dash": false, "double_jump": false}
 
 onready var state_machine: StateMachine = $StateMachine
 onready var skin: Node2D = $Skin
@@ -35,6 +37,14 @@ func set_is_active(value: bool) -> void:
 func horizontal_mirror(direction: int) -> void:
 	skin.scale.x = direction
 	attack_factory.scale.x = direction
+
+
+# Unlock acces to new state machine state
+# @param {String} ability_name
+func unlock_ability(ability_name: String) -> void:
+	if abilities.has(ability_name):
+		abilities[ability_name] = true
+		print_debug("unlock %s abilities" % [ability_name])
 
 
 func _on_Player_Room_entered(global_position: Vector2) -> void:

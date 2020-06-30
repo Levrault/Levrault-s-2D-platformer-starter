@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/UI/InGame/DialogueBox.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/ArrowDown-Sheet.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/Stop-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/ArrowDown.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/Stop.png" type="Texture" id=3]
 [ext_resource path="res://assets/portraits/NPCDummy.png" type="Texture" id=4]
 [ext_resource path="res://src/UI/Components/RichTextLabel/AutoScrollLabel.tscn" type="PackedScene" id=5]
 
@@ -13,6 +13,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 480.0

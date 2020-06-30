@@ -41,6 +41,9 @@ func enter(msg: Dictionary = {}) -> void:
 	_parent.acceleration.x = acceleration_x
 	owner.is_snapped_to_floor = false
 
+	if owner.abilities["double_jump"]:
+		max_jump_count = 2
+
 	if "coyote_time" in msg:
 		_coyote_time.start()
 	if "impulse" in msg:
