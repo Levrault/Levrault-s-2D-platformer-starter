@@ -15,6 +15,10 @@ The project contains
 
 
 
+I try my best to explain everything in the readme file, but you could prefer using the [wiki page instead.](https://github.com/Levrault/Levrault-s-2D-platformer-starter/wiki)
+
+
+
 ## Guidelines
 
 See [GDQuest's best practices guide](https://www.gdquest.com/docs/guidelines/best-practices/) and [official Gdscript Guidelines](https://docs.godotengine.org/en/3.2/getting_started/scripting/gdscript/gdscript_styleguide.html#code-order)

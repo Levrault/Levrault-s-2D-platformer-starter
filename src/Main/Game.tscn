@@ -71,5 +71,5 @@ visible = false
 [node name="RoomTransition" parent="UI" instance=ExtResource( 2 )]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-to_load = "debug_save_room"
+to_load = "test"
 room_to_spawn = "Room1"
