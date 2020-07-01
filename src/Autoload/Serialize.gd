@@ -11,13 +11,15 @@ var _path := PATH % [profile]
 func _ready() -> void:
 	# force debug profile
 	if ProjectSettings.get_setting("game/debug"):
-		profile = DEBUG_SAVE
+		self.profile = DEBUG_SAVE
 
 	if ProjectSettings.get_setting("game/load_save"):
+		print(profile)
 		load_game(profile)
 
 
 func set_profile(new_profile: String) -> void:
+	print_debug(new_profile)
 	profile = new_profile
 	_path = PATH % [new_profile]
 
@@ -35,14 +37,14 @@ func save_game(data: Dictionary, should_send_signal: bool = true) -> void:
 
 
 # is _path independent.
-func load_game(selected_profile: String) -> void:
-	var save_game = File.new()
-	if not save_game.file_exists(_path):
+func load_game(selected_profile: String) -> Dictionary:
+	var save = File.new()
+	if not save.file_exists(_path):
 		save_game(DEFAULT_DATA, false)
 		print_debug("LOADING FAILED: create a new save data for %s" % [selected_profile])
 
-	save_game.open(_path, File.READ)
-	var data: Dictionary = parse_json(save_game.get_line())
+	save.open(_path, File.READ)
+	var data: Dictionary = parse_json(save.get_line())
 
 	# load level
 	if (
@@ -57,7 +59,7 @@ func load_game(selected_profile: String) -> void:
 		RoomManager.room_name = ""
 	# set abilities
 	Game.unlocked_abilities = data["abilities"]
-	print_debug(Game.unlocked_abilities)
 
-	save_game.close()
+	save.close()
 	print_debug("%s has been loaded" % [profile])
+	return data

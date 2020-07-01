@@ -8,6 +8,16 @@ onready var button := $Wrapper/Button
 func _ready() -> void:
 	button.connect("pressed", self, "_on_Button_pressed")
 
+	# has save?
+	var save_game = File.new()
+	if not save_game.file_exists(Serialize.PATH % [selected_profile]):
+		button.text = tr("ui_new_game")
+		print_debug("%s is has no associated savefile" % [selected_profile])
+		return
+
+	var data := Serialize.load_game(selected_profile)
+	button.text = "%s - %s" % [tr(data["level"]), tr(data["room"])]
+
 
 func _on_Button_pressed() -> void:
 	Serialize.profile = selected_profile

@@ -7,7 +7,7 @@
 default_field_to_focus = NodePath("Wrapper/Page/Contents/ProfileSelector/Wrapper/Button")
 
 [node name="Title" parent="Wrapper/Page" index="0"]
-text = "ui_profile_placeholder"
+text = "ui_profile_title"
 
 [node name="Contents" parent="Wrapper/Page" index="1"]
 custom_constants/separation = 0
