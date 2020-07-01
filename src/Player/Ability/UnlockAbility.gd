@@ -6,6 +6,8 @@ onready var dialogue_controller: DialogueController = $DialogueController as Dia
 
 
 func _ready() -> void:
+	if Game.unlocked_abilities.has(ability_to_unlock):
+		queue_free()
 	connect("body_entered", self, "_on_Player_entered")
 
 

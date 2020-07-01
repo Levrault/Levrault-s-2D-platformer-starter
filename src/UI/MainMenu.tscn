@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/UI/Options/ListOptionsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/TitleScreen.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/UI/Components/MenuTransition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/Options/ControllerOptionsMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/UI/Notification.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/UI/ProfileMenu.tscn" type="PackedScene" id=11]
 
 [node name="MainMenu" type="Control"]
 pause_mode = 2
@@ -21,6 +22,9 @@ __meta__ = {
 }
 
 [node name="TitleScreen" parent="." instance=ExtResource( 2 )]
+
+[node name="ProfileMenu" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [node name="AudioOptionsMenu" parent="." instance=ExtResource( 6 )]
 visible = false

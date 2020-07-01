@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/UI/Layout/MenuLayout.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UI/Components/ProfileSelector.tscn" type="PackedScene" id=2]
+
+[node name="ProfileMenu" instance=ExtResource( 1 )]
+default_field_to_focus = NodePath("Wrapper/Page/Contents/ProfileSelector/Wrapper/Button")
+
+[node name="Title" parent="Wrapper/Page" index="0"]
+text = "ui_profile_title"
+
+[node name="Contents" parent="Wrapper/Page" index="1"]
+custom_constants/separation = 0
+
+[node name="ProfileSelector" parent="Wrapper/Page/Contents" index="0" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 440.0
+margin_bottom = 68.0
+
+[node name="Button" parent="Wrapper/Page/Contents/ProfileSelector/Wrapper" index="0"]
+margin_right = 435.0
+margin_bottom = 63.0
+
+[node name="ProfileSelector2" parent="Wrapper/Page/Contents" index="1" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 68.0
+margin_right = 440.0
+margin_bottom = 136.0
+selected_profile = "profile2"
+
+[node name="ProfileSelector3" parent="Wrapper/Page/Contents" index="2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 136.0
+margin_right = 440.0
+margin_bottom = 204.0
+selected_profile = "profile3"
+
+[editable path="Wrapper/Page/Contents/ProfileSelector"]

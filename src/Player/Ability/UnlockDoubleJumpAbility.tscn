@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/Abilities/UnlockAbility.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Player/Ability/UnlockAbility.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/AbilityDoubleJump.png" type="Texture" id=2]
 
 [node name="UnlockDoubleJumpAbility" instance=ExtResource( 1 )]

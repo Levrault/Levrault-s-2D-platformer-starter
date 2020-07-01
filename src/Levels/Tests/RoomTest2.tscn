@@ -15,14 +15,14 @@ position = Vector2( 1104.16, 291.43 )
 [node name="GateToRoomTest1" parent="Gates" index="0" instance=ExtResource( 1 )]
 position = Vector2( -20, 93 )
 facing = 1
-go_to_room = "RoomTest1"
+go_to_room = "Room1"
 linked_to = "GateToRoomTest2"
 
 [node name="GateToRoomTest3" parent="Gates" index="1" instance=ExtResource( 1 )]
 position = Vector2( 1104.16, 64 )
 scale = Vector2( -1, 1 )
 facing = 0
-go_to_room = "RoomTest3"
+go_to_room = "Room3"
 linked_to = "GateToRoomTest2"
 
 [node name="Label" type="Label" parent="." index="4"]

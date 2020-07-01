@@ -22,9 +22,6 @@ script = ExtResource( 5 )
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="DialogueBox" parent="UI" instance=ExtResource( 3 )]
-visible = false
-
 [node name="Router" type="Control" parent="UI"]
 pause_mode = 2
 visible = false
@@ -65,10 +62,14 @@ visible = false
 visible = false
 default_field_to_focus = NodePath("../Control/ListOptionsMenu/Wrapper/Page/Contents/Game")
 
-[node name="Notification" parent="UI/Router" instance=ExtResource( 18 )]
+[node name="Notification" parent="UI" instance=ExtResource( 18 )]
+pause_mode = 2
+
+[node name="DialogueBox" parent="UI" instance=ExtResource( 3 )]
+visible = false
 
 [node name="RoomTransition" parent="UI" instance=ExtResource( 2 )]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-to_load = "debug_dialogue"
+to_load = "debug_save_room"
 room_to_spawn = "Room1"

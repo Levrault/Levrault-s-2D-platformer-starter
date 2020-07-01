@@ -61,6 +61,9 @@ signal keybinding_canceled
 signal keybinding_resetted
 signal keybinding_key_selected(scancode)
 
+# serialize
+signal game_saved
+
 # transitions
 signal transition_started(anim_name)
 signal transition_mid_animated

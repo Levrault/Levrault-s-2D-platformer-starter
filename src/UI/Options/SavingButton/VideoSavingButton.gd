@@ -1,7 +1,7 @@
 # Find data to save inside the current menu (should by child or Contents)
 extends MenuSaveButton
 
-const Utils: Script = preload("res://src/Utils/Utils.gd")
+const Collection: Script = preload("res://src/Utils/Collection.gd")
 
 
 func _on_Pressed() -> void:
@@ -31,6 +31,6 @@ func _on_Pressed() -> void:
 
 		data.erase("window_mode")
 
-	Config.values[section] = Utils.merge(Config.values[section], data)
+	Config.values[section] = Collection.merge(Config.values[section], data)
 	Config.applied_config(section)
 	Config.save(Config.values)

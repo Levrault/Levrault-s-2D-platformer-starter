@@ -10,6 +10,8 @@ The project contains
 - A ready to use Hierarchical state machine based on [GDQuest course](https://gdquest.mavenseed.com/courses) with basic move set (move, jump, run, attack)
 - Castlevania navigation style rooms based level. A level is composed of multiples small rooms (scene), they are all loaded in memory and character can navigate through them)
 - A branch dialogue system
+- Unlockable abilities
+- Save/Load system
 
 
 
@@ -28,6 +30,16 @@ I tried to make my project structure clear as possible. An `assets` folders for 
 The only rules insides the `src` folders is that, every kinds of UI, GUI, go inside the `Interfaces` folders and every singletons goes on the `Autoload` folder.
 
 The rest is divided between roles and code design decision.
+
+
+
+## Debug settings
+
+I add multiple project settings that you can find under `Project > Project Settings > Game`.  To check what a variable do, find it with`ProjectSettings.get_setting("game/[the variable name]")` in the code. 
+
+![debug_settings](./docs/debug_settings.png)
+
+*Screenshot can be outdated*
 
 
 
@@ -344,4 +356,17 @@ Can display an non-player controlled dialogue that will terminated itself after 
   }
 ```
 
+
+
+## Unlock Ability
+
+Player abilities are contained inside his `abilities` variable. It simple dictionary with bool data ( e.g.`double_jump = false`). To unlock a new ability, the player must collect a `UnlockAbility` (see `UnlockAbility.tscn`) item (I keep it to his simplest form so It can be customize to your need easily) to update his `abilities` dictionary and enable him to do the new action.
+
+When the player collect a new ability, a check is made inside his state machine to check if the action can be done.
+
+```python
+if owner.abilities["double_jump"]:
+	max_jump_count = 2
+```
+Since in almost all metroidvania game, when an ability is acquired, you cannot acquired it again (logic), that why the `UnlockAbility.tscn` are linked to the save file. If the player already has the ability, the scene free itself at loading.
 
