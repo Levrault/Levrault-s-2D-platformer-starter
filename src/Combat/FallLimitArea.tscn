@@ -5,7 +5,6 @@
 [sub_resource type="LineShape2D" id=1]
 
 [node name="FallLimitArea" instance=ExtResource( 1 )]
-collision_layer = 8
 is_instakill = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]

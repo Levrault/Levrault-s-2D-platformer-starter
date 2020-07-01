@@ -1,4 +1,5 @@
 tool
+class_name Gate
 extends Area2D
 
 enum Facing { LEFT, RIGHT, TOP, BOTTOM }

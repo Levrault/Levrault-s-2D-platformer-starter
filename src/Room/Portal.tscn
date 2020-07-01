@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Room/Portal.gd" type="Script" id=1]
+[ext_resource path="res://src/Room/Gate.tscn" type="PackedScene" id=2]
+
+[node name="Portal" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+facing = 1
+go_to_room = ""
+linked_to = ""

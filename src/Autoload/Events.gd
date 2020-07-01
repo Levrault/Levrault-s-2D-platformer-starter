@@ -48,6 +48,9 @@ signal cinematic_ended
 # gate
 signal gate_entered(room_id)
 
+# portal
+signal portal_entered(level_id, room_id)
+
 # in-game interfaces
 signal game_paused
 signal game_unpaused

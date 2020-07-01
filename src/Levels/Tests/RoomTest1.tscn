@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Room/Gate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Room/RoomTemplate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/NPCs/Npc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Room/Portal.tscn" type="PackedScene" id=4]
 
 [node name="RoomTest1" instance=ExtResource( 2 )]
 
@@ -14,9 +15,16 @@ position = Vector2( 1795, 351 )
 
 [node name="GateToRoomTest2" parent="Gates" index="0" instance=ExtResource( 1 )]
 position = Vector2( -17, 76 )
-facing = 1
 go_to_room = "Room2"
 linked_to = "GateToRoomTest1"
+
+[node name="PortalToRoomTest4" parent="Gates" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1584, 62 )
+scale = Vector2( -1, 1 )
+facing = 0
+go_to_room = "Room1"
+linked_to = "PortalToRoomTest1"
+go_to_level = "test2"
 
 [node name="Label" type="Label" parent="." index="4"]
 anchor_left = 0.5
