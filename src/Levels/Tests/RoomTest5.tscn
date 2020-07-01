@@ -17,8 +17,9 @@ position = Vector2( 503, 253 )
 
 [node name="GateToRoomTest4" parent="Gates" index="0" instance=ExtResource( 3 )]
 position = Vector2( -445, 30 )
+facing = 1
 go_to_room = "Room1"
-linked_to = "GateToRoomTest4"
+linked_to = "GateToRoomTest5"
 
 [node name="FallLimitArea" parent="FallLimits" index="0" instance=ExtResource( 2 )]
 position = Vector2( 208, 232 )
