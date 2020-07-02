@@ -4,8 +4,6 @@
 [ext_resource path="res://src/NPCs/Npc.gd" type="Script" id=2]
 [ext_resource path="res://src/NPCs/DialogueController.gd" type="Script" id=3]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
@@ -13,14 +11,12 @@ extents = Vector2( 32, 32 )
 collision_layer = 16
 collision_mask = 2
 script = ExtResource( 2 )
-conditions = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="NpcSkin" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -32 )
 
 [node name="DialogueController" type="Node2D" parent="."]
 script = ExtResource( 3 )

@@ -38,6 +38,18 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="TileMapPassThrough" type="TileMap" parent="."]
+self_modulate = Color( 0.768627, 0.278431, 0.278431, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 4
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 0, 1, 0 )
+__meta__ = {
+"_editor_description_": ""
+}
+
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="Enemies" type="Node2D" parent="."]

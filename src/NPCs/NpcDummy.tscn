@@ -7,6 +7,9 @@ conditions = {
 "has_already_been_meet": true
 }
 
+[node name="NpcSkin" parent="." index="1"]
+position = Vector2( 0, 0 )
+
 [node name="Label" parent="." index="3"]
 margin_right = 38.0
 text = "Npc Dummy"

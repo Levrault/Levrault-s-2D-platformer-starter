@@ -5,7 +5,6 @@
 [ext_resource path="res://src/Actor/Stats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Combat/Dummy/DummyEnemy.gd" type="Script" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
@@ -22,7 +21,6 @@ position = Vector2( 0, -32 )
 shape = SubResource( 1 )
 
 [node name="Skin" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -32 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -32 )

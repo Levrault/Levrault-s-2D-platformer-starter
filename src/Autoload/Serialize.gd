@@ -14,7 +14,6 @@ func _ready() -> void:
 		self.profile = DEBUG_SAVE
 
 	if ProjectSettings.get_setting("game/load_save"):
-		print(profile)
 		load_game(profile)
 
 

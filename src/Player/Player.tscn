@@ -13,11 +13,11 @@
 [ext_resource path="res://src/Combat/DamageSource.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Actor/Stats.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Libraries/AttackFactory/AttackFactory.gd" type="Script" id=13]
-[ext_resource path="res://src/Player/NpcInteraction.gd" type="Script" id=14]
+[ext_resource path="res://src/Player/NpcInteraction.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Combat/Hitbox.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/audio/attack.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/audio/jump.wav" type="AudioStream" id=17]
-[ext_resource path="res://src/Player/SaveProgressInteraction.gd" type="Script" id=18]
+[ext_resource path="res://src/Player/SaveProgressInteraction.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -427,15 +427,15 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 8.4148, 8.11649 )
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 20, 20 )
+[sub_resource type="RayShape2D" id=11]
+length = 10.0
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, -20 )
 collision_mask = 6
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -20 )
 shape = SubResource( 1 )
 
 [node name="CameraRig" parent="." instance=ExtResource( 8 )]
@@ -453,6 +453,7 @@ anims/jump = SubResource( 8 )
 anims/spawn = SubResource( 9 )
 
 [node name="AttackFactory" type="Node2D" parent="."]
+position = Vector2( 0, -20 )
 script = ExtResource( 13 )
 
 [node name="DamageSource" parent="AttackFactory" instance=ExtResource( 11 )]
@@ -498,31 +499,28 @@ one_shot = true
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )
 
-[node name="Stats" parent="." instance=ExtResource( 12 )]
-
-[node name="NpcInteraction" type="Node2D" parent="."]
-script = ExtResource( 14 )
-
-[node name="DetectNpc" type="Area2D" parent="NpcInteraction"]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NpcInteraction/DetectNpc"]
-shape = SubResource( 11 )
-
-[node name="SaveProgressInteraction" type="Node2D" parent="."]
-script = ExtResource( 18 )
-
-[node name="DetectSavePoint" type="Area2D" parent="SaveProgressInteraction"]
-collision_layer = 0
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SaveProgressInteraction/DetectSavePoint"]
-shape = SubResource( 11 )
-
 [node name="Hitbox" parent="." instance=ExtResource( 15 )]
+position = Vector2( 0, -20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )
+
+[node name="Stats" parent="." instance=ExtResource( 12 )]
+
+[node name="NpcInteraction" parent="." instance=ExtResource( 14 )]
+position = Vector2( 0, -20 )
+
+[node name="SaveProgressInteraction" parent="." instance=ExtResource( 18 )]
+position = Vector2( 0, -20 )
+
+[node name="PassThrough" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PassThrough"]
+rotation = 3.14159
+shape = SubResource( 11 )
+one_way_collision = true
 
 [editable path="Skin"]

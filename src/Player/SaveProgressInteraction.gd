@@ -1,14 +1,14 @@
 # Detect save zone and manage player's behavior when
 # interacting with them
-extends Node2D
+extends Area2D
 
 var _save_point: SavePoint = null
 
 
 func _ready() -> void:
 	Events.connect("game_saved", self, "_on_Saved_successfull")
-	$DetectSavePoint.connect("area_entered", self, "_on_SavePoint_entered")
-	$DetectSavePoint.connect("area_exited", self, "_on_SavePoint_exited")
+	connect("area_entered", self, "_on_SavePoint_entered")
+	connect("area_exited", self, "_on_SavePoint_exited")
 	set_process_unhandled_input(false)
 
 

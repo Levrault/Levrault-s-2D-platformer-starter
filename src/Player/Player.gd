@@ -10,6 +10,7 @@ var is_active := true setget set_is_active
 var is_handling_input := true setget set_is_handling_input
 var abilities := {"dash": false, "double_jump": false}
 
+onready var pass_through: Area2D = $PassThrough
 onready var state_machine: StateMachine = $StateMachine
 onready var skin: Node2D = $Skin
 onready var camera_rig: Position2D = $CameraRig

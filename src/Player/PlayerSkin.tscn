@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/audio/jump.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/audio/attack.wav" type="AudioStream" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "DEFAULT"
 length = 0.001
@@ -257,4 +256,5 @@ anims/jump = SubResource( 4 )
 anims/spawn = SubResource( 5 )
 
 [node name="Sprite" parent="." index="2"]
+position = Vector2( 0, -20 )
 texture = SubResource( 6 )

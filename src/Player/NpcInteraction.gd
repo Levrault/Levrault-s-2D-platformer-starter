@@ -1,6 +1,6 @@
 # Detect NPC and manage interactions the player can 
 # have with them
-extends Node2D
+extends Area2D
 
 enum States { pending, continuing, choosing, ending }
 
@@ -14,8 +14,8 @@ func _ready() -> void:
 	Events.connect("dialogue_text_displayed", self, "_on_State_changed", [States.continuing])
 	Events.connect("dialogue_choices_displayed", self, "_on_State_changed", [States.choosing])
 	Events.connect("dialogue_timed_out", self, "_on_State_changed", [States.pending])
-	$DetectNpc.connect("body_entered", self, "_on_Npc_entered")
-	$DetectNpc.connect("body_exited", self, "_on_Npc_exited")
+	connect("body_entered", self, "_on_Npc_entered")
+	connect("body_exited", self, "_on_Npc_exited")
 	set_process_unhandled_input(false)
 
 
