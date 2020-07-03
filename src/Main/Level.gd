@@ -1,6 +1,6 @@
 extends Node2D
 
-export (String, "test", "test2", "debug_dialogue", "debug_cinematic", "debug_abilities", "debug_save_room") var to_load := "test"
+export (String, "demo", "debug_portal", "debug_dialogue", "debug_cinematic", "debug_abilities", "debug_save_room") var to_load := "demo"
 export var room_to_spawn := ''
 
 var current_room

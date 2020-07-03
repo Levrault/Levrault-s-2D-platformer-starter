@@ -11,15 +11,18 @@ var to_load := ""
 func load(level: String) -> void:
 	clear_memory()
 	level_name = level
-	if level == "test":
+	if level == "demo":
 		rooms = {
-			"Room1": load("res://src/Levels/Tests/RoomTest1.tscn"),
-			"Room2": load("res://src/Levels/Tests/RoomTest2.tscn"),
-			"Room3": load("res://src/Levels/Tests/RoomTest3.tscn")
+			"DebugDialogue": load("res://src/Levels/Debug/DebugDialogue.tscn"),
+			"DebugAttack": load("res://src/Levels/Debug/DebugAttack.tscn"),
+			"DebugSlopes": load("res://src/Levels/Debug/DebugSlopes.tscn"),
+			"DebugSaveRoom": load("res://src/Levels/Debug/DebugSaveRoom.tscn"),
+			"DebugFallLimit": load("res://src/Levels/Debug/DebugFallLimit.tscn"),
+			"DebugPassThrough": load("res://src/Levels/Debug/DebugPassThrough.tscn")
 		}
 		Events.emit_signal("level_preload_finished")
 		return
-	if level == "test2":
+	if level == "debug_portal":
 		rooms = {
 			"Room1": load("res://src/Levels/Tests/RoomTest4.tscn"),
 			"Room2": load("res://src/Levels/Tests/RoomTest5.tscn"),

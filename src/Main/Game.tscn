@@ -5,4 +5,4 @@
 [node name="Game" type="Node2D"]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
-room_to_spawn = "Room1"
+room_to_spawn = "DebugDialogue"

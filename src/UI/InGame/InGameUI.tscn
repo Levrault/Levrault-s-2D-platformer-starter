@@ -1,18 +1,12 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://src/UI/InGame/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/Options/GameOptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Options/KeyboardOptionsMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/InGame/PauseMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/UI/InGame/DialogueBox.gd" type="Script" id=5]
-[ext_resource path="res://src/UI/Navigation/NavigationSwitch.gd" type="Script" id=6]
-[ext_resource path="res://src/Room/RoomTransition.gd" type="Script" id=7]
 [ext_resource path="res://src/UI/Navigation/InGameRouter.gd" type="Script" id=8]
 [ext_resource path="res://src/UI/InGame/Background.gd" type="Script" id=9]
 [ext_resource path="res://src/UI/Components/MenuTransition.tscn" type="PackedScene" id=10]
-[ext_resource path="res://src/UI/Notification.gd" type="Script" id=11]
 [ext_resource path="res://src/UI/Options/ControllerOptionsMenu.tscn" type="PackedScene" id=12]
-[ext_resource path="res://src/UI/Components/MenuTransition.gd" type="Script" id=13]
 [ext_resource path="res://src/UI/Options/AudioOptionsMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/UI/Notification.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/UI/Options/VideoOptionsMenu.tscn" type="PackedScene" id=16]
@@ -40,90 +34,35 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 9 )
 
-[node name="MenuTransition" type="Control" parent="Router" instance=ExtResource( 10 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MenuTransition" parent="Router" instance=ExtResource( 10 )]
 
-[node name="PauseMenu" type="Control" parent="Router" instance=ExtResource( 4 )]
-pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-default_field_to_focus = NodePath("../PauseMenu/Wrapper/Page/CenterContainer/Contents/Resume")
+[node name="PauseMenu" parent="Router" instance=ExtResource( 4 )]
 
-[node name="AudioOptionsMenu" type="Control" parent="Router" instance=ExtResource( 14 )]
+[node name="AudioOptionsMenu" parent="Router" instance=ExtResource( 14 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
-default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer3/HList")
 
-[node name="ControllerOptionsMenu" type="Control" parent="Router" instance=ExtResource( 12 )]
+[node name="ControllerOptionsMenu" parent="Router" instance=ExtResource( 12 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
 default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer/HList")
 
-[node name="GameOptionsMenu" type="Control" parent="Router" instance=ExtResource( 2 )]
+[node name="GameOptionsMenu" parent="Router" instance=ExtResource( 2 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
-default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer/HList")
 
-[node name="KeyboardOptionMenu" type="Control" parent="Router" instance=ExtResource( 3 )]
+[node name="KeyboardOptionMenu" parent="Router" instance=ExtResource( 3 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
 
-[node name="VideoOptionsMenu" type="Control" parent="Router" instance=ExtResource( 16 )]
+[node name="VideoOptionsMenu" parent="Router" instance=ExtResource( 16 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
-default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer/Vsync")
 
-[node name="ListOptionsMenu" type="Control" parent="Router" instance=ExtResource( 17 )]
+[node name="ListOptionsMenu" parent="Router" instance=ExtResource( 17 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 default_field_to_focus = NodePath("../Control/ListOptionsMenu/Wrapper/Page/Contents/Game")
 
-[node name="Notification" type="Control" parent="." instance=ExtResource( 15 )]
+[node name="Notification" parent="." instance=ExtResource( 15 )]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="DialogueBox" type="Control" parent="." instance=ExtResource( 18 )]
+[node name="DialogueBox" parent="." instance=ExtResource( 18 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="RoomTransition" type="Control" parent="." instance=ExtResource( 19 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RoomTransition" parent="." instance=ExtResource( 19 )]
+visible = false
