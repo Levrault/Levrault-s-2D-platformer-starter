@@ -40,7 +40,8 @@ const DEFAULT_VALUES := {
 		"jump": 32,
 		"attack": 69,
 		"dash": 70,
-	}
+	},
+	"controller": {"rumble": true}
 }
 
 var _config_file := ConfigFile.new()
@@ -153,6 +154,8 @@ func erase_action_events(action_name: String) -> void:
 # @param {String} key - key used in interface
 # @return {String} config data
 func config_to_field(key: String) -> String:
+	print(key)
+
 	if key == "use_vsync":
 		return "cfg_yes" if values["display"]["use_vsync"] else "cfg_no"
 
@@ -175,6 +178,9 @@ func config_to_field(key: String) -> String:
 
 	if key == "sfx_volume":
 		return values["audio"]["sfx_volume"]
+
+	if key == "rumble":
+		return "cfg_yes" if values["controller"]["rumble"] else "cfg_no"
 
 	if key == "locale":
 		return values["game"]["locale"]

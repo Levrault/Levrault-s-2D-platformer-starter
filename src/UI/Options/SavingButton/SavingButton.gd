@@ -26,6 +26,7 @@ func _get_fields() -> Dictionary:
 
 # Match field to config value
 func _on_Pressed() -> void:
+	print(_get_fields())
 	Config.values[section] = _get_fields()
 	Config.applied_config(section)
 	Config.save(Config.values)
