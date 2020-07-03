@@ -94,5 +94,4 @@ func exit() -> void:
 
 
 func _on_PassThrough_exited(body) -> void:
-	print("_on_PassThrough_exited")
 	owner.set_collision_mask_bit(PASS_TROUGHT_LAYER, true)

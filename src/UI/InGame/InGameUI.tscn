@@ -43,12 +43,11 @@ visible = false
 
 [node name="ControllerOptionsMenu" parent="Router" instance=ExtResource( 12 )]
 visible = false
-default_field_to_focus = NodePath("Wrapper/Page/Contents/HBoxContainer/HList")
 
 [node name="GameOptionsMenu" parent="Router" instance=ExtResource( 2 )]
 visible = false
 
-[node name="KeyboardOptionMenu" parent="Router" instance=ExtResource( 3 )]
+[node name="KeyboardOptionsMenu" parent="Router" instance=ExtResource( 3 )]
 visible = false
 
 [node name="VideoOptionsMenu" parent="Router" instance=ExtResource( 16 )]
