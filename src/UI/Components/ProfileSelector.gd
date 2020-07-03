@@ -15,7 +15,8 @@ func _ready() -> void:
 		print_debug("%s is has no associated savefile" % [selected_profile])
 		return
 
-	var data := Serialize.load_game(selected_profile)
+	var data := Serialize.quick_read(selected_profile)
+	print(data)
 	button.text = "%s - %s" % [tr(data["level"]), tr(data["room"])]
 
 

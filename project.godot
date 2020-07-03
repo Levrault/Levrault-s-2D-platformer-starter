@@ -117,7 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Levrault-s-2D-platformer-starter"
-run/main_scene="res://src/Main/Game.tscn"
+run/main_scene="res://src/UI/MainMenu.tscn"
 config/icon="res://project.png"
 
 [autoload]
@@ -151,7 +151,7 @@ window/stretch/aspect="keep"
 
 debug=true
 load_save=true
-load_level_from_save=false
+load_level_from_save=true
 
 [importer_defaults]
 

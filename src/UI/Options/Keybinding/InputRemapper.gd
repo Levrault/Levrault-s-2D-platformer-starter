@@ -10,6 +10,7 @@ var _scancode_to_change := 0
 
 func _ready() -> void:
 	Events.connect("keybinding_started", self, "_on_Keybinding_started")
+	Events.connect("keybinding_resetted", self, "_on_Keybinding_resetted")
 	for action in Config.values["keybinding"]:
 		for input in InputMap.get_action_list(action):
 			if input is InputEventKey:
@@ -35,6 +36,7 @@ func _input(event: InputEvent) -> void:
 	existing_keys.append(event.scancode)
 	_close()
 
+
 func focus() -> void:
 	$Button.grab_focus()
 
@@ -51,10 +53,14 @@ func _duplicate_key_error() -> void:
 func _on_Keybinding_started(previous_scancode) -> void:
 	_scancode_to_change = previous_scancode
 	set_process_input(true)
-	# grab_focus()
 	show()
 	$CenterContainer/Error.hide()
 	$CenterContainer/Label.show()
+
+
+func _on_Keybinding_resetted() -> void:
+	_scancode_to_change = 0
+	existing_keys.clear()
 
 
 func _close() -> void:
