@@ -191,7 +191,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="." index="13"]
+[node name="Label4" type="Label" parent="." index="13"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 192.544
+margin_top = -96.7801
+margin_right = 413.544
+margin_bottom = -65.7801
+text = "Press Q to interact
+and space to valid a choice"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="." index="14"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -205,7 +220,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="." index="14"]
+[node name="Label3" type="Label" parent="." index="15"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -219,7 +234,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FallLimitArea" parent="." index="15" instance=ExtResource( 5 )]
+[node name="FallLimitArea" parent="." index="16" instance=ExtResource( 5 )]
 position = Vector2( 621.955, 274.707 )
 
 [editable path="Player"]
