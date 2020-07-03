@@ -19,7 +19,4 @@ tile_data = PoolIntArray( 196599, 47, 196608, 196600, 47, 196609, 196601, 47, 19
 [node name="StateMachine" parent="Player" index="4"]
 initial_state = NodePath("../../../DebugPassThrough/Player/StateMachine/Spawn")
 
-[node name="PassThrough" parent="Player" index="9"]
-monitorable = true
-
 [editable path="Player"]
