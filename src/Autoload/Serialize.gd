@@ -51,7 +51,7 @@ func load_game(selected_profile: String) -> Dictionary:
 		or (profile == DEBUG_SAVE and ProjectSettings.get_setting("game/load_level_from_save"))
 	):
 		print_debug("load level from save")
-		RoomManager.room_name = data["room"]
+		RoomManager.to_load = data["room"]
 		LevelManager.to_load = data["level"]
 	else:
 		LevelManager.to_load = ""

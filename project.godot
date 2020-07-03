@@ -151,7 +151,7 @@ window/stretch/aspect="keep"
 
 debug=true
 load_save=true
-load_level_from_save=true
+load_level_from_save=false
 
 [importer_defaults]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Room/RoomTemplate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Room/Gate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Room/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Room/SavePoint.tscn" type="PackedScene" id=4]
 
 [node name="RoomTest4" instance=ExtResource( 1 )]
 
@@ -44,5 +45,18 @@ __meta__ = {
 
 [node name="StateMachine" parent="Player" index="4"]
 initial_state = NodePath("../../../RoomTest4/Player/StateMachine/Spawn")
+
+[node name="Label2" type="Label" parent="." index="12"]
+margin_left = 120.0
+margin_top = 111.0
+margin_right = 215.0
+margin_bottom = 125.0
+text = "Savepoint here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SavePoint" parent="." index="13" instance=ExtResource( 4 )]
+position = Vector2( 169, 188 )
 
 [editable path="Player"]
