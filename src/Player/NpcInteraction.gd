@@ -25,27 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("interaction"):
-		# last dialogue/interaction was displayed, end the interaction
-		if _state == States.ending:
-			owner.is_handling_input = true
-			_npc.is_in_interaction = false
-			_state = States.pending
-			Events.emit_signal("dialogue_finished")
-			return
-
-		# interaction with npc has begun
-		if not _npc.is_in_interaction:
-			owner.is_handling_input = false
-			_npc.is_in_interaction = true
-			return
-
-		if _state == States.continuing:
-			_npc.next_interaction()
-			_state = States.pending
-			return
-
-		# call next interaction
-		Events.emit_signal("dialogue_animation_skipped")
+		_interact()
 
 
 # Is possible to interact with the npc
@@ -54,6 +34,9 @@ func _on_Npc_entered(body: Npc) -> void:
 	set_process_unhandled_input(true)
 	_npc = body
 	_npc.is_interactable = true
+
+	if _npc.is_auto_trigger:
+		_interact()
 
 
 # Is no longer possible to interact with the npc
@@ -68,3 +51,27 @@ func _on_Npc_exited(body: Npc) -> void:
 # @param {int} value - should be valid State's enum value
 func _on_State_changed(value: int) -> void:
 	_state = value
+
+
+func _interact() -> void:
+	# last dialogue/interaction was displayed, end the interaction
+	if _state == States.ending:
+		owner.is_handling_input = true
+		_npc.is_in_interaction = false
+		_state = States.pending
+		Events.emit_signal("dialogue_finished")
+		return
+
+	# interaction with npc has begun
+	if not _npc.is_in_interaction:
+		owner.is_handling_input = false
+		_npc.is_in_interaction = true
+		return
+
+	if _state == States.continuing:
+		_npc.next_interaction()
+		_state = States.pending
+		return
+
+	# call next interaction
+	Events.emit_signal("dialogue_animation_skipped")

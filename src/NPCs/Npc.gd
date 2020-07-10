@@ -3,6 +3,7 @@ class_name Npc
 extends KinematicBody2D
 
 export var conditions := {}
+export var is_auto_trigger := false
 
 var is_interactable := false setget set_is_interactable
 var is_in_interaction := false setget set_is_in_interaction
