@@ -37,6 +37,9 @@ position = Vector2( -1, 220 )
 [node name="DummyEnemy3" parent="Enemies" index="2" instance=ExtResource( 2 )]
 position = Vector2( -243, 369 )
 
+[node name="Air" parent="Player/StateMachine/Move" index="2"]
+min_jump_impulse = 200.0
+
 [node name="Label" type="Label" parent="." index="11"]
 margin_left = -64.0
 margin_top = 64.0
