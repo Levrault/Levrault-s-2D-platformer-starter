@@ -20,7 +20,11 @@ func unhandled_input(event: InputEvent) -> void:
 		elif _coyote_time.time_left > 0.0:
 			_coyote_time.stop()
 			jump()
-	if event.is_action_released("jump") and abs(_parent.velocity.y) > min_jump_impulse:
+	if (
+		event.is_action_released("jump")
+		and abs(_parent.velocity.y) > min_jump_impulse
+		and not _parent.velocity.y > 0
+	):
 		_parent.velocity.y = -min_jump_impulse
 
 	_parent.unhandled_input(event)
