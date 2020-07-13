@@ -1,5 +1,5 @@
 # Find data to save inside the current menu (should by child or Contents)
-extends SavingButton
+extends MenuSaveButton
 
 
 func _on_Pressed() -> void:
