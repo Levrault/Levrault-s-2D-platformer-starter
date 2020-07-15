@@ -81,11 +81,12 @@ func _on_Choice_changed(choices: Array) -> void:
 
 
 func _on_Choice_pressed(next: String) -> void:
-	Events.emit_signal("dialogue_choices_finished", next)
 	for choice in _choices_contents.get_children():
 		choice.queue_free()
 	_state = States.pending
 	_choices_panel.hide()
+	Events.emit_signal("dialogue_choices_finished", next)
+
 
 
 # Reset dialogue

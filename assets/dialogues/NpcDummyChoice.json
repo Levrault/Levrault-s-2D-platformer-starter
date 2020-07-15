@@ -27,10 +27,25 @@
     "name": "NPCDummy",
     "portrait": "NPCDummy",
     "text": {
-      "en": "Awesome",
-      "fr": "Magnifique"
+      "en": "Are you sure?",
+      "fr": "Tu es sûre?"
     },
-    "next": "004"
+    "choices": [
+      {
+        "text": {
+          "en": "Yes",
+          "fr": "Oui"
+        },
+        "next": "004"
+      },
+      {
+        "text": {
+          "en": "No",
+          "fr": "No"
+        },
+        "next": "003"
+      }
+    ]
   },
   "003": {
     "name": "NPCDummy",
