@@ -17,6 +17,15 @@
 [node name="UI" type="CanvasLayer"]
 layer = 100
 
+[node name="Notification" parent="." instance=ExtResource( 15 )]
+pause_mode = 2
+
+[node name="DialogueBox" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[node name="RoomTransition" parent="." instance=ExtResource( 19 )]
+visible = false
+
 [node name="Router" type="Control" parent="."]
 pause_mode = 2
 visible = false
@@ -56,12 +65,3 @@ visible = false
 [node name="ListOptionsMenu" parent="Router" instance=ExtResource( 17 )]
 visible = false
 default_field_to_focus = NodePath("../Control/ListOptionsMenu/Wrapper/Page/Contents/Game")
-
-[node name="Notification" parent="." instance=ExtResource( 15 )]
-pause_mode = 2
-
-[node name="DialogueBox" parent="." instance=ExtResource( 18 )]
-visible = false
-
-[node name="RoomTransition" parent="." instance=ExtResource( 19 )]
-visible = false
