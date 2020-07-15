@@ -22,7 +22,10 @@ func _ready() -> void:
 # Start, skip, end dialogue
 func _unhandled_input(event: InputEvent) -> void:
 	if _state == States.choosing:
-		return
+		# skip
+		if event.is_action_pressed("interaction"):
+			Events.emit_signal("dialogue_animation_skipped")
+			return
 
 	if event.is_action_pressed("interaction"):
 		_interact()
