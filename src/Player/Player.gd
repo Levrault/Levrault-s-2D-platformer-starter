@@ -37,9 +37,11 @@ func set_is_active(value: bool) -> void:
 	collider.disabled = not value
 
 
-func horizontal_mirror(direction: int) -> void:
-	skin.scale.x = direction
-	attack_factory.scale.x = direction
+func horizontal_mirror(direction: float) -> void:
+	if direction == 0:
+		return
+	skin.scale.x = sign(direction)
+	attack_factory.scale.x = sign(direction)
 
 
 # Unlock acces to new state machine state

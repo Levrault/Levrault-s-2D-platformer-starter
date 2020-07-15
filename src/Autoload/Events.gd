@@ -38,6 +38,7 @@ signal dialogue_animation_skipped
 signal dialogue_choices_changed(choices)
 signal dialogue_choices_displayed
 signal dialogue_choices_finished(choices)
+signal dialogue_choices_pressed
 signal dialogue_timed_out
 signal dialogue_timed(value)
 

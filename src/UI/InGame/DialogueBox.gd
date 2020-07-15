@@ -86,7 +86,7 @@ func _on_Choice_pressed(next: String) -> void:
 	_state = States.pending
 	_choices_panel.hide()
 	Events.emit_signal("dialogue_choices_finished", next)
-
+	Events.emit_signal("dialogue_choices_pressed")
 
 
 # Reset dialogue
