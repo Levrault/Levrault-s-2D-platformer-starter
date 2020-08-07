@@ -1,5 +1,7 @@
 # Levrault's 2D platformer starter
 
+Demo can be downloaded and played there https://levrault.itch.io/levraults-2d-platformer-starter
+
 This is my custom starter project to quickly create a 2D platformer. Feel free to use it to start your own project. Just keep in mind it has been made to suit my way of developing but I think you can maybe find some useful tips.
 
 The project contains
