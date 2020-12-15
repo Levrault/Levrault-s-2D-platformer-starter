@@ -14,4 +14,6 @@ static func get_json(file_path: String) -> Dictionary:
 	if data_parse.error != OK:
 		print("get_json: error while parsing")
 		return {}
+		
+	data_parse.result.erase("__editor")
 	return data_parse.result

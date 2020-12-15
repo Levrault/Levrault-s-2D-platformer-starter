@@ -1,4 +1,5 @@
 # Non playable character
+tool
 class_name Npc
 extends KinematicBody2D
 
