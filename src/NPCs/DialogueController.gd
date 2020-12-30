@@ -6,9 +6,8 @@ class_name DialogueController
 extends Node2D
 
 const JsonReader: Script = preload("res://src/Utils/JsonReader.gd")
-const PORTRAIT_PATH: String = "res://assets/portraits/%s.png"
-const _portraits_res := {}
 
+var _portraits_res := {}
 var _dialogues := {}
 var _conditions := {}
 var _current_dialogue := {}
@@ -20,25 +19,28 @@ onready var dialogue_json: Dictionary = JsonReader.get_json(
 
 # preload all portrait resources into memory
 func _ready() -> void:
-	for key in dialogue_json:
-		var values: Dictionary = dialogue_json[key]
-		if _portraits_res.has(values["portrait"]):
-			continue
-		_portraits_res[values["portrait"]] = load(PORTRAIT_PATH % [values["portrait"]])
+	_load_portrait_in_memory()
 
 
 func start() -> void:
 	Events.emit_signal("dialogue_started")
 	owner.set_process_unhandled_input(false)
+	_current_dialogue = get_next(dialogue_json.root)
 	change()
+
+
+# Load dialogue
+func load() -> void:
+	_conditions = owner.conditions if owner.get("conditions") else {}
 
 
 # Send dialogue based on locale to the dialogueBox
 func next() -> void:
-	_current_dialogue = _dialogues[_current_dialogue["next"]]
+	_current_dialogue = get_next(_current_dialogue)
 	change()
 
 
+# show next interactions
 func change() -> void:
 	var text: String = _current_dialogue["text"][TranslationServer.get_locale()]
 	Events.emit_signal(
@@ -53,7 +55,14 @@ func change() -> void:
 
 	# player can make some choice
 	if _current_dialogue.has("choices"):
-		Events.emit_signal("dialogue_choices_changed", _current_dialogue["choices"])
+		var conditions: Array = (
+			_current_dialogue.get("conditions")
+			if _current_dialogue.has("conditions")
+			else []
+		)
+		Events.emit_signal(
+			"dialogue_choices_changed", get_choices(_current_dialogue.choices, conditions)
+		)
 		Events.connect("dialogue_choices_finished", self, "_on_Choices_finished")
 		return
 
@@ -62,19 +71,9 @@ func change() -> void:
 		Events.emit_signal("dialogue_timed", _current_dialogue["timer"])
 
 	# there is not linked dialogue 
-	if not _current_dialogue.get("next"):
+	if not _current_dialogue.has("conditions") and not _current_dialogue.get("next"):
 		Events.emit_signal("dialogue_last_dialogue_displayed")
 		clear()
-
-
-# Load dialogue
-func load() -> void:
-	_conditions = owner.conditions if owner.get("conditions") else {}
-
-	if not _conditions.empty():
-		_get_conditional_dialogue()
-	else:
-		_get_non_conditional_dialogue()
 
 
 # clear controller
@@ -84,58 +83,117 @@ func clear() -> void:
 	_conditions = {}
 
 
-# If the owner didn't have any condition set
-func _get_non_conditional_dialogue():
-	var is_first_dialogue := false
+func get_next(node: Dictionary) -> Dictionary:
+	if node.has("next"):
+		return dialogue_json[node.next]
+
+	var next := ""
+	var default_next := ""
+	if node.has("conditions"):
+		var conditions = node.conditions.duplicate(true)
+		var matching_condition := 0
+
+		for condition in conditions:
+			var predicated_next: String = condition.next
+			condition.erase("next")
+
+			if condition.empty():
+				default_next = predicated_next
+
+			# partial matching
+			var current_matching_condition := 0
+			for key in condition:
+				if _conditions.has(key):
+					# conditions will never match
+					if _conditions.size() < condition.size():
+						continue
+
+					if condition.empty():
+						default_next = predicated_next
+
+					if _check_conditions(condition, key):
+						current_matching_condition += 1
+
+			if current_matching_condition > matching_condition:
+				matching_condition = current_matching_condition
+				next = predicated_next
+
+	if not next.empty():
+		return dialogue_json[next]
+
+	assert(default_next.empty() == false)
+	return dialogue_json[default_next]
+
+
+func get_choices(choices: Array, conditions: Array = []) -> Array:
+	if conditions.empty():
+		return choices
+
+	var result := []
+	var conditional_choices := {}
+
+	for choice in choices:
+		if choice.has("uuid"):
+			conditional_choices[choice.uuid] = choice
+		else:
+			result.append(choice)
+
+	if conditional_choices.empty():
+		return choices
+
+	var matching_condition := 0
+	for condition in conditions:
+		var current_matching_condition := 0
+		for key in condition:
+			var predicated_next: String = condition.next
+			condition.erase("next")
+
+			if _conditions.has(key):
+				# conditions will never match
+				if _conditions.size() < condition.size():
+					continue
+
+				if condition.empty():
+					result.append(conditional_choices[predicated_next])
+
+				if _check_conditions(condition, key):
+					current_matching_condition += 1
+
+			if current_matching_condition > matching_condition:
+				result.append(conditional_choices[predicated_next])
+
+	# dialogue json file was badly configuarated since it doesn't have a default choice
+	assert(not result.empty())
+	return result
+
+
+# Valid conditions
+# @param {Dictionary} condition
+# @param {String} key
+# @returns {bool}
+func _check_conditions(condition: Dictionary, key: String) -> bool:
+	match condition[key].operator:
+		"lower":
+			return condition[key].value > _conditions[key]
+		"greater":
+			return condition[key].value < _conditions[key]
+		"different":
+			return condition[key].value != _conditions[key]
+		_:
+			return condition[key].value == _conditions[key]
+
+
+# Check all dialogue portrait and set them in memory
+func _load_portrait_in_memory() -> void:
 	for key in dialogue_json:
 		var values: Dictionary = dialogue_json[key]
-		if values.has("conditions"):
+		if (
+			not values.has("portrait")
+			or values.portrait.empty()
+			or _portraits_res.has(values.portrait)
+		):
 			continue
-
-		if not is_first_dialogue:
-			_current_dialogue = values
-			is_first_dialogue = true
-
-		_dialogues[key] = values
-
-
-# Get the first matching dialogue. Everything must match
-# e.g. 
-# 	If the owner has a condition has_been_talked_to
-#	Dialogue with condition {has_been_talked_to: true, other_condition: true} will NOT match;
-# 	Only the dialogue with the same condition will work
-# e.g. bis
-# 	If the owner has a condition has_been_talked_to and other_condition
-#	Dialogue with condition only the condition {has_been_talked_to: true} will NOT match;
-# 	Only the dialogue with the same condition will work
-func _get_conditional_dialogue():
-	_get_non_conditional_dialogue()
-	var is_first_dialogue := false
-	for dialogue_key in dialogue_json:
-		var values: Dictionary = dialogue_json[dialogue_key]
-		if not values.has("conditions"):
-			continue
-
-		var dialogue_conditions: Dictionary = values["conditions"]
-		var is_dialogue_matched := false
-		for condition_key in _conditions:
-			if not dialogue_conditions.has(condition_key):
-				continue
-
-			is_dialogue_matched = dialogue_conditions[condition_key] == _conditions[condition_key]
-
-			if not is_dialogue_matched:
-				print_debug("%s has not meet the condition" % [dialogue_key])
-				break
-
-		if not is_dialogue_matched:
-			continue
-
-		if not is_first_dialogue:
-			_current_dialogue = values
-			is_first_dialogue = true
-
-		_dialogues[dialogue_key] = values
+		_portraits_res[values.portrait] = load(values.portrait)
 
 
 func _convert_value_to_type(type: String, value):
@@ -148,7 +206,9 @@ func _convert_value_to_type(type: String, value):
 
 func _on_Choices_finished(key: String) -> void:
 	Events.disconnect("dialogue_choices_finished", self, "_on_Choices_finished")
-	_current_dialogue = _dialogues[key]
+
+	# get choice
+	_current_dialogue = dialogue_json[key]
 	change()
 
 

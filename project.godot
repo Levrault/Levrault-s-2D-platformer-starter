@@ -329,6 +329,7 @@ debug_free_camera_zoom_out={
 
 [locale]
 
+test="en"
 locale_filter=[ 0, [ "fr" ] ]
 translations=PoolStringArray( "res://i18n.en.translation", "res://i18n.fr.translation" )
 
