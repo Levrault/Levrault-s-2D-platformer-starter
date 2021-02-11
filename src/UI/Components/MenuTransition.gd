@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func _on_Transition_started(anim_name: String) -> void:
 	$AnimationPlayer.play(anim_name)
+	owner.set_process_input(false)
 
 
 func _on_Mid_animation() -> void:
@@ -17,4 +18,5 @@ func _on_Mid_animation() -> void:
 
 
 func _on_Animation_finished(anim_name: String) -> void:
+	owner.set_process_input(true)
 	Events.emit_signal("transition_finished")

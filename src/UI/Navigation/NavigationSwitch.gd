@@ -35,7 +35,7 @@ func _on_Transiton_mid_animated() -> void:
 		last_clicked_button.grab_focus()
 	elif default_field_to_focus:
 		get_node(default_field_to_focus).grab_focus()
-	else:
+	elif has_node("Wrapper/Page/Contents"):
 		for container in $Wrapper/Page/Contents.get_children():
 			for field in container.get_children():
 				if field.is_in_group("GameSettings"):
