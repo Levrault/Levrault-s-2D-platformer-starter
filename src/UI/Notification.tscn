@@ -49,6 +49,8 @@ tracks/1/keys = {
 [node name="Notification" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 3.05176e-05
+margin_bottom = -270.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
