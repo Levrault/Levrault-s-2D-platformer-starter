@@ -1,5 +1,5 @@
 # Owner dependant
-# Read associated dialogue json file to NPC 
+# Read associated dialogue json file to NPC
 # Based on NPC name
 # Order and manage which dialogue is send to DialogueBox
 class_name DialogueController
@@ -70,7 +70,7 @@ func change() -> void:
 	if _current_dialogue.has("timer"):
 		Events.emit_signal("dialogue_timed", _current_dialogue["timer"])
 
-	# there is not linked dialogue 
+	# there is not linked dialogue
 	if not _current_dialogue.has("conditions") and not _current_dialogue.get("next"):
 		Events.emit_signal("dialogue_last_dialogue_displayed")
 		clear()

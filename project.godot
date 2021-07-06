@@ -335,5 +335,6 @@ translations=PoolStringArray( "res://i18n.en.translation", "res://i18n.fr.transl
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

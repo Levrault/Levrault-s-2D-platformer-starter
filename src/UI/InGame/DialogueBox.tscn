@@ -6,10 +6,6 @@
 [ext_resource path="res://assets/portraits/NPCDummy.png" type="Texture" id=4]
 [ext_resource path="res://src/UI/Components/RichTextLabel/AutoScrollLabel.tscn" type="PackedScene" id=5]
 
-
-
-
-
 [node name="DialogueBox" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

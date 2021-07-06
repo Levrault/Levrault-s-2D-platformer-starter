@@ -1,4 +1,4 @@
-# Detect NPC and manage interactions the player can 
+# Detect NPC and manage interactions the player can
 # have with them
 extends Area2D
 
@@ -8,7 +8,7 @@ var _npc: Npc = null
 var _state = States.idle
 
 
-# Init detect zone and linh change state to the dialogueBox
+# Should receive dialogue_box signals to indicate the current dialogue behavior (text, choices etc.)
 func _ready() -> void:
 	Events.connect("dialogue_last_text_displayed", self, "_on_State_changed", [States.ending])
 	Events.connect("dialogue_text_displayed", self, "_on_State_changed", [States.continuing])
@@ -20,7 +20,8 @@ func _ready() -> void:
 	set_process_unhandled_input(false)
 
 
-# Start, skip, end dialogue
+# Listen to the interaction key to change the dialogue's status and only trigger it if the player is in the right state
+# e.g. Start, skip, end dialogue
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interaction"):
 		_interact()
@@ -31,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 
-# Is possible to interact with the npc
+# Is it possible to interact with the npc ?
 # @param {Npc} body
 func _on_Npc_entered(body: Npc) -> void:
 	set_process_unhandled_input(true)
@@ -56,6 +57,8 @@ func _on_State_changed(value: int) -> void:
 	_state = value
 
 
+# Depending on the current dialogue box status (in animation, choice etc.)
+# is witth change or emit the correct signals to update the behavior to the NPC and the dialogue box
 func _interact() -> void:
 	# last dialogue/interaction was displayed, end the interaction
 	if _state == States.ending:

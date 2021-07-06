@@ -12,16 +12,15 @@ var is_in_interaction := false setget set_is_in_interaction
 onready var dialogue_controller: DialogueController = $DialogueController as DialogueController
 
 
-# Setter
-# When player can do an interaction with the NPC
+# Set if the npc needs to listen the player's input
 # @param {bool} value
 func set_is_interactable(value: bool) -> void:
 	is_interactable = value
 	$Talk.visible = value
 
 
-# Setter
-# When the NPC is interacting with the player
+# Listent to the player's input until the NPC leave the interaction state
+# When it's happen, all the dialogue tree is cleaned
 # @param {bool} value
 func set_is_in_interaction(value: bool) -> void:
 	is_in_interaction = value
@@ -32,7 +31,7 @@ func set_is_in_interaction(value: bool) -> void:
 		dialogue_controller.clear()
 
 
-# When the NPC is interacting with the player
+# If the npc is still listening the player's input, it will check for the possible next dialogue
 # @param {bool} value
 func next_interaction() -> void:
 	dialogue_controller.next()
