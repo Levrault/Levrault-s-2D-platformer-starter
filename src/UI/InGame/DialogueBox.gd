@@ -23,7 +23,6 @@ func _ready() -> void:
 	Events.connect("dialogue_finished", self, "_on_Dialogue_finished")
 	Events.connect("dialogue_last_dialogue_displayed", self, "_on_Last_dialogue")
 	Events.connect("dialogue_choices_changed", self, "_on_Choice_changed")
-	Events.connect("dialogue_timed", self, "_on_Timed_changed")
 	_timer.connect("timeout", self, "_on_Timeout")
 
 	_next.hide()
@@ -115,4 +114,3 @@ func _on_Timed_changed(time_left: float) -> void:
 # Hide and tell the player that dialogue box has timed out
 func _on_Timeout() -> void:
 	_on_Dialogue_finished()
-	Events.emit_signal("dialogue_timed_out")

@@ -96,7 +96,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyConditionRoot" parent="NPCs" index="1" instance=ExtResource( 2 )]
-position = Vector2( 268.872, 191.427 )
+position = Vector2( 297.413, 191.427 )
 conditions = {
 "has_meet": true,
 "score": 1
@@ -117,7 +117,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyConditionRoot2" parent="NPCs" index="2" instance=ExtResource( 2 )]
-position = Vector2( 380.872, 191.427 )
+position = Vector2( 409.413, 191.427 )
 conditions = {
 "has_meet": false,
 "score": 0
@@ -138,7 +138,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyCondition" parent="NPCs" index="3" instance=ExtResource( 2 )]
-position = Vector2( 492.872, 191.427 )
+position = Vector2( 521.413, 191.427 )
 conditions = {
 "has_meet": true,
 "score": 2
@@ -159,7 +159,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyChoice" parent="NPCs" index="4" instance=ExtResource( 2 )]
-position = Vector2( 620.872, 191.427 )
+position = Vector2( 649.413, 191.427 )
 conditions = {
 }
 
@@ -174,7 +174,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyChoiceConditional" parent="NPCs" index="5" instance=ExtResource( 2 )]
-position = Vector2( 732.872, 191.427 )
+position = Vector2( 761.413, 191.427 )
 conditions = {
 "has_cake": false
 }
@@ -193,7 +193,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyChoiceConditional2" parent="NPCs" index="6" instance=ExtResource( 2 )]
-position = Vector2( 844.872, 191.427 )
+position = Vector2( 873.413, 191.427 )
 conditions = {
 "has_cake": true
 }
@@ -212,7 +212,7 @@ __meta__ = {
 }
 
 [node name="NpcDummySignals" parent="NPCs" index="7" instance=ExtResource( 2 )]
-position = Vector2( 956.872, 191.427 )
+position = Vector2( 985.413, 191.427 )
 conditions = {
 }
 
@@ -227,7 +227,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyScrollable" parent="NPCs" index="8" instance=ExtResource( 2 )]
-position = Vector2( 1068.87, 191.427 )
+position = Vector2( 1097.41, 191.427 )
 conditions = {
 }
 
@@ -244,7 +244,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyAutoTrigger" parent="NPCs" index="9" instance=ExtResource( 2 )]
-position = Vector2( 1204.87, 191.427 )
+position = Vector2( 1233.41, 191.427 )
 conditions = {
 }
 is_auto_trigger = true
@@ -262,7 +262,7 @@ __meta__ = {
 }
 
 [node name="NpcDummyCinematic" parent="NPCs" index="10" instance=ExtResource( 2 )]
-position = Vector2( 1524.87, 191.427 )
+position = Vector2( 1553.41, 191.427 )
 conditions = {
 }
 

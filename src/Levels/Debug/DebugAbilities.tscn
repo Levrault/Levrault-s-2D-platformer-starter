@@ -18,3 +18,4 @@ tile_data = PoolIntArray( 1638388, 47, 0, 1638389, 47, 1, 1638390, 47, 1, 163839
 position = Vector2( 312, 353 )
 
 [editable path="Player"]
+[editable path="Player/Skin"]

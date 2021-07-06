@@ -39,8 +39,6 @@ signal dialogue_choices_changed(choices)
 signal dialogue_choices_displayed
 signal dialogue_choices_finished(choices)
 signal dialogue_choices_pressed
-signal dialogue_timed_out
-signal dialogue_timed(value)
 
 # cinematic
 signal cinematic_started
@@ -72,3 +70,6 @@ signal game_saved
 signal transition_started(anim_name)
 signal transition_mid_animated
 signal transition_finished
+
+# test
+signal has_meet
