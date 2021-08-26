@@ -92,6 +92,7 @@ func get_next(node: Dictionary) -> Dictionary:
 		for condition in conditions:
 			var predicated_next: String = condition.next
 			condition.erase("next")
+			condition.erase("parent")
 
 			if condition.empty():
 				default_next = predicated_next
@@ -143,6 +144,7 @@ func get_choices(choices: Array, conditions: Array = []) -> Array:
 		for key in condition:
 			var predicated_next: String = condition.next
 			condition.erase("next")
+			condition.erase("parent")
 
 			if _conditions.has(key):
 				# conditions will never match
@@ -211,6 +213,7 @@ func _on_Choices_finished(key: String) -> void:
 # Emit signal at current dialogue
 # @param {Dictionary} signals
 func _emit_dialogue_signal(signals: Dictionary) -> void:
+	signals.erase("parent")
 	for key in signals:
 		if not signals[key] is Dictionary:
 			if signals[key] == null:

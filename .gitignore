@@ -3,3 +3,4 @@ builds
 .import/
 *.import
 /builds
+.DS_Store
